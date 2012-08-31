@@ -1,0 +1,873 @@
+Terminals unused in grammar
+
+   OTHER
+   DOT
+   NUMBER
+
+
+Grammar
+
+    0 $accept: regsimfile $end
+
+    1 regsimfile: OPENPAR needsregs modifiesregs OPENPAR instseq CLOSEPAR CLOSEPAR
+
+    2 needsregs: OPENPAR reglist CLOSEPAR
+
+    3 modifiesregs: OPENPAR reglist CLOSEPAR
+
+    4 reglist: reglist IDENTIFIER
+    5        | /* empty */
+
+    6 instseq: instseq instruction
+    7        | instruction
+
+    8 instruction: assign
+    9            | perform
+   10            | test
+   11            | branch
+   12            | goto
+   13            | save
+   14            | restore
+   15            | comment
+   16            | labelname
+
+   17 assign: OPENPAR ASSIGN regname regexpr CLOSEPAR
+   18       | OPENPAR ASSIGN regname constexpr CLOSEPAR
+   19       | OPENPAR ASSIGN regname opexpr CLOSEPAR
+   20       | OPENPAR ASSIGN regname labelexpr CLOSEPAR
+
+   21 perform: OPENPAR PERFORM opexpr CLOSEPAR
+
+   22 test: OPENPAR TEST opexpr CLOSEPAR
+
+   23 branch: OPENPAR BRANCH labelexpr CLOSEPAR
+
+   24 goto: OPENPAR GOTO labelexpr CLOSEPAR
+   25     | OPENPAR GOTO regexpr CLOSEPAR
+
+   26 save: OPENPAR SAVE regname CLOSEPAR
+
+   27 restore: OPENPAR RESTORE regname CLOSEPAR
+
+   28 comment: OPENPAR COMMENT STRING CLOSEPAR
+
+   29 regexpr: OPENPAR REG regname CLOSEPAR
+
+   30 constexpr: OPENPAR CONST STRING CLOSEPAR
+
+   31 opexpr: OPENPAR OP opname CLOSEPAR inputs
+
+   32 labelexpr: OPENPAR LABEL labelname CLOSEPAR
+
+   33 inputs: inputs input
+   34       | /* empty */
+
+   35 input: regexpr
+   36      | constexpr
+   37      | labelexpr
+
+   38 labelname: IDENTIFIER
+
+   39 opname: IDENTIFIER
+
+   40 regname: IDENTIFIER
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+OTHER (258)
+DOT (259)
+STRING (260) 28 30
+IDENTIFIER (261) 4 38 39 40
+NUMBER (262)
+OPENPAR (263) 1 2 3 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32
+CLOSEPAR (264) 1 2 3 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32
+ASSIGN (265) 17 18 19 20
+PERFORM (266) 21
+TEST (267) 22
+BRANCH (268) 23
+GOTO (269) 24 25
+SAVE (270) 26
+RESTORE (271) 27
+REG (272) 29
+CONST (273) 30
+LABEL (274) 32
+OP (275) 31
+COMMENT (276) 28
+
+
+Nonterminals, with rules where they appear
+
+$accept (22)
+    on left: 0
+regsimfile (23)
+    on left: 1, on right: 0
+needsregs (24)
+    on left: 2, on right: 1
+modifiesregs (25)
+    on left: 3, on right: 1
+reglist (26)
+    on left: 4 5, on right: 2 3 4
+instseq (27)
+    on left: 6 7, on right: 1 6
+instruction (28)
+    on left: 8 9 10 11 12 13 14 15 16, on right: 6 7
+assign (29)
+    on left: 17 18 19 20, on right: 8
+perform (30)
+    on left: 21, on right: 9
+test (31)
+    on left: 22, on right: 10
+branch (32)
+    on left: 23, on right: 11
+goto (33)
+    on left: 24 25, on right: 12
+save (34)
+    on left: 26, on right: 13
+restore (35)
+    on left: 27, on right: 14
+comment (36)
+    on left: 28, on right: 15
+regexpr (37)
+    on left: 29, on right: 17 25 35
+constexpr (38)
+    on left: 30, on right: 18 36
+opexpr (39)
+    on left: 31, on right: 19 21 22
+labelexpr (40)
+    on left: 32, on right: 20 23 24 37
+inputs (41)
+    on left: 33 34, on right: 31 33
+input (42)
+    on left: 35 36 37, on right: 33
+labelname (43)
+    on left: 38, on right: 16 32
+opname (44)
+    on left: 39, on right: 31
+regname (45)
+    on left: 40, on right: 17 18 19 20 26 27 29
+
+
+state 0
+
+    0 $accept: . regsimfile $end
+
+    OPENPAR  shift, and go to state 1
+
+    regsimfile  go to state 2
+
+
+state 1
+
+    1 regsimfile: OPENPAR . needsregs modifiesregs OPENPAR instseq CLOSEPAR CLOSEPAR
+
+    OPENPAR  shift, and go to state 3
+
+    needsregs  go to state 4
+
+
+state 2
+
+    0 $accept: regsimfile . $end
+
+    $end  shift, and go to state 5
+
+
+state 3
+
+    2 needsregs: OPENPAR . reglist CLOSEPAR
+
+    $default  reduce using rule 5 (reglist)
+
+    reglist  go to state 6
+
+
+state 4
+
+    1 regsimfile: OPENPAR needsregs . modifiesregs OPENPAR instseq CLOSEPAR CLOSEPAR
+
+    OPENPAR  shift, and go to state 7
+
+    modifiesregs  go to state 8
+
+
+state 5
+
+    0 $accept: regsimfile $end .
+
+    $default  accept
+
+
+state 6
+
+    2 needsregs: OPENPAR reglist . CLOSEPAR
+    4 reglist: reglist . IDENTIFIER
+
+    IDENTIFIER  shift, and go to state 9
+    CLOSEPAR    shift, and go to state 10
+
+
+state 7
+
+    3 modifiesregs: OPENPAR . reglist CLOSEPAR
+
+    $default  reduce using rule 5 (reglist)
+
+    reglist  go to state 11
+
+
+state 8
+
+    1 regsimfile: OPENPAR needsregs modifiesregs . OPENPAR instseq CLOSEPAR CLOSEPAR
+
+    OPENPAR  shift, and go to state 12
+
+
+state 9
+
+    4 reglist: reglist IDENTIFIER .
+
+    $default  reduce using rule 4 (reglist)
+
+
+state 10
+
+    2 needsregs: OPENPAR reglist CLOSEPAR .
+
+    $default  reduce using rule 2 (needsregs)
+
+
+state 11
+
+    3 modifiesregs: OPENPAR reglist . CLOSEPAR
+    4 reglist: reglist . IDENTIFIER
+
+    IDENTIFIER  shift, and go to state 9
+    CLOSEPAR    shift, and go to state 13
+
+
+state 12
+
+    1 regsimfile: OPENPAR needsregs modifiesregs OPENPAR . instseq CLOSEPAR CLOSEPAR
+
+    IDENTIFIER  shift, and go to state 14
+    OPENPAR     shift, and go to state 15
+
+    instseq      go to state 16
+    instruction  go to state 17
+    assign       go to state 18
+    perform      go to state 19
+    test         go to state 20
+    branch       go to state 21
+    goto         go to state 22
+    save         go to state 23
+    restore      go to state 24
+    comment      go to state 25
+    labelname    go to state 26
+
+
+state 13
+
+    3 modifiesregs: OPENPAR reglist CLOSEPAR .
+
+    $default  reduce using rule 3 (modifiesregs)
+
+
+state 14
+
+   38 labelname: IDENTIFIER .
+
+    $default  reduce using rule 38 (labelname)
+
+
+state 15
+
+   17 assign: OPENPAR . ASSIGN regname regexpr CLOSEPAR
+   18       | OPENPAR . ASSIGN regname constexpr CLOSEPAR
+   19       | OPENPAR . ASSIGN regname opexpr CLOSEPAR
+   20       | OPENPAR . ASSIGN regname labelexpr CLOSEPAR
+   21 perform: OPENPAR . PERFORM opexpr CLOSEPAR
+   22 test: OPENPAR . TEST opexpr CLOSEPAR
+   23 branch: OPENPAR . BRANCH labelexpr CLOSEPAR
+   24 goto: OPENPAR . GOTO labelexpr CLOSEPAR
+   25     | OPENPAR . GOTO regexpr CLOSEPAR
+   26 save: OPENPAR . SAVE regname CLOSEPAR
+   27 restore: OPENPAR . RESTORE regname CLOSEPAR
+   28 comment: OPENPAR . COMMENT STRING CLOSEPAR
+
+    ASSIGN   shift, and go to state 27
+    PERFORM  shift, and go to state 28
+    TEST     shift, and go to state 29
+    BRANCH   shift, and go to state 30
+    GOTO     shift, and go to state 31
+    SAVE     shift, and go to state 32
+    RESTORE  shift, and go to state 33
+    COMMENT  shift, and go to state 34
+
+
+state 16
+
+    1 regsimfile: OPENPAR needsregs modifiesregs OPENPAR instseq . CLOSEPAR CLOSEPAR
+    6 instseq: instseq . instruction
+
+    IDENTIFIER  shift, and go to state 14
+    OPENPAR     shift, and go to state 15
+    CLOSEPAR    shift, and go to state 35
+
+    instruction  go to state 36
+    assign       go to state 18
+    perform      go to state 19
+    test         go to state 20
+    branch       go to state 21
+    goto         go to state 22
+    save         go to state 23
+    restore      go to state 24
+    comment      go to state 25
+    labelname    go to state 26
+
+
+state 17
+
+    7 instseq: instruction .
+
+    $default  reduce using rule 7 (instseq)
+
+
+state 18
+
+    8 instruction: assign .
+
+    $default  reduce using rule 8 (instruction)
+
+
+state 19
+
+    9 instruction: perform .
+
+    $default  reduce using rule 9 (instruction)
+
+
+state 20
+
+   10 instruction: test .
+
+    $default  reduce using rule 10 (instruction)
+
+
+state 21
+
+   11 instruction: branch .
+
+    $default  reduce using rule 11 (instruction)
+
+
+state 22
+
+   12 instruction: goto .
+
+    $default  reduce using rule 12 (instruction)
+
+
+state 23
+
+   13 instruction: save .
+
+    $default  reduce using rule 13 (instruction)
+
+
+state 24
+
+   14 instruction: restore .
+
+    $default  reduce using rule 14 (instruction)
+
+
+state 25
+
+   15 instruction: comment .
+
+    $default  reduce using rule 15 (instruction)
+
+
+state 26
+
+   16 instruction: labelname .
+
+    $default  reduce using rule 16 (instruction)
+
+
+state 27
+
+   17 assign: OPENPAR ASSIGN . regname regexpr CLOSEPAR
+   18       | OPENPAR ASSIGN . regname constexpr CLOSEPAR
+   19       | OPENPAR ASSIGN . regname opexpr CLOSEPAR
+   20       | OPENPAR ASSIGN . regname labelexpr CLOSEPAR
+
+    IDENTIFIER  shift, and go to state 37
+
+    regname  go to state 38
+
+
+state 28
+
+   21 perform: OPENPAR PERFORM . opexpr CLOSEPAR
+
+    OPENPAR  shift, and go to state 39
+
+    opexpr  go to state 40
+
+
+state 29
+
+   22 test: OPENPAR TEST . opexpr CLOSEPAR
+
+    OPENPAR  shift, and go to state 39
+
+    opexpr  go to state 41
+
+
+state 30
+
+   23 branch: OPENPAR BRANCH . labelexpr CLOSEPAR
+
+    OPENPAR  shift, and go to state 42
+
+    labelexpr  go to state 43
+
+
+state 31
+
+   24 goto: OPENPAR GOTO . labelexpr CLOSEPAR
+   25     | OPENPAR GOTO . regexpr CLOSEPAR
+
+    OPENPAR  shift, and go to state 44
+
+    regexpr    go to state 45
+    labelexpr  go to state 46
+
+
+state 32
+
+   26 save: OPENPAR SAVE . regname CLOSEPAR
+
+    IDENTIFIER  shift, and go to state 37
+
+    regname  go to state 47
+
+
+state 33
+
+   27 restore: OPENPAR RESTORE . regname CLOSEPAR
+
+    IDENTIFIER  shift, and go to state 37
+
+    regname  go to state 48
+
+
+state 34
+
+   28 comment: OPENPAR COMMENT . STRING CLOSEPAR
+
+    STRING  shift, and go to state 49
+
+
+state 35
+
+    1 regsimfile: OPENPAR needsregs modifiesregs OPENPAR instseq CLOSEPAR . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 50
+
+
+state 36
+
+    6 instseq: instseq instruction .
+
+    $default  reduce using rule 6 (instseq)
+
+
+state 37
+
+   40 regname: IDENTIFIER .
+
+    $default  reduce using rule 40 (regname)
+
+
+state 38
+
+   17 assign: OPENPAR ASSIGN regname . regexpr CLOSEPAR
+   18       | OPENPAR ASSIGN regname . constexpr CLOSEPAR
+   19       | OPENPAR ASSIGN regname . opexpr CLOSEPAR
+   20       | OPENPAR ASSIGN regname . labelexpr CLOSEPAR
+
+    OPENPAR  shift, and go to state 51
+
+    regexpr    go to state 52
+    constexpr  go to state 53
+    opexpr     go to state 54
+    labelexpr  go to state 55
+
+
+state 39
+
+   31 opexpr: OPENPAR . OP opname CLOSEPAR inputs
+
+    OP  shift, and go to state 56
+
+
+state 40
+
+   21 perform: OPENPAR PERFORM opexpr . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 57
+
+
+state 41
+
+   22 test: OPENPAR TEST opexpr . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 58
+
+
+state 42
+
+   32 labelexpr: OPENPAR . LABEL labelname CLOSEPAR
+
+    LABEL  shift, and go to state 59
+
+
+state 43
+
+   23 branch: OPENPAR BRANCH labelexpr . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 60
+
+
+state 44
+
+   29 regexpr: OPENPAR . REG regname CLOSEPAR
+   32 labelexpr: OPENPAR . LABEL labelname CLOSEPAR
+
+    REG    shift, and go to state 61
+    LABEL  shift, and go to state 59
+
+
+state 45
+
+   25 goto: OPENPAR GOTO regexpr . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 62
+
+
+state 46
+
+   24 goto: OPENPAR GOTO labelexpr . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 63
+
+
+state 47
+
+   26 save: OPENPAR SAVE regname . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 64
+
+
+state 48
+
+   27 restore: OPENPAR RESTORE regname . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 65
+
+
+state 49
+
+   28 comment: OPENPAR COMMENT STRING . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 66
+
+
+state 50
+
+    1 regsimfile: OPENPAR needsregs modifiesregs OPENPAR instseq CLOSEPAR CLOSEPAR .
+
+    $default  reduce using rule 1 (regsimfile)
+
+
+state 51
+
+   29 regexpr: OPENPAR . REG regname CLOSEPAR
+   30 constexpr: OPENPAR . CONST STRING CLOSEPAR
+   31 opexpr: OPENPAR . OP opname CLOSEPAR inputs
+   32 labelexpr: OPENPAR . LABEL labelname CLOSEPAR
+
+    REG    shift, and go to state 61
+    CONST  shift, and go to state 67
+    LABEL  shift, and go to state 59
+    OP     shift, and go to state 56
+
+
+state 52
+
+   17 assign: OPENPAR ASSIGN regname regexpr . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 68
+
+
+state 53
+
+   18 assign: OPENPAR ASSIGN regname constexpr . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 69
+
+
+state 54
+
+   19 assign: OPENPAR ASSIGN regname opexpr . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 70
+
+
+state 55
+
+   20 assign: OPENPAR ASSIGN regname labelexpr . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 71
+
+
+state 56
+
+   31 opexpr: OPENPAR OP . opname CLOSEPAR inputs
+
+    IDENTIFIER  shift, and go to state 72
+
+    opname  go to state 73
+
+
+state 57
+
+   21 perform: OPENPAR PERFORM opexpr CLOSEPAR .
+
+    $default  reduce using rule 21 (perform)
+
+
+state 58
+
+   22 test: OPENPAR TEST opexpr CLOSEPAR .
+
+    $default  reduce using rule 22 (test)
+
+
+state 59
+
+   32 labelexpr: OPENPAR LABEL . labelname CLOSEPAR
+
+    IDENTIFIER  shift, and go to state 14
+
+    labelname  go to state 74
+
+
+state 60
+
+   23 branch: OPENPAR BRANCH labelexpr CLOSEPAR .
+
+    $default  reduce using rule 23 (branch)
+
+
+state 61
+
+   29 regexpr: OPENPAR REG . regname CLOSEPAR
+
+    IDENTIFIER  shift, and go to state 37
+
+    regname  go to state 75
+
+
+state 62
+
+   25 goto: OPENPAR GOTO regexpr CLOSEPAR .
+
+    $default  reduce using rule 25 (goto)
+
+
+state 63
+
+   24 goto: OPENPAR GOTO labelexpr CLOSEPAR .
+
+    $default  reduce using rule 24 (goto)
+
+
+state 64
+
+   26 save: OPENPAR SAVE regname CLOSEPAR .
+
+    $default  reduce using rule 26 (save)
+
+
+state 65
+
+   27 restore: OPENPAR RESTORE regname CLOSEPAR .
+
+    $default  reduce using rule 27 (restore)
+
+
+state 66
+
+   28 comment: OPENPAR COMMENT STRING CLOSEPAR .
+
+    $default  reduce using rule 28 (comment)
+
+
+state 67
+
+   30 constexpr: OPENPAR CONST . STRING CLOSEPAR
+
+    STRING  shift, and go to state 76
+
+
+state 68
+
+   17 assign: OPENPAR ASSIGN regname regexpr CLOSEPAR .
+
+    $default  reduce using rule 17 (assign)
+
+
+state 69
+
+   18 assign: OPENPAR ASSIGN regname constexpr CLOSEPAR .
+
+    $default  reduce using rule 18 (assign)
+
+
+state 70
+
+   19 assign: OPENPAR ASSIGN regname opexpr CLOSEPAR .
+
+    $default  reduce using rule 19 (assign)
+
+
+state 71
+
+   20 assign: OPENPAR ASSIGN regname labelexpr CLOSEPAR .
+
+    $default  reduce using rule 20 (assign)
+
+
+state 72
+
+   39 opname: IDENTIFIER .
+
+    $default  reduce using rule 39 (opname)
+
+
+state 73
+
+   31 opexpr: OPENPAR OP opname . CLOSEPAR inputs
+
+    CLOSEPAR  shift, and go to state 77
+
+
+state 74
+
+   32 labelexpr: OPENPAR LABEL labelname . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 78
+
+
+state 75
+
+   29 regexpr: OPENPAR REG regname . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 79
+
+
+state 76
+
+   30 constexpr: OPENPAR CONST STRING . CLOSEPAR
+
+    CLOSEPAR  shift, and go to state 80
+
+
+state 77
+
+   31 opexpr: OPENPAR OP opname CLOSEPAR . inputs
+
+    $default  reduce using rule 34 (inputs)
+
+    inputs  go to state 81
+
+
+state 78
+
+   32 labelexpr: OPENPAR LABEL labelname CLOSEPAR .
+
+    $default  reduce using rule 32 (labelexpr)
+
+
+state 79
+
+   29 regexpr: OPENPAR REG regname CLOSEPAR .
+
+    $default  reduce using rule 29 (regexpr)
+
+
+state 80
+
+   30 constexpr: OPENPAR CONST STRING CLOSEPAR .
+
+    $default  reduce using rule 30 (constexpr)
+
+
+state 81
+
+   31 opexpr: OPENPAR OP opname CLOSEPAR inputs .
+   33 inputs: inputs . input
+
+    OPENPAR  shift, and go to state 82
+
+    $default  reduce using rule 31 (opexpr)
+
+    regexpr    go to state 83
+    constexpr  go to state 84
+    labelexpr  go to state 85
+    input      go to state 86
+
+
+state 82
+
+   29 regexpr: OPENPAR . REG regname CLOSEPAR
+   30 constexpr: OPENPAR . CONST STRING CLOSEPAR
+   32 labelexpr: OPENPAR . LABEL labelname CLOSEPAR
+
+    REG    shift, and go to state 61
+    CONST  shift, and go to state 67
+    LABEL  shift, and go to state 59
+
+
+state 83
+
+   35 input: regexpr .
+
+    $default  reduce using rule 35 (input)
+
+
+state 84
+
+   36 input: constexpr .
+
+    $default  reduce using rule 36 (input)
+
+
+state 85
+
+   37 input: labelexpr .
+
+    $default  reduce using rule 37 (input)
+
+
+state 86
+
+   33 inputs: inputs input .
+
+    $default  reduce using rule 33 (inputs)

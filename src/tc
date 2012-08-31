@@ -1,0 +1,383 @@
+#!/bin/sh
+##
+# In addition to PATH, an optional environment variable TCPATH is used
+# for finding the subprograms.
+#
+# $Log:
+#
+
+rcsid="$Header: /home/rcstree/ttcn/tc/./RCS/tc,v 1.10 1999/09/27 09:48:25 msoderlu Exp $"
+
+#
+# Define functions
+#
+
+initialize()
+{
+	PROGRAMTEXT="tc"		# constants
+	FETEXT="tc-fe"
+	CGBIGTEXT="tc-cgbig"
+#	CGUEITEXT="tc-cguei"
+	VERSIONTEXT="$Revision: 1.10 $"
+	MPSUFFIXTEXT=".mp"
+	ATSSUFFIXTEXT=".ats"
+	oATS=a				# option characters
+	oDIVIDE=d
+	oSTDIN=i
+	oKERI=k
+	oMDL=m
+	oSYNONYM=n
+	oSTDOUT=o
+	oPROGRESS=p
+	oDIR=r
+	oASNM=s
+	oVERSION=v
+	oPREFIX=x
+	oSYNTAX=y
+	fATS=				# option arguments
+	fDIVIDE=
+	fPREFIX=
+	fPROGRESS=
+	fSTDIN=
+	fSTDOUT=
+	fSYNONYM=
+	fSYNTAX=
+	fVERSION=
+	fKERI=
+	fDIR=
+	FILENAME=
+	DIRNAME=
+	TAMFILES=
+	MDLFILES=
+	TMFILES=
+	PROGRAM=$PROGRAMTEXT
+	if [ "$TCPATH" ]
+	then
+		PATH="$TCPATH:$PATH"
+	fi
+}
+
+usage()
+{
+	echo "Usage: $PROGRAM [ <option> ] ... <filename>" >&2
+	echo "Options:" >&2
+	echo "   -$oATS         produce .ats file; no code generation" >&2
+	echo "   -$oDIVIDE<kbytes> set size of output code division" >&2
+	echo "   -$oSTDIN         use standard input as .mp file" >&2
+	echo "   -$oSYNONYM<name>   give synonym for test suite identifier" >&2
+	echo "   -$oSTDOUT         use standard output as .ats file" >&2
+	echo "   -$oPROGRESS         show progress of compilation" >&2
+	echo "   -$oVERSION         print version number" >&2
+	echo "   -$oPREFIX<prefix> set code generation prefix" >&2
+	echo "   -$oSYNTAX         syntax checking only" >&2
+	echo "   -$oKERI         produce K & R style C" >&2
+	echo "   -$oDIR<dir>    produce files into specified directory" >&2
+	echo "   -$oASNM<filename> identifies a file containing ASN.1 definitions used in test suite" >&2
+	echo "   -$oMDL<filename> identifies a TTCN module file containing definitions used in test suite" >&2
+	echo "Even if -$oSTDIN option is used, <filename> must be specified." >&2
+}
+
+collectoptions()
+{
+	for arg in $ARGS
+	do
+		case "$arg" in
+		-$oATS)
+			fATS=$arg
+			;;
+		-$oDIVIDE*)
+			fDIVIDE=$arg
+			;;
+		-$oPREFIX*)
+			fPREFIX=$arg
+			;;
+		-$oPROGRESS)
+			fPROGRESS=$arg
+			;;
+		-$oSTDIN)
+			fSTDIN=$arg
+			;;
+		-$oSTDOUT)
+			fSTDOUT=$arg
+			;;
+		-$oSYNONYM*)
+			fSYNONYM=$arg
+			;;
+		-$oSYNTAX)
+			fSYNTAX=$arg
+			;;
+		-$oVERSION)
+			fVERSION=$arg
+			;;
+		-$oKERI)
+			fKERI=$arg
+			;;
+		-$oDIR*)
+		        fDIR=$arg
+			;;
+		-$oASNM*)
+			if [ ! -z "$ASNFILES" ]
+			then
+				ASNFILES="$ASNFILES $arg"
+			else
+				ASNFILES=$arg
+			fi
+			;;
+		-$oMDL*)
+			if [ ! -z "$MDLFILES" ]
+			then
+				MDLFILES="$MDLFILES $arg"
+			else
+				MDLFILES=$arg
+			fi
+			;;
+		-*)
+			echo "$PROGRAM: Unknown option \"$arg\"" >&2
+			usage
+			exit 1
+			;;
+		*)
+			if [ ! -z "$FILENAME" ]
+			then
+			    echo "$PROGRAM: More than one source file" >&2
+			    usage
+			    exit 1
+			else
+			    FILENAME=$arg
+			fi
+			;;
+		esac
+	done
+}
+
+splittmpfilename() # make FILESTEM and SUFFIX
+{
+	#
+	# If the filename has a dot ('.'), the filestem is the part of
+	# filename that precedes the LAST dot excluding the dot. The
+	# suffix is the rest of the filename including the dot. If the
+	# filename does not have a dot, the filestem is the filename and
+	# the suffix is empty.
+	#
+	if [ ! -z "$TMPFILENAME" ]
+	then
+		TMPFILESTEM=`echo "$TMPFILENAME" | sed "s/^\(.*\)\.[^\.]*$/\1/1"`
+		if [ "$TMPFILESTEM" = "$TMPFILENAME" ]
+		then
+			TMPSUFFIX=
+		else
+			TMPSUFFIX=`echo "$TMPFILENAME" | sed "s/^.*\(\.[^\.]*\)$/\1/1"`
+		fi
+	else
+		TMPFILESTEM=
+		TMPSUFFIX=
+	fi
+}
+
+splitfilename() # make FILESTEM and SUFFIX
+{
+	#
+	# If the filename has a dot ('.'), the filestem is the part of
+	# filename that precedes the LAST dot excluding the dot. The
+	# suffix is the rest of the filename including the dot. If the
+	# filename does not have a dot, the filestem is the filename and
+	# the suffix is empty.
+	#
+	if [ ! -z "$FILENAME" ]
+	then
+		FILESTEM=`echo "$FILENAME" | sed "s/^\(.*\)\.[^\.]*$/\1/1"`
+		if [ "$FILESTEM" = "$FILENAME" ]
+		then
+			SUFFIX=
+		else
+			SUFFIX=`echo "$FILENAME" |
+				sed "s/^.*\(\.[^\.]*\)$/\1/1"`
+		fi
+	else
+		FILESTEM=
+		SUFFIX=
+	fi
+}
+
+showversion()
+{
+	if [ ! -z "$fVERSION" ]
+	then
+		echo "$PROGRAM $VERSIONTEXT" >&2
+	fi
+}
+
+finish()
+{
+	if [ ! -z "$fPROGRESS" ]
+	then
+		if [ $1 -eq 0 ]
+		then
+			echo "***Compilation finished successfully***" >&2
+		else
+			echo "***Compilation failed***" >&2
+		fi
+	fi
+	exit $1
+}
+
+frontend()
+{
+	FEARGS=
+	if [ ! -z "$fPROGRESS" ] ; then FEARGS="$FEARGS $fPROGRESS" ; fi
+	if [ ! -z "$fSTDIN" ] ; then FEARGS="$FEARGS $fSTDIN" ; fi
+	if [ ! -z "$fSTDOUT" ] ; then FEARGS="$FEARGS $fSTDOUT" ; fi
+	if [ ! -z "$fSYNTAX" ] ; then FEARGS="$FEARGS $fSYNTAX" ; fi
+	if [ ! -z "$fVERSION" ] ; then FEARGS="$FEARGS $fVERSION" ; fi
+	if [ ! -z "$FILENAME" ] ; then FEARGS="$FEARGS $FILENAME" ; fi
+	if [ ! -z "$TAMFILES" ] ; then FEARGS="$FEARGS $TAMFILES" ; fi
+	if [ ! -z "$TMFILES" ] ; then FEARGS="$FEARGS $TMFILES" ; fi
+	if [ ! -z "$fVERSION" ]
+	then
+		echo $FETEXT $FEARGS >&2
+	fi
+	eval $FETEXT $FEARGS
+	finish $?
+}
+
+backend()
+{
+	BIGARGS=
+	if [ ! -z "$fDIVIDE" ] ; then BIGARGS="$BIGARGS $fDIVIDE" ; fi
+	if [ ! -z "$fPREFIX" ] ; then BIGARGS="$BIGARGS $fPREFIX" ; fi
+	if [ ! -z "$fPROGRESS" ] ; then BIGARGS="$BIGARGS $fPROGRESS" ; fi
+	if [ ! -z "$fSYNONYM" ] ; then BIGARGS="$BIGARGS $fSYNONYM" ; fi
+	if [ ! -z "$fVERSION" ] ; then BIGARGS="$BIGARGS $fVERSION" ; fi
+	if [ ! -z "$fKERI" ] ; then BIGARGS="$BIGARGS $fKERI" ; fi
+	if [ ! -z "$fDIR" ] ; then BIGARGS="$BIGARGS $fDIR" ; fi
+	if [ ! -z "$FILENAME" ] ; then BIGARGS="$BIGARGS $FILENAME" ; fi
+	UEIARGS=
+	if [ ! -z "$fPROGRESS" ] ; then UEIARGS="$UEIARGS $fPROGRESS" ; fi
+	if [ ! -z "$fSYNONYM" ] ; then UEIARGS="$UEIARGS $fSYNONYM" ; fi
+	if [ ! -z "$fVERSION" ] ; then UEIARGS="$UEIARGS $fVERSION" ; fi
+	if [ ! -z "$fDIR" ] ; then UEIARGS="$UEIARGS $fDIR" ; fi
+	if [ ! -z "$FILENAME" ] ; then UEIARGS="$UEIARGS $FILENAME" ; fi
+	if [ ! -z "$fVERSION" ]
+	then
+		echo $CGBIGTEXT $BIGARGS >&2
+	fi
+	eval $CGBIGTEXT $BIGARGS || finish $?
+#	if [ ! -z "$fVERSION" ]
+#	then
+#		echo $CGUEITEXT $UEIARGS >&2
+#	fi
+#	eval $CGUEITEXT $UEIARGS
+	finish $?
+}
+
+bothends()
+{
+	FEARGS=
+	if [ ! -z "$fPROGRESS" ] ; then FEARGS="$FEARGS $fPROGRESS" ; fi
+	if [ ! -z "$fSTDIN" ] ; then FEARGS="$FEARGS $fSTDIN" ; fi
+	if [ ! -z "$fVERSION" ] ; then FEARGS="$FEARGS $fVERSION" ; fi
+	if [ ! -z "$FILENAME" ] ; then FEARGS="$FEARGS $FILENAME" ; fi
+	if [ ! -z "$TAMFILES" ] ; then FEARGS="$FEARGS $TAMFILES" ; fi
+	if [ ! -z "$TMFILES" ] ; then FEARGS="$FEARGS $TMFILES" ; fi
+	BIGARGS=
+	if [ ! -z "$fDIVIDE" ] ; then BIGARGS="$BIGARGS $fDIVIDE" ; fi
+	if [ ! -z "$fPREFIX" ] ; then BIGARGS="$BIGARGS $fPREFIX" ; fi
+	if [ ! -z "$fPROGRESS" ] ; then BIGARGS="$BIGARGS $fPROGRESS" ; fi
+	if [ ! -z "$fSYNONYM" ] ; then BIGARGS="$BIGARGS $fSYNONYM" ; fi
+	if [ ! -z "$fKERI" ] ; then BIGARGS="$BIGARGS $fKERI" ; fi
+	if [ ! -z "$fVERSION" ] ; then BIGARGS="$BIGARGS $fVERSION" ; fi
+	if [ ! -z "$fDIR" ] ; then BIGARGS="$BIGARGS $fDIR" ; fi
+	UEIARGS=
+	if [ ! -z "$fPROGRESS" ] ; then UEIARGS="$UEIARGS $fPROGRESS" ; fi
+	if [ ! -z "$fSYNONYM" ] ; then UEIARGS="$UEIARGS $fSYNONYM" ; fi
+	if [ ! -z "$fVERSION" ] ; then UEIARGS="$UEIARGS $fVERSION" ; fi
+	if [ ! -z "$fDIR" ] ; then UEIARGS="$UEIARGS $fDIR" ; fi
+	if [ ! -z "$FILENAME" ]
+	then
+		BIGARGS="$BIGARGS $FILESTEM$ATSSUFFIXTEXT"
+		UEIARGS="$UEIARGS $FILESTEM$ATSSUFFIXTEXT"
+	fi
+	if [ ! -z "$fVERSION" ]
+	then
+		echo $FETEXT $FEARGS
+	fi
+	eval $FETEXT $FEARGS || finish $?
+	if [ ! -z "$fVERSION" ]
+	then
+		echo $CGBIGTEXT $BIGARGS >&2
+	fi
+	eval $CGBIGTEXT $BIGARGS || finish $?
+#	if [ ! -z "$fVERSION" ]
+#	then
+#		echo $CGUEITEXT $UEIARGS >&2
+#	fi
+#	eval $CGUEITEXT $UEIARGS
+	finish $?
+}
+
+modules()
+{
+	FEARGS=
+	if [ ! -z "$fPROGRESS" ] ; then FEARGS="$FEARGS $fPROGRESS" ; fi
+	if [ ! -z "$fSYNTAX" ] ; then FEARGS="$FEARGS $fSYNTAX" ; fi
+	for i in $MDLFILES
+	do
+#		id='tc-main "$FEARGS" -m "$i" | sed -n "/identifier:/s/identifier: //p"'
+		TMPFILENAME=`echo "$i" | sed "s/^-m//"`
+		eval $FETEXT $FEARGS -m $TMPFILENAME
+		splittmpfilename
+		if [ ! -z "$TMFILES" ]
+		then
+			TMFILES="$TMFILES $TMPFILESTEM.tm"
+		else
+			TMFILES=$TMPFILESTEM.tm
+		fi
+	done
+}
+
+#
+# Main program
+#
+
+# The arguments are put into a variable so they are seen by the
+# functions.
+ARGS=$*
+
+initialize
+collectoptions
+splitfilename
+showversion
+
+if [ ! -z "$ASNFILES" ]
+then
+	echo "ASN.1 module handling not yet supported by tc" >&2
+fi
+if [ ! -z "$MDLFILES" ]
+then
+	modules
+fi
+if [ -z "$FILENAME" ]
+then
+	if [ -z "$fVERSION" ]
+	then
+		usage
+		exit 1
+	fi
+elif [ "$SUFFIX" = $MPSUFFIXTEXT ]
+then
+	if [ "$fSYNTAX" -o "$fATS" ]
+	then
+		frontend	# exits
+	else
+		bothends	# exits
+	fi
+elif [ "$SUFFIX" = $ATSSUFFIXTEXT ]
+then
+	backend			# exits
+else
+	echo "$PROGRAM: Bad suffix in filename \"$FILENAME\"" >&2
+	exit 1
+fi
+
+#never reached
+exit 999

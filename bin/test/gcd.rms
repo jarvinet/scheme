@@ -1,0 +1,25 @@
+(() ()
+(
+loop
+  (perform (op display) (const "Give number a: "))
+  (assign a (op read))
+  (perform (op display) (const "Give number b: "))
+  (assign b (op read))
+test-b
+  (test	(op =) (reg b) (const 0))
+  (branch (label gcd-done))
+  (assign t (op rem) (reg a) (reg b))
+  (assign a (reg b))
+  (assign b (reg t))
+  (goto (label test-b))
+gcd-done
+  (perform (op display) (const "Greatest common divisor: "))
+  (perform (op display) (reg a))
+  (perform (op newline))
+  (perform (op display) (const "Calculate another? (y/n): "))
+  (assign a (op read))
+  (test (op equal?) (reg a) (const y))
+  (branch (label loop))
+  (perform (op display) (const "Bye"))
+  (perform (op newline))
+))

@@ -1,0 +1,8 @@
+(()()
+(
+ start
+   (assign n (op read))
+   (perform (op display) (reg n))
+   (perform (op newline))
+   (goto (label start))
+))

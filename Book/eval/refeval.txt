@@ -1,0 +1,19 @@
+Structure and Interpretation of Computer Programs, 2nd edition
+
+This is not an exercise from the book.
+
+
+How to pass arguments by reference.
+
+Ordinary Scheme passes arguments by value. In this execrise we will examine
+how to pass arguments by reference (as is possible in e.g. Pascal).
+
+In Scheme, the procedure application creates a new environment frame that
+contains bindings where each parameter of the applied procedure is bound to
+the correspongind argument in the application. Thus if the procedure changes
+the value of any of its parameters, it changes its local copy of it.
+
+call-by-name
+call-by-need
+call-by-reference
+

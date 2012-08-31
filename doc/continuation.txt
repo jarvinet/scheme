@@ -1,0 +1,10 @@
+(let ((cont #f))
+  (call/cc (lambda (k)
+	     (set! cont k)))
+  (cont #f))
+
+(define (list-copy l)
+  (if (null? l)
+      '()
+      (cons (car l)
+	    (list-copy (cdr l)))))

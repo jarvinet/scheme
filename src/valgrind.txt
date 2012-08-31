@@ -1,0 +1,1 @@
+valgrind --workaround-gcc296-bugs=yes ./regsim -l scheme rms/interpreter.rms

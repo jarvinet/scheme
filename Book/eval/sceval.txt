@@ -1,0 +1,139 @@
+Structure and Interpretation of Computer Programs, 2nd edition
+
+This is not an exercise from the book.
+
+sceval: Self-contained evaluator.
+An attempt to run my evaluator on top of itself.
+This is written on top of myeval.scm.
+
+Level 0 evaluator is the underlying Scheme implementation (MIT-Scheme)
+Level 1 evaluator is my evaluator runnong in top of level 0 eveluator
+Level 2 evaluator is my evaluator runnong in top of level 1 eveluator
+
+We have removed the usages of version of "map" that accepts multiple
+arguments. We have to implement "map" here and we do not know yet
+how to do that.
+The following definitions are removed from the original myeval.scm:
+scan-out-defines, letrec->let
+We have also added our own simple version of map.
+
+
+Thu Oct 18 13:13:54 EEST 2001
+
+Installation of the primitives installs the primitives of our level 1
+evaluator, i.e. they are contained in a list having the "primitive" -tag in the
+beginning of the list. That is, when the primitives are installed in our
+level 2 evaluator they look like this (here the "list"-primitive):
+
+	(primitive (primitive #[compiled-procedure 11 ("list" #x1) #xC #x18B508]))
+
+when this is applied by our "apply-primitive-procedure", then what is passed
+to the level 0 apply is this:
+
+	(primitive #[compiled-procedure 11 ("list" #x1) #xC #x18B508])
+
+and the error message is this:
+
+	;;; MyEval input: 
+	(list 1 2 3)
+	;The object (primitive #[compiled-procedure 11 ("list" #x1) #xC #x18B508]) is not applicable.
+	;To continue, call RESTART with an option number:
+	; (RESTART 3) => Specify a procedure to use in its place.
+	; (RESTART 2) => Return to read-eval-print level 2.
+	; (RESTART 1) => Return to read-eval-print level 1.
+
+
+If we do not install "apply" as a primitive, we get the following error:
+
+	;;; MyEval input: 
+	(cons 1 2)
+	;Unbound variable apply
+	;To continue, call RESTART with an option number:
+	; (RESTART 1) => Return to read-eval-print level 1.
+	;Start debugger? (y or n): n
+
+
+One possible solution would be to check the type of the primitive when installing it.
+That is, checking whether it is directly the primitive of the level 0 evaluator,
+or the primitive of some other level. The primitive should always be installed as the
+level 0 primitive, so if we are running level 2 or higher evaluator, we do not get
+the level 0 primitive directly, but a primitive wrapped in our evaluator representation
+(primitive ...). This idea is developed further i the following.
+
+Another solution would be to change myapply so that if it finds the procedure
+to be applied to be a primitive, it would recursively call itself to peel off
+our evaluator representation of the primitives until it has the level 0 primitive
+at hand to pass on to the level 0 apply. The changed myapply looks like:
+
+(define (myapply procedure arguments)
+  (cond ((primitive-procedure? procedure)
+	 (myapply (primitive-implementation procedure) arguments))
+	((compound-procedure? procedure)
+	 (sequence-eval (procedure-body procedure)
+			(env-extend
+			 (procedure-parameters procedure)
+			 arguments
+			 (procedure-env procedure))))
+	(else
+	 (apply-primitive-procedure procedure arguments))))
+
+That is, if myapply does not recognize the procedure, it assumes it is 
+level 0 primitive and passes it on to "apply-primitive-procedure".
+"apply-primitive-procedure" also needs to be changed. It does not need
+to get the primitive-implementation because myapply has already done that:
+
+(define (apply-primitive-procedure proc args)
+  (apply proc args))
+
+
+Developing the previous solution a bit, it might be nice to get rid of
+our own representation for the primitives altogether. It looks like an
+unneeded effort to wrap and strip the primitives in our representation.
+This change makes the myapply look like:
+
+(define (myapply procedure arguments)
+  (cond ((compound-procedure? procedure)
+	 (sequence-eval (procedure-body procedure)
+			(env-extend
+			 (procedure-parameters procedure)
+			 arguments
+			 (procedure-env procedure))))
+	(else
+	 (apply-primitive-procedure procedure arguments))))
+
+it also changes "primitive-procedure-objects" so that it does not create
+the data abstraction for primitives:
+
+(define (primitive-procedure-objects)
+  (map (lambda (proc) (primitive-implementation proc))
+       primitive-procedures))
+
+and makes "primitive-procedure?" obsolete.
+
+--
+
+It is nice to have some indication on what level evaluator we're in.
+This is implementes as the "level" -variable installed in "setup-environment".
+In the level 0 should be level definied to be 0.
+
+--
+
+This is still far from being truly self-contained, since we take lots of
+things from the underlying implementation:
+
+	1) many primitives
+	2) the details of returning values from procedurs
+
+We can easily get rid most of the ca...r and cd...r -procedure, e.g.
+
+(define (cadr obj) (car (cdr obj)))
+(define (cdadr obj) (cdr (cadr obj)))
+
+We can also do without cons, car and cdr as primitives by representing pairs
+as procedures as outlined in the book.
+
+In general. it would be interesting to try to squeeze the list of primitives
+taken from the underlying implementation as small as possible.
+
+It is harder to find a solution to 2), it probably will have to wait the 
+treatment of chapter 5.

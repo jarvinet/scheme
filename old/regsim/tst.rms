@@ -1,0 +1,14 @@
+label-a
+  (assign foo (reg bar))
+  (assign foo (const 12))
+  (assign foo (op +) (reg bar) (const 1))
+label-b
+  (assign foo (label labelfoo))
+  (test (op <) (reg foo) (reg bar))
+  (branch (label foolabel))
+  (goto (label barlabel))
+  (goto (reg regfoo))
+  (perform (op print) (reg foo))
+  (save regfoo)
+  (restore regfoo)
+label-c

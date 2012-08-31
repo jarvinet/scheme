@@ -1,0 +1,230 @@
+Structure and Interpretation of Computer Programs, 2nd edition.
+
+
+Exercise 5.1.
+
+Design a register machine to compute factorials using the iterative
+algorithm specified by the following procedure. Draw data-path
+and controller diagrams for this machine.
+
+           (define (factorial n)
+             (define (iter product counter)
+               (if (> counter n)
+                   product
+                   (iter (* counter product)
+                         (+ counter 1))))
+             (iter 1 1))
+
+--
+
+See file ex51-factorial.fig for a solution.
+
+----------------------------------------
+
+Exercise 5.2.
+
+Use the register-machine language to describe the iterative factorial
+machine of exercise 5.1. 
+
+--
+
+(controller
+   (assign product (const 1))
+   (assign counter (const 1))
+ test
+   (test (op >) (reg counter) (reg n))
+   (branch (label fact-done))
+   (assign product (op *) (reg product) (reg counter))
+   (assign counter (op +) (reg counter) (const 1))
+   (goto test)
+ fact-done)
+
+
+----------------------------------------
+
+Exercise 5.3.
+
+Design a machine to compute square roots using Newton's method, as
+described in section 1.1.7:
+
+           (define (sqrt x)
+             (define (good-enough? guess)
+               (< (abs (- (square guess) x)) 0.001))
+             (define (improve guess)
+               (average guess (/ x guess)))
+             (define (sqrt-iter guess)
+               (if (good-enough? guess)
+                   guess
+                   (sqrt-iter (improve guess))))
+             (sqrt-iter 1.0))
+
+Begin by assuming that good-enough? and improve operations are available
+as primitives. Then show how to expand these in terms of arithmetic
+operations. Describe each version of the sqrt machine design by drawing
+a data-path diagram and writing a controller definition in the
+register-machine language. 
+
+--
+
+See file ex53-sqrt.gif for the data-paths.
+
+good-enough? and improve as primitives:
+
+(controller
+   (assign guess (const 1.0))
+ test
+   (test (op good-enough?) (reg guess) (reg x))
+   (branch (label sqrt-done))
+   (assign guess (op improve) (reg guess))
+   (goto (label test))
+ sqrt-done)
+
+
+good-enough? and improve expanded in terms of arithmetic operations:
+
+(controller
+   (assign guess (const 1.0))
+ good-enough
+   (assign t2 (op square) (reg guess))
+   (assign t3 (op -) (reg t2) (reg x))
+   (assign t4 (op abs) (reg t3))
+   (test (op <) (reg t4) (const 0.001))
+   (branch (label sqrt-done))
+ improve
+   (assign t1 (op /) (reg guess) (reg x))
+   (assign guess (op average) (reg guess) (reg t1))
+   (goto (label good-enough))
+ sqrt-done)
+
+
+----------------------------------------
+
+
+Exercise 5.4.
+
+Specify register machines that implement each of the following
+procedures. For each machine, write a controller instruction
+sequence and draw a diagram showing the data paths.
+
+a. Recursive exponentiation:
+
+           (define (expt b n)
+             (if (= n 0)
+                 1
+                 (* b (expt b (- n 1)))))
+
+b. Iterative exponentiation:
+
+           (define (expt b n)
+             (define (expt-iter counter product)
+               (if (= counter 0)
+                   product
+                   (expt-iter (- counter 1) (* b product))))
+             (expt-iter n 1))
+
+--
+
+See file ex54-expt.fig for the data paths.
+
+a. Recursive exponentiation:
+
+(controller
+  (assign continue (label expt-done))
+expt-loop
+  (test (op =) (reg n) (const 0))
+  (branch (label base-case))
+  (save continue)
+  (save n)
+  (assign n (op -) (reg n) (const 1))
+  (assign continue (label after-expt))
+  (goto (label expt-loop))
+after-expt
+  (restore n)
+  (restore continue)
+  (assign val (op *) (reg val) (reg b))
+  (goto (reg continue))
+base-case
+  (assign val (const 1))
+  (goto (reg continue))
+expt-done)
+
+
+b. Iterative exponentiation:
+
+(controller
+  (assign counter (reg n))
+  (assign product (const 1))
+expt-loop
+  (test (op =) (reg counter) (const 0))
+  (branch (label expt-done))
+  (assign counter (op -) (reg counter) (const 1))
+  (assign product (op *) (reg b) (reg product))
+  (goto (label expt-loop))
+expt-done
+  (assign val (reg product)))
+
+
+----------------------------------------
+
+Exercise 5.5.
+
+Hand-simulate the factorial and Fibonacci machines, using some nontrivial
+input (requiring execution of at least one recursive call). Show the
+contents of the stack at each significant point in the execution. 
+
+
+
+(controller
+ (assign continue (label fib-done))
+fib-loop
+ (test (op <) (reg n) (const 2))
+ (branch (label immediate-answer))
+ ;; set up to compute Fib(n - 1)
+ (save continue)
+ (assign continue (label afterfib-n-1))
+ (save n)                           ; save old value of n
+ (assign n (op -) (reg n) (const 1)); clobber n to n - 1
+ (goto (label fib-loop))            ; perform recursive call
+afterfib-n-1                         ; upon return, val contains Fib(n - 1)
+ (restore n)
+ (restore continue)
+ ;; set up to compute Fib(n - 2)
+ (assign n (op -) (reg n) (const 2))
+ (save continue)
+ (assign continue (label afterfib-n-2))
+ (save val)                         ; save Fib(n - 1)
+ (goto (label fib-loop))
+afterfib-n-2                         ; upon return, val contains Fib(n - 2)
+ (assign n (reg val))               ; n now contains Fib(n - 2)
+ (restore val)                      ; val now contains Fib(n - 1)
+ (restore continue)
+ (assign val                        ;  Fib(n - 1) +  Fib(n - 2)
+	 (op +) (reg val) (reg n)) 
+ (goto (reg continue))              ; return to caller, answer is in val
+immediate-answer
+ (assign val (reg n))               ; base case:  Fib(n) = n
+ (goto (reg continue))
+fib-done)
+
+
+Fibonacci:
+(fib 3)
+
+n        : 1
+val      : 2
+continue : fib-done
+stack    : fib-done
+           fib-done 3
+           fib-done 3 afterfib-n-1
+           fib-done 3 afterfib-n-1 2
+           fib-done 3 afterfib-n-1
+           fib-done 3 
+           fib-done 3 afterfib-n-1
+           fib-done 3 afterfib-n-1 1
+           fib-done 3 afterfib-n-1
+           fib-done 3 
+           fib-done 3 fib-done
+           fib-done 3 fib-done 1
+           fib-done 3 fib-done
+           fib-done 3 
+           

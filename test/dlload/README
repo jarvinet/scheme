@@ -1,0 +1,163 @@
+Redhat Linux 7.2, kernel 2.4.7-10
+Demonstrate the dynamic loading of libraries from program code.
+
+To create a dynamically loadable library:
+
+$ gcc -fPIC -c *.c
+$ gcc -shared -Wl,-soname,libfoo.so.1 -o libfoo.so.1.0 *.o
+$ ln -s libfoo.so.1.0 libfoo.so.1
+$ ln -s libfoo.so.1 libfoo.so
+$ LD_LIBRARY_PATH=`pwd`:$LD_LIBRARY_PATH ; export LD_LIBRARY_PATH
+
+--------------------------------------------------
+
+Software Engineering on Unix - Dynamic Loading TricksSoftware Engineering on 
+Unix
+Dynamic Loading Tricks
+
+
+
+Basics
+  Load shared objects in C code. 
+  Good for plugin systems. 
+
+
+
+On Linux
+  Use the dl library (-ldl) 
+  Use the functions: 
+    void *dlopen(const char *filename, int flag); 
+    filename NULL gets you the main program's handle. 
+    flag is either RTLD_LAZY or RTLD_NOW, optionally ||'d with RTLD_GLOBAL 
+    Also executes the void _init() function, if defined. 
+    const char *dlerror(); 
+    void *dlsym(void *handle, char *symbol); 
+    int dlclose(void *handle); 
+
+
+
+Example
+Load the math library, and print the cosine of 2.0:
+
+              #include 
+              #include 
+
+              int main(int argc, char **argv) {
+                  void *handle;
+                  double (*cosine)(double);
+                  char *error;
+
+                  handle = dlopen ("/lib/libm.so", RTLD_LAZY);
+                  if (!handle) {
+                      fputs (dlerror(), stderr);
+                      exit(1);
+                  }
+
+                  cosine = dlsym(handle, "cos");
+                  if ((error = dlerror()) != NULL)  {
+                      fprintf (stderr, "%s\n", error);
+                      exit(1);
+                  }
+
+                  printf ("%f\n", (*cosine)(2.0));
+                  dlclose(handle);
+              }
+
+
+
+
+Portable dynamic loading
+  Libtool provides the library libltdl 
+  Basically the same idea. 
+  Reading the manual is your best bet. 
+
+
+
+LD_PRELOAD
+  Environment variable 
+  Supported by Linux, probably other dynamic loaders 
+  Get your library in first. 
+
+
+
+What can you do with it?
+  faketime 
+  fakeroot 
+  Automatic tunneling of connections 
+
+
+
+Example - libfaketime.c
+/* Library to preload to fake out the time system call.
+ * Always return the contents of $FAKETIME, if it is set.
+ */
+
+#define _GNU_SOURCE 
+
+#define LIBCPATH "/lib/libc.so.6"
+
+#include 
+#include 
+#include 
+
+/* Stolen from debian's fakeroot. */
+void *get_libc()
+{
+#ifndef RTLD_NEXT
+ void *lib=0;
+ if(!lib){ 
+   lib= dlopen(LIBCPATH,RTLD_LAZY);
+ }
+ return lib;
+#else
+  return RTLD_NEXT;
+#endif
+}
+
+
+static time_t(*real_time)(time_t *t);
+
+/* This gets called at every time call, but only actually runs
+ * once. */
+void init_faketime ()
+{
+  static int done = 0;
+  if (!done) {
+    real_time = dlsym(get_libc(), "time");
+  }
+}
+
+
+
+/* Here is our wrapped time(). */
+time_t time(time_t *t)
+{
+  char *offset_string;
+  int offset;
+  time_t ourtime;
+
+  init_faketime();
+
+  offset_string = getenv("FAKETIME_OFFSET");
+  if (offset_string == NULL) {
+    /* FAKETIME unset. */
+    return real_time(t);
+  }
+  offset = atoi(offset_string);
+  if (offset == 0) {
+    /* FAKETIME gross. */
+    return real_time(t);
+  }
+
+  /* offset is set. */
+  real_time(&ourtime);
+  ourtime += offset;
+  if (t != NULL) {
+    *t = ourtime;
+  }
+  return ourtime;
+}
+
+
+
+

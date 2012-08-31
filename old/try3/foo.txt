@@ -1,0 +1,44 @@
+Register print:
+stack: ()
+memTemp1: ((gcd-done))
+memTemp2: ((test-b (test (op =) (reg b) (const 0)) (branch (label gcd-done)) (assign t (op rem) (reg a) (reg b)) (assign a (reg b)) (assign b (reg t)) (goto (label test-b)) gcd-done) (gcd-done))
+memTemp3: ()
+parserSimple: (test-b (test (op =) (reg b) (const 0)) (branch (label gcd-done)) (assign t (op rem) (reg a) (reg b)) (assign a (reg b)) (assign b (reg t)) (goto (label test-b)) gcd-done)
+parserCompound: (test-b (test (op =) (reg b) (const 0)) (branch (label gcd-done)) (assign t (op rem) (reg a) (reg b)) (assign a (reg b)) (assign b (reg t)) (goto (label test-b)) gcd-done)
+envBinding: ()
+
+
+
+regsimLabels: 
+(
+(test-b (test (op =) (reg b) (const 0))
+	(branch (label gcd-done))
+	(assign t (op rem) (reg a) (reg b))
+	(assign a (reg b))
+	(assign b (reg t))
+	(goto (label test-b))
+	gcd-done)
+(gcd-done)
+)
+
+regsimInsts:
+(
+(test (op =) (reg b) (const 0))
+(branch (label gcd-done))
+(assign t (op rem) (reg a) (reg b))
+(assign a (reg b))
+(assign b (reg t))
+(goto (label test-b)))
+
+
+regText:
+(
+test-b
+(test (op =) (reg b) (const 0))
+(branch (label gcd-done))
+(assign t (op rem) (reg a) (reg b))
+(assign a (reg b))
+(assign b (reg t))
+(goto (label test-b))
+gcd-done
+)

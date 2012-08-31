@@ -1,0 +1,124 @@
+6.3.5  Strings
+
+Strings are sequences of characters. Strings are written as sequences
+of characters enclosed within doublequotes ("). A doublequote can be
+written inside a string only by escaping it with a backslash (\), as in
+
+"The word \"recursion\" has many meanings."
+
+A backslash can be written inside a string only by escaping it with
+another backslash. Scheme does not specify the effect of a backslash
+within a string that is not followed by a doublequote or backslash.
+
+A string constant may continue from one line to the next, but the exact
+contents of such a string are unspecified. The length of a string is the
+number of characters that it contains. This number is an exact, non-negative
+integer that is fixed when the string is created. The valid indexes of a
+string are the exact non-negative integers less than the length of the string.
+The first character of a string has index 0, the second has index 1, and so on.
+
+In phrases such as ``the characters of string beginning with index start and
+ending with index end,'' it is understood that the index start is inclusive
+and the index end is exclusive. Thus if start and end are the same index,
+a null substring is referred to, and if start is zero and end is the length
+of string, then the entire string is referred to.
+
+Some of the procedures that operate on strings ignore the difference between
+upper and lower case. The versions that ignore case have ``-ci'' (for ``case
+insensitive'') embedded in their names.
+
+procedure:  (string? obj) 
+
+Returns #t if obj is a string, otherwise returns #f.
+
+procedure:  (make-string k) 
+procedure:  (make-string k char) 
+
+Make-string returns a newly allocated string of length k. If char is given,
+then all elements of the string are initialized to char, otherwise the
+contents of the string are unspecified.
+
+library procedure:  (string char ...) 
+
+Returns a newly allocated string composed of the arguments.
+
+procedure:  (string-length string) 
+
+Returns the number of characters in the given string.
+
+procedure:  (string-ref string k) 
+
+k must be a valid index of string. String-ref returns character k of string
+using zero-origin indexing.
+
+procedure:  (string-set! string k char) 
+
+k must be a valid index of string. String-set! stores char in element k of
+string and returns an unspecified value.
+
+(define (f) (make-string 3 #\*))
+(define (g) "***")
+(string-set! (f) 0 #\?)          ===>  unspecified
+(string-set! (g) 0 #\?)          ===>  error
+(string-set! (symbol->string 'immutable)
+             0
+             #\?)          ===>  error
+
+library procedure:  (string=? string1 string2) 
+library procedure:  (string-ci=? string1 string2) 
+
+Returns #t if the two strings are the same length and contain the same
+characters in the same positions, otherwise returns #f. String-ci=? treats
+upper and lower case letters as though they were the same character, but
+string=? treats upper and lower case as distinct characters.
+
+library procedure:  (string<? string1 string2) 
+library procedure:  (string>? string1 string2) 
+library procedure:  (string<=? string1 string2) 
+library procedure:  (string>=? string1 string2) 
+library procedure:  (string-ci<? string1 string2) 
+library procedure:  (string-ci>? string1 string2) 
+library procedure:  (string-ci<=? string1 string2) 
+library procedure:  (string-ci>=? string1 string2) 
+
+These procedures are the lexicographic extensions to strings of the
+corresponding orderings on characters. For example, string<? is the
+lexicographic ordering on strings induced by the ordering char<? on
+characters. If two strings differ in length but are the same up to
+the length of the shorter string, the shorter string is considered
+to be lexicographically less than the longer string.
+
+Implementations may generalize these and the string=? and string-ci=?
+procedures to take more than two arguments, as with the corresponding
+numerical predicates.
+
+library procedure:  (substring string start end) 
+
+String must be a string, and start and end must be exact integers satisfying
+
+0 <= start <= end <= (string-length string).
+
+Substring returns a newly allocated string formed from the characters of
+string beginning with index start (inclusive) and ending with index end
+(exclusive).
+
+library procedure:  (string-append string ...) 
+
+Returns a newly allocated string whose characters form the concatenation
+of the given strings.
+
+library procedure:  (string->list string) 
+library procedure:  (list->string list) 
+
+String->list returns a newly allocated list of the characters that make
+up the given string. List->string returns a newly allocated string formed
+from the characters in the list list, which must be a list of characters.
+String->list and list->string are inverses so far as equal? is concerned.
+
+library procedure:  (string-copy string) 
+
+Returns a newly allocated copy of the given string.
+
+library procedure:  (string-fill! string char) 
+
+Stores char in every element of the given string and returns an unspecified value. 

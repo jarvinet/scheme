@@ -1,0 +1,7 @@
+(display "start load scm/load1.scm")
+(newline)
+(display (current-input-port))
+(newline)
+(load "scm/load2.scm")
+(display "end load scm/load1.scm")
+(newline)

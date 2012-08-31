@@ -1,0 +1,79 @@
+; old stuff removed from repl.reg
+
+initialize
+
+  (assign exp (const "init.scm"))
+  (assign env (op get-global-environment))
+  (assign continue (label read-eval-print-loop))
+  (goto (label ev-load-file))
+
+eval-dispatch
+  (test (op eval?) (reg exp))
+  (branch (label ev-eval))
+  (test (op apply?) (reg exp))
+  (branch (label ev-apply))
+  (test (op load?) (reg exp))
+  (branch (label ev-load))
+
+ev-eval ; (eval exp env)
+  (save continue)
+  (save env)
+  (save exp)
+  (assign exp (op eval-env) (reg exp))
+  (assign continue (label ev-eval-did-env))
+  (goto (label eval-dispatch))
+ev-eval-did-env        ; environment has been evaluated
+  (assign env (reg val))
+  (restore exp)
+  (assign exp (op eval-exp) (reg exp))
+  (assign continue (label ev-eval-did-exp))
+  (goto (label eval-dispatch))
+ev-eval-did-exp        ; expression has been evaluated
+  (assign exp (reg val))
+  ; exp contains the expression
+  ; env contains the environment
+  (assign continue (label ev-eval-cleanup))
+  (goto (label eval-dispatch))
+ev-eval-cleanup        ; restore original env and continue
+  (restore env)
+  (restore continue)
+  (goto (reg continue))
+
+ev-apply ; (apply + '(1 2 3))
+  (save continue)
+  (save exp)
+  (assign exp (op apply-operands) (reg exp))
+  (assign continue (label ev-apply-did-operands))
+  (goto (label eval-dispatch))
+ev-apply-did-operands
+  (restore exp)
+  (restore continue)
+  (assign exp (op apply-operator) (reg exp))
+  ; exp contains the operator
+  ; val contains the evaluated operands
+  (assign exp (op cons) (reg exp) (reg val))
+  (goto (label ev-application))
+
+ev-load
+  (assign exp (op load-filename) (reg exp))
+ev-load-file
+  (assign val (op open-input-file) (reg exp))
+  (perform (op push-input-port) (reg val))
+  (save continue)
+  (save val)
+  (save env)
+read-eval-file
+  (assign exp (op read))
+  (test (op eof-object?) (reg exp))
+  (branch (label close-file))
+  (assign continue (label read-eval-file))
+  (goto (label eval-dispatch))
+close-file
+  (restore env)
+  (restore val)
+  (restore continue)
+  (perform (op pop-input-port))
+  (perform (op close-input-port) (reg val))
+  (assign val (const file-loaded))
+  (goto (reg continue))
+

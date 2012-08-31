@@ -1,0 +1,234 @@
+<html>
+<head><title>Portable syntax-case</title></head>
+<body bgcolor=white>
+
+<h2>Portable syntax-case</h2>
+
+<p>
+<a href="http://www.cs.indiana.edu/~dyb">R. Kent Dybvig</a> and
+<a href="http://www.cs.indiana.edu/~owaddell">Oscar Waddell</a>
+</p>
+
+<p>
+The syntax-case macro system implements the restricted high-level
+<code>syntax-rules</code> macros of the Revised<sup>5</sup> Report
+as well as the equally high-level but general-purpose
+<code>syntax-case</code> macros.
+It also supports a compatible module system that allows import and
+export of macro bindings as well as bindings for variables and
+modules.
+</p>
+
+<p>
+The system is documented in Chapters 3 and 8 of
+<a href="http://www.scheme.com/tspl2d/"><i>The Scheme Programming
+Language, second edition</i></a> and in Chapter 9 of the
+<a href="http://www.scheme.com/csug/"><i>Chez Scheme User's
+Guide</i></a>.
+The former has more introductory material and examples, while the
+latter documents some
+aspects of the system not covered by the former.
+</p>
+
+</p>
+Aspects of the system and its implementation are described in
+<a href="http://www.cs.indiana.edu/~dyb/papers/syntactic-abstract.html">Syntactic
+abstraction in Scheme</a>
+and
+<a href="http://www.cs.indiana.edu/~dyb/papers/popl99-abstract.html">Extending
+the Scope of Syntactic Abstraction</a>.
+</p>
+
+<p>
+The portable system is designed to be adaptable with minimal effort to
+any Revised<sup>5</sup> Report implementation of Scheme, with the
+provision of a small set of implementation-dependent hooks to install
+the expander.
+Included with the portable expander are definitions of each of the
+syntactic forms supported by the Revised<sup>5</sup> Report.
+Along with a reader, the system forms a complete front-end for Scheme.
+If the reader and evaluator support source annotations (e.g., file
+and line number information), these are handled as well to provide
+source-object correlation.
+</p>
+
+<p>
+The portable syntax-case implementation consists of one file,
+<a href="psyntax.ss">psyntax.ss</a>.
+The file <a href="psyntax.pp">psyntax.pp</a> is
+an expanded version of the file that may be used for bootstrapping
+the system.  See the porting notes in psyntax.ss
+</p>
+
+<p>
+Please let us know if you successfully port this code to a new Scheme
+implementation, and also please allow us to include the hooks you
+develop in doing the port in this directory for use by others.
+</p>
+
+<p>
+Please also contact us if you have difficulty porting to a new Scheme
+implementation or if you discover that the implementation depends on
+nonportable features of Chez Scheme in some undocumented way.
+</p>
+
+<h3>Release notes</h3>
+
+<p>
+<b>Version 6.9</b>
+(<a href="6.9/psyntax.ss">psyntax.ss</a>,
+ <a href="6.9/psyntax.pp">psyntax.pp</a>)
+</p>
+
+<blockquote>
+<p>
+(07/12/02)
+Changed <code>chi-top-module</code> so that definitions and initialization
+forms in compiled files are not evaluated (by default) at visit time.
+</p>
+
+<p>
+(06/04/02)
+Recoded <code>generate-id</code> so that generated symbols have a
+standard print representation and to avoid ASCII dependencies.
+</p>
+
+<p>
+Extended the syntax of <code>syntax-case</code> patterns to allow a
+fixed number of items after an ellipsis.
+Ellipses are therefore no longer constrained to appear only at the end
+of a list- or vector-structured form, but only one ellipsis can appear
+at a given level of a list- or vector-structured form.
+For example, <code>(a ... b)</code> matches a list of one or more
+elements, with <code>b</code> bound to the last element and
+<code>a ...</code> to all but the last element.
+</p>
+
+<p>
+(05/31/02)
+Added a local definition for a one-clause version of <code>let-values</code> 
+and recoded uses of <code>call-with-values</code> using
+<code>let-values</code>.
+</p>
+
+<p>
+Fixed two bugs in the portable expander.
+One resulted in an error in <code>vector-ref</code> when redefining
+a variable at top level that was previously imported from a module.
+The other caused the wrong identifier to be exported in certain
+circumstances, perhaps resulting in an inappropriate identifier out of
+context error.
+</p>
+</blockquote>
+
+<p>
+<b>Version 6.8</b>
+(<a href="6.8/psyntax.ss">psyntax.ss</a>,
+ <a href="6.8/psyntax.pp">psyntax.pp</a>)
+</p>
+
+<blockquote>
+<p>
+(02/06/02)
+Added support for <code>visit</code> and <code>revisit</code> procedures,
+which are relevant for systems that support <code>compile-file</code>:
+<code>visit</code> is like <code>load</code> but loads only compile-time
+information, and <code>revisit</code> is like <code>load</code> but loads
+only run-time information.
+</p>
+
+<p>
+Cleaned up and extended <code>eval-when</code> to handle new situations
+<code>visit</code> and <code>revisit</code>.
+A translation table that clearly shows what happens with nested
+<code>eval-when</code> forms is given in the source.
+</p>
+
+<p>
+Added <code>literal-identifier=?</code>.
+<code>literal-identifier=?</code> is similar to
+<code>free-identifier=?</code> except that the former equates
+top-level identifiers that come from different modules, even if they
+do not necessarily resolve to the same binding.
+<code>syntax-rules</code> and <code>syntax-case</code> employ
+literal-identifier=? to compare identifiers listed in the literals list
+against input identifiers.
+<code>literal-identifier=?</code> is intended for the
+comparison of auxiliary keywords such as
+<code>else</code> in <code>cond</code> and <code>case</code>, where
+no actual binding is involved.
+</p>
+
+<p>
+Fixed a bug in the portable expander that caused an application of
+<code>cdr</code> to the empty list in <code>build-sequence</code>
+for top-level modules with no exported definitions other than
+reexports, e.g.,
+
+<pre>
+(module m1 (a) (define a 3))
+(module m2 (a) (import m1))
+(let () (import m2) a) ;=> 3
+</pre>
+</p>
+
+<p>
+Fixed a bug in the portable expander that prevented use of "hidden"
+top-level definitions in the output of a macro, e.g.:
+
+<pre>
+(define-syntax counter
+  (syntax-rules ()
+    ((_ ref incr e)
+     (begin
+       (define hidden e)
+       (define ref (lambda () hidden))
+       (define incr (lambda (n) (set! hidden (+ hidden n))))))))
+(counter get bump 17)
+(get) ;=> 17
+(bump 4)
+(get) ;=> 21
+hidden ;=> unbound error
+</pre>
+</p>
+
+<p>
+An incompatible change to the expander has been
+made to reduce the loss of source information when one macro generates
+another macro definition: List and vector structure in the subexpression
+of a syntax form is no longer guaranteed to be list and vector structure
+in the output form except where pattern variables are contained within
+that structure.
+For example, <code>#'(a&nbsp;...)</code>, where <code>a</code> is a pattern
+variable, is guaranteed to evaluate to a list, but the constant
+structure <code>(a&nbsp;b&nbsp;c&nbsp;d)</code>, none of <code>a</code>, <code>b</code>,
+<code>c</code>, and <code>d</code> are pattern variables, may not.
+The practical consequence of this change is that constant
+structures must be deconstructed using <code>syntax-case</code> or
+<code>syntax-rules</code> rather than <code>car</code>, <code>cdr</code>,
+and other list-processing operations.
+</p>
+</blockquote>
+
+<p>
+<b>Version 6.3</b>
+(<a href="6.3/psyntax.ss">psyntax.ss</a>,
+ <a href="6.3/psyntax.pp">psyntax.pp</a>)
+</p>
+
+<blockquote>
+<p>
+(08/30/00)
+The portable syntax-case macro system is now up-to-date with respect to
+the <a href="../cgug/">Chez Scheme User's Guide</a> as well as
+<a href="../tspl2d/">The Scheme Programming Langauge, Second Edition</a>.
+</p>
+</blockquote>
+
+<p>
+Version numbers refer to the version of Chez Scheme from which the
+portable version was extracted.
+</p>
+
+</body>
+</html>

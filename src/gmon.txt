@@ -1,0 +1,2228 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 10.44      1.31     1.31 56082633     0.00     0.00  memRead
+  8.92      2.43     1.12 192863996     0.00     0.00  objGetType
+  6.22      3.21     0.78 22288950     0.00     0.00  objVectorSet
+  5.82      3.94     0.73 34244431     0.00     0.00  objVectorRef
+  5.66      4.65     0.71 22919160     0.00     0.00  memWrite
+  5.58      5.35     0.70 22945493     0.00     0.00  objIsEq
+  4.22      5.88     0.53 64047849     0.00     0.00  objIsPairPointer
+  4.22      6.41     0.53 64012474     0.00     0.00  objGetPairPointer
+  4.22      6.94     0.53 22504982     0.00     0.00  objUnref
+  4.06      7.45     0.51                             glueGetValue
+  3.90      7.94     0.49 20287929     0.00     0.00  regCdr
+  3.59      8.39     0.45 22288785     0.00     0.00  regWrite
+  3.51      8.83     0.44 20288349     0.00     0.00  objCdr
+  3.43      9.26     0.43 56533381     0.00     0.00  objGetVector
+  3.43      9.69     0.43 21066965     0.00     0.00  objIsEqPairPointer
+  3.35     10.11     0.42    22057     0.02     0.46  listSetCdr
+  3.19     10.51     0.40 34245655     0.00     0.00  vecRef
+  3.03     10.89     0.38 56533381     0.00     0.00  vecCheckIndex
+  2.79     11.24     0.35 22503758     0.00     0.00  objRef
+  2.47     11.55     0.31 34244097     0.00     0.00  regRead
+  2.07     11.81     0.26 22288950     0.00     0.00  vecSet
+  1.12     11.95     0.14 10531623     0.00     0.00  objIsNull
+  0.88     12.06     0.11 10530672     0.00     0.00  regIsNull
+  0.80     12.16     0.10  2983083     0.00     0.00  objGetSymbol
+  0.56     12.23     0.07  1487334     0.00     0.00  objIsEqSymbol
+  0.32     12.27     0.04  1548203     0.00     0.00  regCar
+  0.32     12.31     0.04   199850     0.00     0.00  regGetTemp
+  0.24     12.34     0.03      768     0.04     1.69  lookupLabel
+  0.24     12.37     0.03                             bindGetName
+  0.16     12.39     0.02  2988481     0.00     0.00  objIsSymbol
+  0.16     12.41     0.02    44021     0.00     0.00  sclex
+  0.16     12.43     0.02        6     3.33  1717.26  scparse
+  0.08     12.44     0.01  1548629     0.00     0.00  objCar
+  0.08     12.45     0.01  1047187     0.00     0.00  objMakeNull
+  0.08     12.46     0.01   723648     0.00     0.00  regIsEqual
+  0.08     12.47     0.01   247020     0.00     0.00  regMakeNull
+  0.08     12.48     0.01    75466     0.00     0.00  regCopy
+  0.08     12.49     0.01    44015     0.00     0.00  restore
+  0.08     12.50     0.01    41566     0.00     0.00  regGetPairPointer
+  0.08     12.51     0.01    26280     0.00     0.00  regIsEq
+  0.08     12.52     0.01                             bindCompare
+  0.08     12.53     0.01                             hash
+  0.08     12.54     0.01                             lnGetNext
+  0.08     12.55     0.01                             lnIsNull
+  0.00     12.55     0.00   723648     0.00     0.00  objIsEqual
+  0.00     12.55     0.00   723648     0.00     0.00  objIsEqualSymbol
+  0.00     12.55     0.00   393426     0.00     0.00  objIsEqNull
+  0.00     12.55     0.00   199850     0.00     0.00  regFreeTemp
+  0.00     12.55     0.00    94322     0.00     0.00  memAmountFree
+  0.00     12.55     0.00    94322     0.00     0.00  objMakePairPointer
+  0.00     12.55     0.00    93860     0.00     0.00  cons
+  0.00     12.55     0.00    48283     0.00     0.00  objMakeSymbol
+  0.00     12.55     0.00    48099     0.00     0.00  regMakeSymbol
+  0.00     12.55     0.00    44015     0.00     0.00  save
+  0.00     12.55     0.00    35359     0.00     0.00  regIsPairPointer
+  0.00     12.55     0.00    35149     0.00     0.00  isTaggedList
+  0.00     12.55     0.00    33303     0.00     0.31  snoc
+  0.00     12.55     0.00    27382     0.00     0.00  regSetCdr
+  0.00     12.55     0.00    14178     0.00     0.00  regSetCar
+  0.00     12.55     0.00     8081     0.00     0.00  regGetSymbol
+  0.00     12.55     0.00     7000     0.00     0.00  isReg
+  0.00     12.55     0.00     6261     0.00     0.00  objMakeNumber
+  0.00     12.55     0.00     6261     0.00     0.00  regMakeNumber
+  0.00     12.55     0.00     5908     0.00     0.00  assembleRegisterExp
+  0.00     12.55     0.00     5908     0.00     0.00  regLookup
+  0.00     12.55     0.00     5777     0.00     0.00  isAssign
+  0.00     12.55     0.00     5395     0.00     0.00  regIsSymbol
+  0.00     12.55     0.00     3589     0.00     0.00  isPerform
+  0.00     12.55     0.00     3456     0.00     0.05  assembleInput
+  0.00     12.55     0.00     3408     0.00     0.00  isTest
+  0.00     12.55     0.00     3085     0.00     0.00  isConst
+  0.00     12.55     0.00     3029     0.00     0.00  isBranch
+  0.00     12.55     0.00     2650     0.00     0.00  isGoto
+  0.00     12.55     0.00     2270     0.00     0.00  objMakePrimitive
+  0.00     12.55     0.00     2173     0.00     0.08  assembleInputs
+  0.00     12.55     0.00     2173     0.00     0.00  assembleOperation
+  0.00     12.55     0.00     2173     0.00     0.09  assembleOperationExp
+  0.00     12.55     0.00     2173     0.00     0.00  regMakePrimitive
+  0.00     12.55     0.00     2173     0.00     0.00  rsLookupPrimitive
+  0.00     12.55     0.00     2039     0.00     0.00  isSave
+  0.00     12.55     0.00     2038     0.00     0.25  assembleSource
+  0.00     12.55     0.00     2005     0.00     0.00  isOp
+  0.00     12.55     0.00     1654     0.00     0.00  isRestore
+  0.00     12.55     0.00      913     0.00     0.00  isLabel
+  0.00     12.55     0.00      913     0.00     0.00  objIsNumber
+  0.00     12.55     0.00      910     0.00     0.00  objGetNumber
+  0.00     12.55     0.00      910     0.00     0.00  regGetNumber
+  0.00     12.55     0.00      892     0.00     0.92  assembleTarget
+  0.00     12.55     0.00      768     0.00     1.69  assembleLabel
+  0.00     12.55     0.00      448     0.00     7.96  executeInstruction
+  0.00     12.55     0.00      385     0.00     0.01  executeInput
+  0.00     12.55     0.00      383     0.00     0.00  checkType
+  0.00     12.55     0.00      369     0.00     0.00  advancePC
+  0.00     12.55     0.00      334     0.00     0.00  objHashSymbol
+  0.00     12.55     0.00      251     0.00     0.00  executeRegisterExp
+  0.00     12.55     0.00      187     0.00     0.00  objIsPrimitive
+  0.00     12.55     0.00      186     0.00     0.66  executeOperands
+  0.00     12.55     0.00      186     0.00    19.13  executeOperationExp
+  0.00     12.55     0.00      186     0.00     0.00  getPrimitive
+  0.00     12.55     0.00      186     0.00     0.00  objGetPrimitive
+  0.00     12.55     0.00      186     0.00     0.00  regGetPrimitive
+  0.00     12.55     0.00      185     0.00     0.00  checkArgs
+  0.00     12.55     0.00      185     0.00     0.00  regListLength
+  0.00     12.55     0.00      175     0.00     0.00  objRefVector
+  0.00     12.55     0.00      175     0.00     0.00  objUnrefVector
+  0.00     12.55     0.00      162     0.00     0.00  regExpGetRegister
+  0.00     12.55     0.00      150     0.00    10.47  executeAssign
+  0.00     12.55     0.00      150     0.00    10.46  executeSource
+  0.00     12.55     0.00      145     0.00     0.00  executeLabel
+  0.00     12.55     0.00      136     0.00     0.00  executeConstant
+  0.00     12.55     0.00      120     0.00     0.00  regAllocate
+  0.00     12.55     0.00       79     0.00     0.01  executeGoto
+  0.00     12.55     0.00       79     0.00     0.01  executeTarget
+  0.00     12.55     0.00       78     0.00    19.13  executePerform
+  0.00     12.55     0.00       74     0.00     0.00  objGetBoolean
+  0.00     12.55     0.00       74     0.00     0.00  objIsBoolean
+  0.00     12.55     0.00       68     0.00     0.00  rsAddPrimitive
+  0.00     12.55     0.00       33     0.00     0.00  objRefInputPort
+  0.00     12.55     0.00       33     0.00     0.00  objUnrefInputPort
+  0.00     12.55     0.00       32     0.00     0.00  objRefString
+  0.00     12.55     0.00       32     0.00     0.00  objUnrefString
+  0.00     12.55     0.00       31     0.00     0.00  yy_get_next_buffer
+  0.00     12.55     0.00       29     0.00     0.00  yy_get_previous_state
+  0.00     12.55     0.00       28     0.00     0.00  objMakeBoolean
+  0.00     12.55     0.00       26     0.00     0.00  executeBranch
+  0.00     12.55     0.00       26     0.00    19.13  executeTest
+  0.00     12.55     0.00       26     0.00     0.00  objIsTrue
+  0.00     12.55     0.00       26     0.00     0.00  regIsTrue
+  0.00     12.55     0.00       24     0.00     0.00  objIsEqBoolean
+  0.00     12.55     0.00       22     0.00     0.00  objIsEqInputPort
+  0.00     12.55     0.00       18     0.00     0.00  currentInputPort
+  0.00     12.55     0.00       17     0.00     0.00  portGetYYBuffer
+  0.00     12.55     0.00       17     0.00     0.00  sc_load_buffer_state
+  0.00     12.55     0.00       15     0.00     0.00  currentOutputPort
+  0.00     12.55     0.00       14     0.00     0.00  objIsEqOutputPort
+  0.00     12.55     0.00       14     0.00     0.00  objIsInputPort
+  0.00     12.55     0.00       14     0.00     0.00  sc_flush_buffer
+  0.00     12.55     0.00       12     0.00     0.00  objIsString
+  0.00     12.55     0.00       12     0.00     0.00  yy_flex_alloc
+  0.00     12.55     0.00       12     0.00     0.00  yy_flex_free
+  0.00     12.55     0.00       11     0.00     0.00  objGetInputPortYYBuffer
+  0.00     12.55     0.00       11     0.00     0.00  portGetFile
+  0.00     12.55     0.00       11     0.00     0.00  regGetInputPortYYBuffer
+  0.00     12.55     0.00       11     0.00     0.00  scSetCurrentYYBuffer
+  0.00     12.55     0.00       11     0.00     0.00  sc_switch_to_buffer
+  0.00     12.55     0.00       10     0.00     0.04  checkArgsEQ
+  0.00     12.55     0.00        8     0.00     0.00  objGetString
+  0.00     12.55     0.00        8     0.00     0.00  objRefOutputPort
+  0.00     12.55     0.00        8     0.00     0.00  objUnrefOutputPort
+  0.00     12.55     0.00        8     0.00     0.00  sc_init_buffer
+  0.00     12.55     0.00        7     0.00     0.00  makePort
+  0.00     12.55     0.00        7     0.00     0.00  objDeleteString
+  0.00     12.55     0.00        7     0.00     0.00  objMakeString
+  0.00     12.55     0.00        7     0.00     0.00  portDelete
+  0.00     12.55     0.00        7     0.00     0.00  portGetFilename
+  0.00     12.55     0.00        7     0.00     0.00  portIsOpen
+  0.00     12.55     0.00        7     0.00     0.00  portSetState
+  0.00     12.55     0.00        7     0.00     0.00  regMakeString
+  0.00     12.55     0.00        6     0.00     0.00  executeRestore
+  0.00     12.55     0.00        6     0.00     0.00  executeSave
+  0.00     12.55     0.00        6     0.00     0.00  objCloseInputPort
+  0.00     12.55     0.00        6     0.00     0.00  objDeleteInputPort
+  0.00     12.55     0.00        6     0.00     0.00  objIsCharacter
+  0.00     12.55     0.00        6     0.00     0.00  objMakeInputPort
+  0.00     12.55     0.00        6     0.00     0.00  pushInputPort
+  0.00     12.55     0.00        6     0.00  1717.26  readCurrentPort
+  0.00     12.55     0.00        6     0.00  1717.26  readPort
+  0.00     12.55     0.00        6     0.00     0.00  regIsEqInputPort
+  0.00     12.55     0.00        6     0.00     0.00  regMakeInputPort
+  0.00     12.55     0.00        6     0.00     0.00  scCreateYYBuffer
+  0.00     12.55     0.00        6     0.00     0.00  scDeleteYYBuffer
+  0.00     12.55     0.00        6     0.00     0.00  sc_create_buffer
+  0.00     12.55     0.00        6     0.00     0.00  sc_delete_buffer
+  0.00     12.55     0.00        6     0.00     0.00  vecGetSize
+  0.00     12.55     0.00        5     0.00     0.00  maxDepthToPrint
+  0.00     12.55     0.00        5     0.00     0.00  objDisplay
+  0.00     12.55     0.00        5     0.00     0.00  objDisplayToCurrentPort
+  0.00     12.55     0.00        5     0.00     0.00  objGetOutputPortFile
+  0.00     12.55     0.00        5     0.00     0.00  objIsOutputPort
+  0.00     12.55     0.00        5     0.00     0.00  openInputFile
+  0.00     12.55     0.00        5     0.00     0.00  popInputPort
+  0.00     12.55     0.00        5     0.00     0.00  regCloseInputPort
+  0.00     12.55     0.00        5     0.00     0.00  regDisplayObject
+  0.00     12.55     0.00        5     0.00     0.00  regDisplayToCurrentPort
+  0.00     12.55     0.00        5     0.00     0.00  regGetOutputPortFile
+  0.00     12.55     0.00        5     0.00     0.00  regGetString
+  0.00     12.55     0.00        5     0.00     0.00  regIsEqOutputPort
+  0.00     12.55     0.00        4     0.00   357.69  assembleInstructions
+  0.00     12.55     0.00        4     0.00   891.07  executeInstructions
+  0.00     12.55     0.00        4     0.00     5.17  extractLabels
+  0.00     12.55     0.00        4     0.00  2971.20  loadFile
+  0.00     12.55     0.00        4     0.00     0.00  newline_if
+  0.00     12.55     0.00        4     0.00     0.00  objDisplayCharacter
+  0.00     12.55     0.00        4     0.00     0.00  objGetCharacter
+  0.00     12.55     0.00        4     0.00     0.00  objMakeCharacter
+  0.00     12.55     0.00        4     0.00     0.00  regMakeCharacter
+  0.00     12.55     0.00        3     0.00     0.00  makeVector
+  0.00     12.55     0.00        3     0.00     0.00  objDeleteVector
+  0.00     12.55     0.00        3     0.00     0.00  regIsInputPort
+  0.00     12.55     0.00        3     0.00     0.00  regMakeBoolean
+  0.00     12.55     0.00        3     0.00     0.01  vecDelete
+  0.00     12.55     0.00        3     0.00     0.00  vecInit
+  0.00     12.55     0.00        2     0.00     0.00  initStack
+  0.00     12.55     0.00        2     0.00     0.04  isEOF_if
+  0.00     12.55     0.00        2     0.00     0.00  objIsEOF
+  0.00     12.55     0.00        2     0.00     0.00  objIsEqEOF
+  0.00     12.55     0.00        2     0.00     0.00  objMakeEOF
+  0.00     12.55     0.00        2     0.00  1717.27  read_if
+  0.00     12.55     0.00        2     0.00     0.00  regIsEOF
+  0.00     12.55     0.00        2     0.00     0.00  regMakeEOF
+  0.00     12.55     0.00        2     0.00     0.00  screstart
+  0.00     12.55     0.00        2     0.00     0.00  scwrap
+  0.00     12.55     0.00        1     0.00     0.00  addPrimitives
+  0.00     12.55     0.00        1     0.00     0.04  closeInputPort_if
+  0.00     12.55     0.00        1     0.00     0.00  display_if
+  0.00     12.55     0.00        1     0.00     0.00  dlAdd
+  0.00     12.55     0.00        1     0.00     0.00  dlLoad
+  0.00     12.55     0.00        1     0.00     0.00  dlUnload
+  0.00     12.55     0.00        1     0.00     0.04  exit_if
+  0.00     12.55     0.00        1     0.00     0.00  freePrimitives
+  0.00     12.55     0.00        1     0.00     0.00  freeSymbols
+  0.00     12.55     0.00        1     0.00     0.00  getOptions
+  0.00     12.55     0.00        1     0.00     0.00  initPorts
+  0.00     12.55     0.00        1     0.00     0.00  initPrimitives
+  0.00     12.55     0.00        1     0.00     0.00  initRegsim
+  0.00     12.55     0.00        1     0.00     0.04  initStack_if
+  0.00     12.55     0.00        1     0.00     0.00  initSymbols
+  0.00     12.55     0.00        1     0.00     0.04  isPrimitive_if
+  0.00     12.55     0.00        1     0.00     0.00  list
+  0.00     12.55     0.00        1     0.00     0.00  list_if
+  0.00     12.55     0.00        1     0.00 11884.78  loadFiles
+  0.00     12.55     0.00        1     0.00    81.00  memClear
+  0.00     12.55     0.00        1     0.00    81.00  memFree
+  0.00     12.55     0.00        1     0.00     3.82  memInit
+  0.00     12.55     0.00        1     0.00     3.82  memInitialize
+  0.00     12.55     0.00        1     0.00     0.00  objCloseOutputPort
+  0.00     12.55     0.00        1     0.00     0.00  objDeleteOutputPort
+  0.00     12.55     0.00        1     0.00     0.00  objDisplayString
+  0.00     12.55     0.00        1     0.00     0.00  objIsEqString
+  0.00     12.55     0.00        1     0.00     0.00  objMakeOutputPort
+  0.00     12.55     0.00        1     0.00     0.00  objMakeVector
+  0.00     12.55     0.00        1     0.00     0.04  openInputFile_if
+  0.00     12.55     0.00        1     0.00     0.04  popInputPort_if
+  0.00     12.55     0.00        1     0.00     0.00  portInit
+  0.00     12.55     0.00        1     0.00     0.04  pushInputPort_if
+  0.00     12.55     0.00        1     0.00     0.00  pushOutputPort
+  0.00     12.55     0.00        1     0.00     0.00  regAllocateTemp
+  0.00     12.55     0.00        1     0.00     0.00  regFree
+  0.00     12.55     0.00        1     0.00     0.00  regInit
+  0.00     12.55     0.00        1     0.00     0.00  regIsPrimitive
+  0.00     12.55     0.00        1     0.00     0.00  regIsString
+  0.00     12.55     0.00        1     0.00     0.00  regMakeOutputPort
+  0.00     12.55     0.00        1     0.00     0.35  snoc_if
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.08% of 12.55 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     95.4    0.00   11.97                 main [1]
+                0.00   11.88       1/1           loadFiles [3]
+                0.00    0.08       1/1           memFree [56]
+                0.00    0.00       1/1           memInit [91]
+                0.00    0.00       1/1           initPorts [142]
+                0.00    0.00       1/1           initRegsim [144]
+                0.00    0.00       1/2           initStack [157]
+                0.00    0.00       1/1           regFree [181]
+                0.00    0.00       1/1           regInit [188]
+                0.00    0.00       1/1           getOptions [252]
+                0.00    0.00       1/1           initPrimitives [253]
+                0.00    0.00       1/1           initSymbols [254]
+                0.00    0.00       1/1           portInit [259]
+                0.00    0.00       1/1           addPrimitives [246]
+                0.00    0.00       1/1           dlLoad [248]
+                0.00    0.00       1/1           dlUnload [249]
+                0.00    0.00       1/1           freeSymbols [251]
+                0.00    0.00       1/1           freePrimitives [250]
+-----------------------------------------------
+                0.00   11.88       4/4           loadFiles [3]
+[2]     94.7    0.00   11.88       4         loadFile [2]
+                0.00    6.87       4/6           readPort [4]
+                0.00    3.56       4/4           executeInstructions [14]
+                0.00    1.43       4/4           assembleInstructions [25]
+                0.00    0.02       4/4           extractLabels [69]
+                0.00    0.00      12/199850      regFreeTemp [61]
+                0.00    0.00      12/199850      regGetTemp [63]
+                0.00    0.00       4/75466       regCopy [67]
+                0.00    0.00       4/5           openInputFile [148]
+                0.00    0.00       4/7           regMakeString [147]
+                0.00    0.00       4/5           regCloseInputPort [163]
+-----------------------------------------------
+                0.00   11.88       1/1           main [1]
+[3]     94.7    0.00   11.88       1         loadFiles [3]
+                0.00   11.88       4/4           loadFile [2]
+-----------------------------------------------
+                0.00    3.43       2/6           read_if [17]
+                0.00    6.87       4/6           loadFile [2]
+[4]     82.1    0.00   10.30       6         readPort [4]
+                0.00   10.30       6/6           readCurrentPort [5]
+                0.00    0.00       4/6           pushInputPort [133]
+                0.00    0.00       4/5           popInputPort [140]
+                0.00    0.00       6/18          currentInputPort [134]
+                0.00    0.00       6/6           regIsEqInputPort [153]
+-----------------------------------------------
+                0.00   10.30       6/6           readPort [4]
+[5]     82.1    0.00   10.30       6         readCurrentPort [5]
+                0.02   10.28       6/6           scparse [6]
+                0.00    0.00       6/75466       regCopy [67]
+-----------------------------------------------
+                0.02   10.28       6/6           readCurrentPort [5]
+[6]     82.1    0.02   10.28       6         scparse [6]
+                0.00   10.16   32917/33303       snoc [7]
+                0.01    0.04   44009/44015       restore [62]
+                0.00    0.04   44009/44015       save [65]
+                0.02    0.00   44021/44021       sclex [70]
+                0.00    0.01   21811/48099       regMakeSymbol [75]
+                0.00    0.00   11092/75466       regCopy [67]
+                0.00    0.00   11092/247020      regMakeNull [58]
+                0.00    0.00       3/22057       listSetCdr [8]
+                0.00    0.00      18/6261        regMakeNumber [97]
+                0.00    0.00       3/7           regMakeString [147]
+                0.00    0.00       2/2           regMakeEOF [158]
+-----------------------------------------------
+                0.00    0.00       1/33303       snoc_if [106]
+                0.00    0.12     385/33303       executeOperands [52]
+                0.00   10.16   32917/33303       scparse [6]
+[7]     81.9    0.00   10.28   33303         snoc [7]
+                0.42    9.80   22054/22057       listSetCdr [8]
+                0.00    0.03   33303/93860       cons [59]
+                0.00    0.01   33303/199850      regFreeTemp [61]
+                0.00    0.01   33303/247020      regMakeNull [58]
+                0.01    0.00   33303/199850      regGetTemp [63]
+                0.00    0.00   11249/75466       regCopy [67]
+                0.00    0.00   33303/10530672     regIsNull [32]
+-----------------------------------------------
+                0.00    0.00       3/22057       scparse [6]
+                0.42    9.80   22054/22057       snoc [7]
+[8]     81.4    0.42    9.80   22057         listSetCdr [8]
+                0.47    8.21 19487685/20287929     regCdr [9]
+                0.10    0.96 9754871/10530672     regIsNull [32]
+                0.01    0.01   44114/75466       regCopy [67]
+                0.00    0.01   44114/199850      regFreeTemp [61]
+                0.00    0.01   22057/27382       regSetCdr [72]
+                0.01    0.00   44114/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00       5/20287929     popInputPort [140]
+                0.00    0.00       6/20287929     executeSave [129]
+                0.00    0.00       6/20287929     executeRestore [128]
+                0.00    0.00      26/20287929     executeTest [41]
+                0.00    0.00      78/20287929     executePerform [23]
+                0.00    0.00      79/20287929     executeGoto [99]
+                0.00    0.00     136/20287929     executeConstant [109]
+                0.00    0.00     162/20287929     regExpGetRegister [110]
+                0.00    0.00     186/20287929     executeOperationExp [16]
+                0.00    0.00     211/20287929     assembleSource [39]
+                0.00    0.00     290/20287929     executeLabel [107]
+                0.00    0.00     300/20287929     executeAssign [21]
+                0.00    0.00     369/20287929     advancePC [112]
+                0.00    0.00     372/20287929     getPrimitive [108]
+                0.00    0.00     383/20287929     checkArgs [104]
+                0.00    0.00     385/20287929     executeOperands [52]
+                0.00    0.00     502/20287929     executeRegisterExp [102]
+                0.00    0.00     892/20287929     assembleTarget [35]
+                0.00    0.00    2173/20287929     assembleOperation [77]
+                0.00    0.00    2173/20287929     assembleOperationExp [48]
+                0.00    0.00    2775/20287929     assembleInput [50]
+                0.00    0.00    3456/20287929     assembleInputs [49]
+                0.00    0.00    5333/20287929     extractLabels [69]
+                0.00    0.00   11513/20287929     assembleInstructions [25]
+                0.00    0.02   44017/20287929     restore [62]
+                0.02    0.31  724416/20287929     lookupLabel [30]
+                0.47    8.21 19487685/20287929     listSetCdr [8]
+[9]     72.0    0.49    8.55 20287929         regCdr [9]
+                0.41    5.15 20287966/22288785     regWrite [10]
+                0.18    1.43 20287966/34244097     regRead [18]
+                0.44    0.93 20287966/20288349     objCdr [27]
+-----------------------------------------------
+                0.00    0.00       1/22288785     regMakeOutputPort [169]
+                0.00    0.00       2/22288785     regMakeEOF [158]
+                0.00    0.00       4/22288785     regMakeCharacter [150]
+                0.00    0.00       6/22288785     regMakeInputPort [149]
+                0.00    0.00       7/22288785     regMakeString [147]
+                0.00    0.00      28/22288785     regMakeBoolean [135]
+                0.00    0.00     334/22288785     regVectorRef [111]
+                0.00    0.00    2270/22288785     regMakePrimitive [100]
+                0.00    0.00    6261/22288785     regMakeNumber [97]
+                0.00    0.01   48283/22288785     regMakeSymbol [75]
+                0.00    0.01   53486/22288785     regCopy [67]
+                0.00    0.02   94322/22288785     cons [59]
+                0.00    0.06  247186/22288785     regMakeNull [58]
+                0.03    0.39 1548629/22288785     regCar [36]
+                0.41    5.15 20287966/22288785     regCdr [9]
+[10]    48.7    0.45    5.66 22288785         regWrite [10]
+                0.78    4.88 22288787/22288950     objVectorSet [11]
+-----------------------------------------------
+                0.00    0.00     163/22288950     regVectorSet [115]
+                0.78    4.88 22288787/22288950     regWrite [10]
+[11]    45.1    0.78    4.88 22288950         objVectorSet [11]
+                0.26    4.30 22288950/22288950     vecSet [12]
+                0.17    0.00 22288950/56533381     objGetVector [43]
+                0.15    0.00 22288950/56533381     vecCheckIndex [44]
+-----------------------------------------------
+                0.26    4.30 22288950/22288950     objVectorSet [11]
+[12]    36.3    0.26    4.30 22288950         vecSet [12]
+                0.69    3.61 22288950/22919160     memWrite [13]
+-----------------------------------------------
+                0.00    0.00   14178/22919160     regSetCar [83]
+                0.00    0.00   27388/22919160     regSetCdr [72]
+                0.01    0.03  188644/22919160     cons [59]
+                0.01    0.06  400000/22919160     memClear [55]
+                0.69    3.61 22288950/22919160     vecSet [12]
+[13]    35.2    0.71    3.71 22919160         memWrite [13]
+                0.70    1.87 22919160/22945493     objIsEq [19]
+                0.53    0.13 22503758/22503759     objUnref <cycle 1> [38]
+                0.35    0.13 22503758/22503758     objRef [42]
+-----------------------------------------------
+                0.00    3.56       4/4           loadFile [2]
+[14]    28.4    0.00    3.56       4         executeInstructions [14]
+                0.00    3.56     448/448         executeInstruction [15]
+                0.00    0.00     448/1548203     regCar [36]
+                0.00    0.00     452/10530672     regIsNull [32]
+                0.00    0.00       4/75466       regCopy [67]
+                0.00    0.00       4/199850      regFreeTemp [61]
+                0.00    0.00       4/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    3.56     448/448         executeInstructions [14]
+[15]    28.4    0.00    3.56     448         executeInstruction [15]
+                0.00    1.57     150/150         executeAssign [21]
+                0.00    1.49      78/78          executePerform [23]
+                0.00    0.50      26/26          executeTest [41]
+                0.00    0.00     448/5777        isAssign [76]
+                0.00    0.00     298/3589        isPerform [84]
+                0.00    0.00      72/79          executeGoto [99]
+                0.00    0.00     220/3408        isTest [85]
+                0.00    0.00     194/3029        isBranch [87]
+                0.00    0.00     168/2650        isGoto [88]
+                0.00    0.00      96/2039        isSave [89]
+                0.00    0.00      90/1654        isRestore [93]
+                0.00    0.00     350/369         advancePC [112]
+                0.00    0.00      26/26          executeBranch [117]
+                0.00    0.00       6/6           executeRestore [128]
+                0.00    0.00       6/6           executeSave [129]
+-----------------------------------------------
+                0.00    0.50      26/186         executeTest [41]
+                0.00    1.49      78/186         executePerform [23]
+                0.00    1.57      82/186         executeSource [22]
+[16]    28.4    0.00    3.56     186         executeOperationExp [16]
+                0.00    3.43       2/2           read_if [17]
+                0.00    0.12     186/186         executeOperands [52]
+                0.00    0.00       1/1           snoc_if [106]
+                0.00    0.00     186/186         getPrimitive [108]
+                0.00    0.00     744/199850      regFreeTemp [61]
+                0.00    0.00     744/199850      regGetTemp [63]
+                0.00    0.00       2/2           isEOF_if [114]
+                0.00    0.00     186/20287929     regCdr [9]
+                0.00    0.00     186/1548203     regCar [36]
+                0.00    0.00       1/1           isPrimitive_if [120]
+                0.00    0.00       1/1           pushInputPort_if [121]
+                0.00    0.00       1/1           popInputPort_if [122]
+                0.00    0.00       1/1           openInputFile_if [123]
+                0.00    0.00       1/1           closeInputPort_if [124]
+                0.00    0.00       1/1           initStack_if [125]
+                0.00    0.00       1/1           exit_if [126]
+                0.00    0.00       4/4           newline_if [130]
+                0.00    0.00     186/186         regGetPrimitive [131]
+                0.00    0.00       1/1           display_if [141]
+                0.00    0.00       1/1           list_if [165]
+-----------------------------------------------
+                0.00    3.43       2/2           executeOperationExp [16]
+[17]    27.4    0.00    3.43       2         read_if [17]
+                0.00    3.43       2/6           readPort [4]
+                0.00    0.00       2/185         checkArgs [104]
+                0.00    0.00       1/18          currentInputPort [134]
+-----------------------------------------------
+                0.00    0.00       1/34244097     regIsPrimitive [174]
+                0.00    0.00       2/34244097     regIsCharacter [173]
+                0.00    0.00       2/34244097     regIsEOF [172]
+                0.00    0.00       3/34244097     regIsInputPort [171]
+                0.00    0.00       3/34244097     regIsNumber [170]
+                0.00    0.00       4/34244097     regIsString [166]
+                0.00    0.00       5/34244097     regCloseInputPort [163]
+                0.00    0.00       5/34244097     regGetOutputPortFile [161]
+                0.00    0.00       5/34244097     regDisplayToCurrentPort [143]
+                0.00    0.00       5/34244097     regGetString [162]
+                0.00    0.00      10/34244097     regIsEqOutputPort [156]
+                0.00    0.00      11/34244097     regGetInputPortYYBuffer [154]
+                0.00    0.00      12/34244097     regIsEqInputPort [153]
+                0.00    0.00      26/34244097     regIsTrue [146]
+                0.00    0.00     185/34244097     regListLength [118]
+                0.00    0.00     186/34244097     regGetPrimitive [131]
+                0.00    0.00     326/34244097     regVectorSet [115]
+                0.00    0.00     334/34244097     regHashSymbol [113]
+                0.00    0.00     334/34244097     regVectorRef [111]
+                0.00    0.00     910/34244097     regGetNumber [116]
+                0.00    0.00    5398/34244097     regIsSymbol [103]
+                0.00    0.00    8081/34244097     regGetSymbol [98]
+                0.00    0.00   14178/34244097     regSetCar [83]
+                0.00    0.00   27388/34244097     regSetCdr [72]
+                0.00    0.00   35375/34244097     regIsPairPointer [94]
+                0.00    0.00   41566/34244097     regGetPairPointer [74]
+                0.00    0.00   52666/34244097     regIsEq [71]
+                0.00    0.00   53486/34244097     regCopy [67]
+                0.00    0.01  188644/34244097     cons [59]
+                0.01    0.10 1447296/34244097     regIsEqual [45]
+                0.01    0.11 1548629/34244097     regCar [36]
+                0.10    0.74 10531055/34244097     regIsNull [32]
+                0.18    1.43 20287966/34244097     regCdr [9]
+[18]    21.8    0.31    2.42 34244097         regRead [18]
+                0.73    1.69 34244097/34244431     objVectorRef [20]
+-----------------------------------------------
+                0.00    0.00   26333/22945493     regIsEq [71]
+                0.70    1.87 22919160/22945493     memWrite [13]
+[19]    20.5    0.70    1.87 22945493         objIsEq [19]
+                0.43    0.94 21066965/21066965     objIsEqPairPointer [26]
+                0.40    0.00 68115115/192863996     objGetType [33]
+                0.04    0.07  763686/1487334     objIsEqSymbol [46]
+                0.00    0.00      24/24          objIsEqBoolean [168]
+                0.00    0.00       1/1           objIsEqString [186]
+                0.00    0.00  393426/393426      objIsEqNull [190]
+                0.00    0.00      16/22          objIsEqInputPort [209]
+                0.00    0.00       9/14          objIsEqOutputPort [212]
+                0.00    0.00       2/2           objIsEqEOF [242]
+-----------------------------------------------
+                0.00    0.00     334/34244431     regVectorRef [111]
+                0.73    1.69 34244097/34244431     regRead [18]
+[20]    19.3    0.73    1.69 34244431         objVectorRef [20]
+                0.40    0.80 34244431/34245655     vecRef [31]
+                0.26    0.00 34244431/56533381     objGetVector [43]
+                0.23    0.00 34244431/56533381     vecCheckIndex [44]
+-----------------------------------------------
+                0.00    1.57     150/150         executeInstruction [15]
+[21]    12.5    0.00    1.57     150         executeAssign [21]
+                0.00    1.57     150/150         executeSource [22]
+                0.00    0.00     150/162         regExpGetRegister [110]
+                0.00    0.00     300/20287929     regCdr [9]
+                0.00    0.00     300/199850      regFreeTemp [61]
+                0.00    0.00     300/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    1.57     150/150         executeAssign [21]
+[22]    12.5    0.00    1.57     150         executeSource [22]
+                0.00    1.57      82/186         executeOperationExp [16]
+                0.00    0.00     150/7000        isReg [73]
+                0.00    0.00     148/3085        isConst [86]
+                0.00    0.00      85/2005        isOp [90]
+                0.00    0.00      63/136         executeConstant [109]
+                0.00    0.00     150/1548203     regCar [36]
+                0.00    0.00     150/199850      regFreeTemp [61]
+                0.00    0.00     150/199850      regGetTemp [63]
+                0.00    0.00       3/145         executeLabel [107]
+                0.00    0.00       3/913         isLabel [96]
+                0.00    0.00       2/251         executeRegisterExp [102]
+-----------------------------------------------
+                0.00    1.49      78/78          executeInstruction [15]
+[23]    11.9    0.00    1.49      78         executePerform [23]
+                0.00    1.49      78/186         executeOperationExp [16]
+                0.00    0.00     156/199850      regFreeTemp [61]
+                0.00    0.00      78/20287929     regCdr [9]
+                0.00    0.00     156/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00   41566/64012474     regGetPairPointer [74]
+                0.01    0.02 1548629/64012474     objCar [57]
+                0.17    0.29 20288349/64012474     objCdr [27]
+                0.35    0.59 42133930/64012474     objIsEqPairPointer [26]
+[24]    11.4    0.53    0.90 64012474         objGetPairPointer [24]
+                0.53    0.37 64012474/64047849     objIsPairPointer [34]
+-----------------------------------------------
+                0.00    1.43       4/4           loadFile [2]
+[25]    11.4    0.00    1.43       4         assembleInstructions [25]
+                0.00    0.82     892/892         assembleTarget [35]
+                0.00    0.51    2038/2038        assembleSource [39]
+                0.00    0.04     456/2173        assembleOperationExp [48]
+                0.00    0.01    5329/5777        isAssign [76]
+                0.00    0.01    2798/5908        assembleRegisterExp [68]
+                0.00    0.01    3291/3589        isPerform [84]
+                0.00    0.01    3188/3408        isTest [85]
+                0.00    0.01    2835/3029        isBranch [87]
+                0.00    0.01    2482/2650        isGoto [88]
+                0.00    0.00   11513/20287929     regCdr [9]
+                0.00    0.00    1943/2039        isSave [89]
+                0.00    0.00    1564/1654        isRestore [93]
+                0.00    0.00    6221/1548203     regCar [36]
+                0.00    0.00    5333/10530672     regIsNull [32]
+                0.00    0.00      12/199850      regFreeTemp [61]
+                0.00    0.00      12/199850      regGetTemp [63]
+                0.00    0.00       4/75466       regCopy [67]
+-----------------------------------------------
+                0.43    0.94 21066965/21066965     objIsEq [19]
+[26]    10.9    0.43    0.94 21066965         objIsEqPairPointer [26]
+                0.35    0.59 42133930/64012474     objGetPairPointer [24]
+-----------------------------------------------
+                0.00    0.00     383/20288349     regListLength [118]
+                0.44    0.93 20287966/20288349     regCdr [9]
+[27]    10.9    0.44    0.93 20288349         objCdr [27]
+                0.47    0.00 20288349/56082633     memRead [28]
+                0.17    0.29 20288349/64012474     objGetPairPointer [24]
+-----------------------------------------------
+                0.04    0.00 1548629/56082633     objCar [57]
+                0.47    0.00 20288349/56082633     objCdr [27]
+                0.80    0.00 34245655/56082633     vecRef [31]
+[28]    10.4    1.31    0.00 56082633         memRead [28]
+-----------------------------------------------
+                0.00    0.15      86/768         assembleInput [50]
+                0.00    0.34     203/768         assembleSource [39]
+                0.00    0.81     479/768         assembleTarget [35]
+[29]    10.4    0.00    1.30     768         assembleLabel [29]
+                0.03    1.27     768/768         lookupLabel [30]
+                0.00    0.00    2304/199850      regFreeTemp [61]
+                0.00    0.00     768/93860       cons [59]
+                0.00    0.00     768/14178       regSetCar [83]
+                0.00    0.00    2304/199850      regGetTemp [63]
+                0.00    0.00     768/1548203     regCar [36]
+                0.00    0.00     768/10530672     regIsNull [32]
+-----------------------------------------------
+                0.03    1.27     768/768         assembleLabel [29]
+[30]    10.3    0.03    1.27     768         lookupLabel [30]
+                0.04    0.59 1447296/1548203     regCar [36]
+                0.02    0.31  724416/20287929     regCdr [9]
+                0.01    0.23  723648/723648      regIsEqual [45]
+                0.01    0.07  724416/10530672     regIsNull [32]
+                0.00    0.00    3072/199850      regFreeTemp [61]
+                0.00    0.00    3072/199850      regGetTemp [63]
+                0.00    0.00     768/75466       regCopy [67]
+                0.00    0.00     768/247020      regMakeNull [58]
+-----------------------------------------------
+                0.00    0.00    1224/34245655     vecDelete <cycle 1> [119]
+                0.40    0.80 34244431/34245655     objVectorRef [20]
+[31]     9.6    0.40    0.80 34245655         vecRef [31]
+                0.80    0.00 34245655/56082633     memRead [28]
+-----------------------------------------------
+                0.00    0.00     452/10530672     executeInstructions [14]
+                0.00    0.00     571/10530672     executeOperands [52]
+                0.00    0.00     768/10530672     assembleLabel [29]
+                0.00    0.00    5329/10530672     extractLabels [69]
+                0.00    0.00    5333/10530672     assembleInstructions [25]
+                0.00    0.00    5629/10530672     assembleInputs [49]
+                0.00    0.00   33303/10530672     snoc [7]
+                0.01    0.07  724416/10530672     lookupLabel [30]
+                0.10    0.96 9754871/10530672     listSetCdr [8]
+[32]     9.2    0.11    1.04 10530672         regIsNull [32]
+                0.10    0.74 10531055/34244097     regRead [18]
+                0.14    0.06 10531055/10531623     objIsNull [47]
+-----------------------------------------------
+                0.00    0.00       2/192863996     objIsEOF [187]
+                0.00    0.00       5/192863996     objIsOutputPort [183]
+                0.00    0.00       5/192863996     objDisplay [178]
+                0.00    0.00       6/192863996     objIsCharacter [180]
+                0.00    0.00      12/192863996     objIsString [176]
+                0.00    0.00      14/192863996     objIsInputPort [175]
+                0.00    0.00      26/192863996     objIsTrue [167]
+                0.00    0.00      74/192863996     objIsBoolean [160]
+                0.00    0.00     187/192863996     objIsPrimitive [151]
+                0.00    0.00     913/192863996     objIsNumber [138]
+                0.01    0.00 2170944/192863996     objIsEqual [53]
+                0.02    0.00 2988481/192863996     objIsSymbol [64]
+                0.06    0.00 10531623/192863996     objIsNull [47]
+                0.13    0.00 22503758/192863996     objRef [42]
+                0.13    0.00 22504982/192863996     objUnref <cycle 1> [38]
+                0.37    0.00 64047849/192863996     objIsPairPointer [34]
+                0.40    0.00 68115115/192863996     objIsEq [19]
+[33]     8.9    1.12    0.00 192863996         objGetType [33]
+-----------------------------------------------
+                0.00    0.00   35375/64047849     regIsPairPointer [94]
+                0.53    0.37 64012474/64047849     objGetPairPointer [24]
+[34]     7.2    0.53    0.37 64047849         objIsPairPointer [34]
+                0.37    0.00 64047849/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.82     892/892         assembleInstructions [25]
+[35]     6.5    0.00    0.82     892         assembleTarget [35]
+                0.00    0.81     479/768         assembleLabel [29]
+                0.00    0.00     892/7000        isReg [73]
+                0.00    0.00     413/5908        assembleRegisterExp [68]
+                0.00    0.00     479/913         isLabel [96]
+                0.00    0.00     892/20287929     regCdr [9]
+                0.00    0.00     892/199850      regFreeTemp [61]
+                0.00    0.00     892/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00      15/1548203     currentOutputPort [136]
+                0.00    0.00      18/1548203     currentInputPort [134]
+                0.00    0.00      79/1548203     executeTarget [101]
+                0.00    0.00     136/1548203     executeConstant [109]
+                0.00    0.00     145/1548203     executeLabel [107]
+                0.00    0.00     150/1548203     executeSource [22]
+                0.00    0.00     162/1548203     regExpGetRegister [110]
+                0.00    0.00     186/1548203     getPrimitive [108]
+                0.00    0.00     186/1548203     executeOperationExp [16]
+                0.00    0.00     251/1548203     executeRegisterExp [102]
+                0.00    0.00     383/1548203     checkArgs [104]
+                0.00    0.00     385/1548203     executeOperands [52]
+                0.00    0.00     448/1548203     executeInstructions [14]
+                0.00    0.00     768/1548203     assembleLabel [29]
+                0.00    0.00    2038/1548203     assembleSource [39]
+                0.00    0.00    2173/1548203     assembleOperation [77]
+                0.00    0.00    2173/1548203     assembleOperationExp [48]
+                0.00    0.00    3456/1548203     assembleInputs [49]
+                0.00    0.00    5329/1548203     extractLabels [69]
+                0.00    0.00    5908/1548203     assembleRegisterExp [68]
+                0.00    0.00    6221/1548203     assembleInstructions [25]
+                0.00    0.01   26280/1548203     isTaggedList [60]
+                0.00    0.02   44017/1548203     restore [62]
+                0.04    0.59 1447296/1548203     lookupLabel [30]
+[36]     5.3    0.04    0.63 1548203         regCar [36]
+                0.03    0.39 1548629/22288785     regWrite [10]
+                0.01    0.11 1548629/34244097     regRead [18]
+                0.01    0.07 1548629/1548629     objCar [57]
+-----------------------------------------------
+[37]     5.3    0.53    0.13 22503759+1404    <cycle 1 as a whole> [37]
+                0.53    0.13 22504982             objUnref <cycle 1> [38]
+                0.00    0.00     175             objUnrefVector <cycle 1> [199]
+                0.00    0.00       3             objDeleteVector <cycle 1> [240]
+-----------------------------------------------
+                                1224             vecDelete <cycle 1> [119]
+                0.53    0.13 22503758/22503759     memWrite [13]
+[38]     5.3    0.53    0.13 22504982         objUnref <cycle 1> [38]
+                0.13    0.00 22504982/192863996     objGetType [33]
+                0.00    0.00      33/33          objUnrefInputPort [203]
+                0.00    0.00      32/32          objUnrefString [205]
+                0.00    0.00       8/8           objUnrefOutputPort [220]
+                                 175             objUnrefVector <cycle 1> [199]
+-----------------------------------------------
+                0.00    0.51    2038/2038        assembleInstructions [25]
+[39]     4.1    0.00    0.51    2038         assembleSource [39]
+                0.00    0.34     203/768         assembleLabel [29]
+                0.00    0.15    1717/2173        assembleOperationExp [48]
+                0.00    0.00    2038/7000        isReg [73]
+                0.00    0.00    2030/3085        isConst [86]
+                0.00    0.00    1920/2005        isOp [90]
+                0.00    0.00    4076/199850      regFreeTemp [61]
+                0.00    0.00    2038/1548203     regCar [36]
+                0.00    0.00    4076/199850      regGetTemp [63]
+                0.00    0.00     203/913         isLabel [96]
+                0.00    0.00     211/20287929     regCdr [9]
+                0.00    0.00       8/5908        assembleRegisterExp [68]
+-----------------------------------------------
+                                                 <spontaneous>
+[40]     4.1    0.51    0.00                 glueGetValue [40]
+-----------------------------------------------
+                0.00    0.50      26/26          executeInstruction [15]
+[41]     4.0    0.00    0.50      26         executeTest [41]
+                0.00    0.50      26/186         executeOperationExp [16]
+                0.00    0.00      26/20287929     regCdr [9]
+                0.00    0.00      26/199850      regFreeTemp [61]
+                0.00    0.00      26/199850      regGetTemp [63]
+-----------------------------------------------
+                0.35    0.13 22503758/22503758     memWrite [13]
+[42]     3.8    0.35    0.13 22503758         objRef [42]
+                0.13    0.00 22503758/192863996     objGetType [33]
+                0.00    0.00     175/175         objRefVector [198]
+                0.00    0.00      33/33          objRefInputPort [202]
+                0.00    0.00      32/32          objRefString [204]
+                0.00    0.00       8/8           objRefOutputPort [219]
+-----------------------------------------------
+                0.17    0.00 22288950/56533381     objVectorSet [11]
+                0.26    0.00 34244431/56533381     objVectorRef [20]
+[43]     3.4    0.43    0.00 56533381         objGetVector [43]
+-----------------------------------------------
+                0.15    0.00 22288950/56533381     objVectorSet [11]
+                0.23    0.00 34244431/56533381     objVectorRef [20]
+[44]     3.0    0.38    0.00 56533381         vecCheckIndex [44]
+-----------------------------------------------
+                0.01    0.23  723648/723648      lookupLabel [30]
+[45]     1.9    0.01    0.23  723648         regIsEqual [45]
+                0.01    0.10 1447296/34244097     regRead [18]
+                0.00    0.11  723648/723648      objIsEqual [53]
+-----------------------------------------------
+                0.03    0.07  723648/1487334     objIsEqualSymbol [54]
+                0.04    0.07  763686/1487334     objIsEq [19]
+[46]     1.6    0.07    0.14 1487334         objIsEqSymbol [46]
+                0.10    0.04 2974668/2983083     objGetSymbol [51]
+-----------------------------------------------
+                0.00    0.00     568/10531623     regListLength [118]
+                0.14    0.06 10531055/10531623     regIsNull [32]
+[47]     1.6    0.14    0.06 10531623         objIsNull [47]
+                0.06    0.00 10531623/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.04     456/2173        assembleInstructions [25]
+                0.00    0.15    1717/2173        assembleSource [39]
+[48]     1.5    0.00    0.19    2173         assembleOperationExp [48]
+                0.00    0.18    2173/2173        assembleInputs [49]
+                0.00    0.01    2173/2173        assembleOperation [77]
+                0.00    0.00    4346/199850      regFreeTemp [61]
+                0.00    0.00    2173/20287929     regCdr [9]
+                0.00    0.00    2173/1548203     regCar [36]
+                0.00    0.00    4346/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.18    2173/2173        assembleOperationExp [48]
+[49]     1.4    0.00    0.18    2173         assembleInputs [49]
+                0.00    0.17    3456/3456        assembleInput [50]
+                0.00    0.00    3456/20287929     regCdr [9]
+                0.00    0.00    3456/1548203     regCar [36]
+                0.00    0.00    4346/199850      regFreeTemp [61]
+                0.00    0.00    4346/199850      regGetTemp [63]
+                0.00    0.00    2173/75466       regCopy [67]
+                0.00    0.00    5629/10530672     regIsNull [32]
+-----------------------------------------------
+                0.00    0.17    3456/3456        assembleInputs [49]
+[50]     1.3    0.00    0.17    3456         assembleInput [50]
+                0.00    0.15      86/768         assembleLabel [29]
+                0.00    0.01    2689/5908        assembleRegisterExp [68]
+                0.00    0.01    3456/7000        isReg [73]
+                0.00    0.00     767/3085        isConst [86]
+                0.00    0.00    2775/20287929     regCdr [9]
+                0.00    0.00    3456/199850      regFreeTemp [61]
+                0.00    0.00    3456/199850      regGetTemp [63]
+                0.00    0.00      86/913         isLabel [96]
+-----------------------------------------------
+                0.00    0.00     334/2983083     objHashSymbol [132]
+                0.00    0.00    8081/2983083     regGetSymbol [98]
+                0.10    0.04 2974668/2983083     objIsEqSymbol [46]
+[51]     1.1    0.10    0.04 2983083         objGetSymbol [51]
+                0.02    0.02 2983083/2988481     objIsSymbol [64]
+-----------------------------------------------
+                0.00    0.12     186/186         executeOperationExp [16]
+[52]     1.0    0.00    0.12     186         executeOperands [52]
+                0.00    0.12     385/33303       snoc [7]
+                0.00    0.00     385/385         executeInput [95]
+                0.00    0.00     558/199850      regFreeTemp [61]
+                0.00    0.00     385/20287929     regCdr [9]
+                0.00    0.00     385/1548203     regCar [36]
+                0.00    0.00     558/199850      regGetTemp [63]
+                0.00    0.00     186/75466       regCopy [67]
+                0.00    0.00     571/10530672     regIsNull [32]
+                0.00    0.00     186/247020      regMakeNull [58]
+-----------------------------------------------
+                0.00    0.11  723648/723648      regIsEqual [45]
+[53]     0.9    0.00    0.11  723648         objIsEqual [53]
+                0.00    0.10  723648/723648      objIsEqualSymbol [54]
+                0.01    0.00 2170944/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.10  723648/723648      objIsEqual [53]
+[54]     0.8    0.00    0.10  723648         objIsEqualSymbol [54]
+                0.03    0.07  723648/1487334     objIsEqSymbol [46]
+-----------------------------------------------
+                0.00    0.08       1/1           memFree [56]
+[55]     0.6    0.00    0.08       1         memClear [55]
+                0.01    0.06  400000/22919160     memWrite [13]
+                0.00    0.00  400000/1047187     objMakeNull [78]
+-----------------------------------------------
+                0.00    0.08       1/1           main [1]
+[56]     0.6    0.00    0.08       1         memFree [56]
+                0.00    0.08       1/1           memClear [55]
+-----------------------------------------------
+                0.01    0.07 1548629/1548629     regCar [36]
+[57]     0.6    0.01    0.07 1548629         objCar [57]
+                0.04    0.00 1548629/56082633     memRead [28]
+                0.01    0.02 1548629/64012474     objGetPairPointer [24]
+-----------------------------------------------
+                0.00    0.00       1/247020      initRegsim [144]
+                0.00    0.00       2/247020      initPorts [142]
+                0.00    0.00       2/247020      initStack [157]
+                0.00    0.00     186/247020      executeOperands [52]
+                0.00    0.00     768/247020      lookupLabel [30]
+                0.00    0.00   11092/247020      scparse [6]
+                0.00    0.01   33303/247020      snoc [7]
+                0.01    0.06  201666/247020      regFreeTemp [61]
+[58]     0.6    0.01    0.07  247020         regMakeNull [58]
+                0.00    0.06  247186/22288785     regWrite [10]
+                0.00    0.00  247186/1047187     objMakeNull [78]
+-----------------------------------------------
+                0.00    0.00       1/93860       pushOutputPort [155]
+                0.00    0.00       1/93860       initRegsim [144]
+                0.00    0.00       6/93860       pushInputPort [133]
+                0.00    0.00     768/93860       assembleLabel [29]
+                0.00    0.00    2173/93860       assembleOperation [77]
+                0.00    0.00    5908/93860       assembleRegisterExp [68]
+                0.00    0.01    7683/93860       extractLabels [69]
+                0.00    0.03   33303/93860       snoc [7]
+                0.00    0.04   44017/93860       save [65]
+[59]     0.6    0.00    0.08   93860         cons [59]
+                0.01    0.03  188644/22919160     memWrite [13]
+                0.00    0.02   94322/22288785     regWrite [10]
+                0.00    0.01  188644/34244097     regRead [18]
+                0.00    0.00   94322/94322       memAmountFree [191]
+                0.00    0.00   94322/94322       objMakePairPointer [192]
+-----------------------------------------------
+                0.00    0.00     913/35149       isLabel [96]
+                0.00    0.00    1654/35149       isRestore [93]
+                0.00    0.00    2005/35149       isOp [90]
+                0.00    0.00    2039/35149       isSave [89]
+                0.00    0.01    2650/35149       isGoto [88]
+                0.00    0.01    3029/35149       isBranch [87]
+                0.00    0.01    3085/35149       isConst [86]
+                0.00    0.01    3408/35149       isTest [85]
+                0.00    0.01    3589/35149       isPerform [84]
+                0.00    0.01    5777/35149       isAssign [76]
+                0.00    0.02    7000/35149       isReg [73]
+[60]     0.6    0.00    0.08   35149         isTaggedList [60]
+                0.00    0.02   70298/199850      regFreeTemp [61]
+                0.01    0.01   26280/26280       regIsEq [71]
+                0.01    0.00   70298/199850      regGetTemp [63]
+                0.00    0.01   26280/1548203     regCar [36]
+                0.00    0.01   26280/48099       regMakeSymbol [75]
+                0.00    0.00   35149/35359       regIsPairPointer [94]
+-----------------------------------------------
+                0.00    0.00       4/199850      executeInstructions [14]
+                0.00    0.00       6/199850      executeSave [129]
+                0.00    0.00       6/199850      executeRestore [128]
+                0.00    0.00      12/199850      assembleInstructions [25]
+                0.00    0.00      12/199850      loadFile [2]
+                0.00    0.00      16/199850      extractLabels [69]
+                0.00    0.00      26/199850      executeTest [41]
+                0.00    0.00      79/199850      executeTarget [101]
+                0.00    0.00      79/199850      executeGoto [99]
+                0.00    0.00     136/199850      executeConstant [109]
+                0.00    0.00     145/199850      executeLabel [107]
+                0.00    0.00     150/199850      executeSource [22]
+                0.00    0.00     156/199850      executePerform [23]
+                0.00    0.00     162/199850      regExpGetRegister [110]
+                0.00    0.00     251/199850      executeRegisterExp [102]
+                0.00    0.00     300/199850      executeAssign [21]
+                0.00    0.00     385/199850      executeInput [95]
+                0.00    0.00     558/199850      executeOperands [52]
+                0.00    0.00     744/199850      executeOperationExp [16]
+                0.00    0.00     892/199850      assembleTarget [35]
+                0.00    0.00    2304/199850      assembleLabel [29]
+                0.00    0.00    3072/199850      lookupLabel [30]
+                0.00    0.00    3456/199850      assembleInput [50]
+                0.00    0.00    4076/199850      assembleSource [39]
+                0.00    0.00    4346/199850      assembleInputs [49]
+                0.00    0.00    4346/199850      assembleOperationExp [48]
+                0.00    0.00    8692/199850      assembleOperation [77]
+                0.00    0.01   17724/199850      assembleRegisterExp [68]
+                0.00    0.01   33303/199850      snoc [7]
+                0.00    0.01   44114/199850      listSetCdr [8]
+                0.00    0.02   70298/199850      isTaggedList [60]
+[61]     0.5    0.00    0.07  199850         regFreeTemp [61]
+                0.01    0.06  201666/247020      regMakeNull [58]
+-----------------------------------------------
+                0.00    0.00       6/44015       executeRestore [128]
+                0.01    0.04   44009/44015       scparse [6]
+[62]     0.4    0.01    0.04   44015         restore [62]
+                0.00    0.02   44017/20287929     regCdr [9]
+                0.00    0.02   44017/1548203     regCar [36]
+-----------------------------------------------
+                0.00    0.00       4/199850      executeInstructions [14]
+                0.00    0.00       6/199850      executeSave [129]
+                0.00    0.00       6/199850      executeRestore [128]
+                0.00    0.00      12/199850      assembleInstructions [25]
+                0.00    0.00      12/199850      loadFile [2]
+                0.00    0.00      16/199850      extractLabels [69]
+                0.00    0.00      26/199850      executeTest [41]
+                0.00    0.00      79/199850      executeTarget [101]
+                0.00    0.00      79/199850      executeGoto [99]
+                0.00    0.00     136/199850      executeConstant [109]
+                0.00    0.00     145/199850      executeLabel [107]
+                0.00    0.00     150/199850      executeSource [22]
+                0.00    0.00     156/199850      executePerform [23]
+                0.00    0.00     162/199850      regExpGetRegister [110]
+                0.00    0.00     251/199850      executeRegisterExp [102]
+                0.00    0.00     300/199850      executeAssign [21]
+                0.00    0.00     385/199850      executeInput [95]
+                0.00    0.00     558/199850      executeOperands [52]
+                0.00    0.00     744/199850      executeOperationExp [16]
+                0.00    0.00     892/199850      assembleTarget [35]
+                0.00    0.00    2304/199850      assembleLabel [29]
+                0.00    0.00    3072/199850      lookupLabel [30]
+                0.00    0.00    3456/199850      assembleInput [50]
+                0.00    0.00    4076/199850      assembleSource [39]
+                0.00    0.00    4346/199850      assembleInputs [49]
+                0.00    0.00    4346/199850      assembleOperationExp [48]
+                0.00    0.00    8692/199850      assembleOperation [77]
+                0.00    0.00   17724/199850      assembleRegisterExp [68]
+                0.01    0.00   33303/199850      snoc [7]
+                0.01    0.00   44114/199850      listSetCdr [8]
+                0.01    0.00   70298/199850      isTaggedList [60]
+[63]     0.3    0.04    0.00  199850         regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00    5398/2988481     regIsSymbol [103]
+                0.02    0.02 2983083/2988481     objGetSymbol [51]
+[64]     0.3    0.02    0.02 2988481         objIsSymbol [64]
+                0.02    0.00 2988481/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.00       6/44015       executeSave [129]
+                0.00    0.04   44009/44015       scparse [6]
+[65]     0.3    0.00    0.04   44015         save [65]
+                0.00    0.04   44017/93860       cons [59]
+-----------------------------------------------
+                                                 <spontaneous>
+[66]     0.2    0.03    0.00                 bindGetName [66]
+-----------------------------------------------
+                0.00    0.00       1/75466       list [164]
+                0.00    0.00       4/75466       initRegsim [144]
+                0.00    0.00       4/75466       assembleInstructions [25]
+                0.00    0.00       4/75466       executeInstructions [14]
+                0.00    0.00       4/75466       loadFile [2]
+                0.00    0.00       6/75466       readCurrentPort [5]
+                0.00    0.00     136/75466       executeConstant [109]
+                0.00    0.00     145/75466       executeLabel [107]
+                0.00    0.00     186/75466       executeOperands [52]
+                0.00    0.00     251/75466       executeRegisterExp [102]
+                0.00    0.00     768/75466       lookupLabel [30]
+                0.00    0.00    2173/75466       assembleInputs [49]
+                0.00    0.00    5329/75466       extractLabels [69]
+                0.00    0.00   11092/75466       scparse [6]
+                0.00    0.00   11249/75466       snoc [7]
+                0.01    0.01   44114/75466       listSetCdr [8]
+[67]     0.2    0.01    0.02   75466         regCopy [67]
+                0.00    0.01   53486/22288785     regWrite [10]
+                0.00    0.00   53486/34244097     regRead [18]
+-----------------------------------------------
+                0.00    0.00       8/5908        assembleSource [39]
+                0.00    0.00     413/5908        assembleTarget [35]
+                0.00    0.01    2689/5908        assembleInput [50]
+                0.00    0.01    2798/5908        assembleInstructions [25]
+[68]     0.2    0.00    0.02    5908         assembleRegisterExp [68]
+                0.00    0.01   17724/199850      regFreeTemp [61]
+                0.00    0.00    5908/93860       cons [59]
+                0.00    0.00    5908/14178       regSetCar [83]
+                0.00    0.00   17724/199850      regGetTemp [63]
+                0.00    0.00    5908/1548203     regCar [36]
+                0.00    0.00    5908/6261        regMakeNumber [97]
+                0.00    0.00    5908/8081        regGetSymbol [98]
+                0.00    0.00    5908/5908        regLookup [195]
+-----------------------------------------------
+                0.00    0.02       4/4           loadFile [2]
+[69]     0.2    0.00    0.02       4         extractLabels [69]
+                0.00    0.01    7683/93860       cons [59]
+                0.00    0.00    5329/14178       regSetCar [83]
+                0.00    0.00    5325/27382       regSetCdr [72]
+                0.00    0.00    5333/20287929     regCdr [9]
+                0.00    0.00    5329/1548203     regCar [36]
+                0.00    0.00    5329/75466       regCopy [67]
+                0.00    0.00    5329/10530672     regIsNull [32]
+                0.00    0.00    5325/5395        regIsSymbol [103]
+                0.00    0.00      16/199850      regFreeTemp [61]
+                0.00    0.00      16/199850      regGetTemp [63]
+                0.00    0.00       4/48099       regMakeSymbol [75]
+-----------------------------------------------
+                0.02    0.00   44021/44021       scparse [6]
+[70]     0.2    0.02    0.00   44021         sclex [70]
+                0.00    0.00      31/31          yy_get_next_buffer [206]
+                0.00    0.00      29/29          yy_get_previous_state [207]
+                0.00    0.00       2/2           scwrap [245]
+                0.00    0.00       1/17          sc_load_buffer_state [211]
+-----------------------------------------------
+                0.01    0.01   26280/26280       isTaggedList [60]
+[71]     0.1    0.01    0.01   26280         regIsEq [71]
+                0.00    0.00   52666/34244097     regRead [18]
+                0.00    0.00   26333/22945493     objIsEq [19]
+-----------------------------------------------
+                0.00    0.00    5325/27382       extractLabels [69]
+                0.00    0.01   22057/27382       listSetCdr [8]
+[72]     0.1    0.00    0.02   27382         regSetCdr [72]
+                0.01    0.00   27388/41566       regGetPairPointer [74]
+                0.00    0.00   27388/22919160     memWrite [13]
+                0.00    0.00   27388/34244097     regRead [18]
+-----------------------------------------------
+                0.00    0.00      79/7000        executeTarget [101]
+                0.00    0.00     150/7000        executeSource [22]
+                0.00    0.00     385/7000        executeInput [95]
+                0.00    0.00     892/7000        assembleTarget [35]
+                0.00    0.00    2038/7000        assembleSource [39]
+                0.00    0.01    3456/7000        assembleInput [50]
+[73]     0.1    0.00    0.02    7000         isReg [73]
+                0.00    0.02    7000/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00   14178/41566       regSetCar [83]
+                0.01    0.00   27388/41566       regSetCdr [72]
+[74]     0.1    0.01    0.00   41566         regGetPairPointer [74]
+                0.00    0.00   41566/34244097     regRead [18]
+                0.00    0.00   41566/64012474     objGetPairPointer [24]
+-----------------------------------------------
+                0.00    0.00       1/48099       closeInputPort_if [124]
+                0.00    0.00       1/48099       pushInputPort_if [121]
+                0.00    0.00       1/48099       popInputPort_if [122]
+                0.00    0.00       1/48099       display_if [141]
+                0.00    0.00       4/48099       extractLabels [69]
+                0.00    0.01   21811/48099       scparse [6]
+                0.00    0.01   26280/48099       isTaggedList [60]
+[75]     0.1    0.00    0.01   48099         regMakeSymbol [75]
+                0.00    0.01   48283/22288785     regWrite [10]
+                0.00    0.00   48283/48283       objMakeSymbol [193]
+-----------------------------------------------
+                0.00    0.00     448/5777        executeInstruction [15]
+                0.00    0.01    5329/5777        assembleInstructions [25]
+[76]     0.1    0.00    0.01    5777         isAssign [76]
+                0.00    0.01    5777/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.01    2173/2173        assembleOperationExp [48]
+[77]     0.1    0.00    0.01    2173         assembleOperation [77]
+                0.00    0.00    8692/199850      regFreeTemp [61]
+                0.00    0.00    2173/93860       cons [59]
+                0.00    0.00    8692/199850      regGetTemp [63]
+                0.00    0.00    2173/14178       regSetCar [83]
+                0.00    0.00    2173/20287929     regCdr [9]
+                0.00    0.00    2173/1548203     regCar [36]
+                0.00    0.00    2173/2173        regMakePrimitive [100]
+                0.00    0.00    2173/8081        regGetSymbol [98]
+                0.00    0.00    2173/2173        rsLookupPrimitive [197]
+-----------------------------------------------
+                0.00    0.00       1/1047187     regInit [188]
+                0.00    0.00  247186/1047187     regMakeNull [58]
+                0.00    0.00  400000/1047187     memInitialize [92]
+                0.00    0.00  400000/1047187     memClear [55]
+[78]     0.1    0.01    0.00 1047187         objMakeNull [78]
+-----------------------------------------------
+                                                 <spontaneous>
+[79]     0.1    0.01    0.00                 bindCompare [79]
+-----------------------------------------------
+                                                 <spontaneous>
+[80]     0.1    0.01    0.00                 hash [80]
+-----------------------------------------------
+                                                 <spontaneous>
+[81]     0.1    0.01    0.00                 lnGetNext [81]
+-----------------------------------------------
+                                                 <spontaneous>
+[82]     0.1    0.01    0.00                 lnIsNull [82]
+-----------------------------------------------
+                0.00    0.00     768/14178       assembleLabel [29]
+                0.00    0.00    2173/14178       assembleOperation [77]
+                0.00    0.00    5329/14178       extractLabels [69]
+                0.00    0.00    5908/14178       assembleRegisterExp [68]
+[83]     0.1    0.00    0.01   14178         regSetCar [83]
+                0.00    0.00   14178/41566       regGetPairPointer [74]
+                0.00    0.00   14178/22919160     memWrite [13]
+                0.00    0.00   14178/34244097     regRead [18]
+-----------------------------------------------
+                0.00    0.00     298/3589        executeInstruction [15]
+                0.00    0.01    3291/3589        assembleInstructions [25]
+[84]     0.1    0.00    0.01    3589         isPerform [84]
+                0.00    0.01    3589/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00     220/3408        executeInstruction [15]
+                0.00    0.01    3188/3408        assembleInstructions [25]
+[85]     0.1    0.00    0.01    3408         isTest [85]
+                0.00    0.01    3408/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00     140/3085        executeInput [95]
+                0.00    0.00     148/3085        executeSource [22]
+                0.00    0.00     767/3085        assembleInput [50]
+                0.00    0.00    2030/3085        assembleSource [39]
+[86]     0.1    0.00    0.01    3085         isConst [86]
+                0.00    0.01    3085/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00     194/3029        executeInstruction [15]
+                0.00    0.01    2835/3029        assembleInstructions [25]
+[87]     0.1    0.00    0.01    3029         isBranch [87]
+                0.00    0.01    3029/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00     168/2650        executeInstruction [15]
+                0.00    0.01    2482/2650        assembleInstructions [25]
+[88]     0.0    0.00    0.01    2650         isGoto [88]
+                0.00    0.01    2650/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00      96/2039        executeInstruction [15]
+                0.00    0.00    1943/2039        assembleInstructions [25]
+[89]     0.0    0.00    0.00    2039         isSave [89]
+                0.00    0.00    2039/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00      85/2005        executeSource [22]
+                0.00    0.00    1920/2005        assembleSource [39]
+[90]     0.0    0.00    0.00    2005         isOp [90]
+                0.00    0.00    2005/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[91]     0.0    0.00    0.00       1         memInit [91]
+                0.00    0.00       1/1           memInitialize [92]
+                0.00    0.00       1/120         regAllocate [200]
+-----------------------------------------------
+                0.00    0.00       1/1           memInit [91]
+[92]     0.0    0.00    0.00       1         memInitialize [92]
+                0.00    0.00  400000/1047187     objMakeNull [78]
+-----------------------------------------------
+                0.00    0.00      90/1654        executeInstruction [15]
+                0.00    0.00    1564/1654        assembleInstructions [25]
+[93]     0.0    0.00    0.00    1654         isRestore [93]
+                0.00    0.00    1654/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00     210/35359       checkType [127]
+                0.00    0.00   35149/35359       isTaggedList [60]
+[94]     0.0    0.00    0.00   35359         regIsPairPointer [94]
+                0.00    0.00   35375/34244097     regRead [18]
+                0.00    0.00   35375/64047849     objIsPairPointer [34]
+-----------------------------------------------
+                0.00    0.00     385/385         executeOperands [52]
+[95]     0.0    0.00    0.00     385         executeInput [95]
+                0.00    0.00     385/7000        isReg [73]
+                0.00    0.00     245/251         executeRegisterExp [102]
+                0.00    0.00     140/3085        isConst [86]
+                0.00    0.00      67/145         executeLabel [107]
+                0.00    0.00      67/913         isLabel [96]
+                0.00    0.00      73/136         executeConstant [109]
+                0.00    0.00     385/199850      regFreeTemp [61]
+                0.00    0.00     385/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00       3/913         executeSource [22]
+                0.00    0.00      67/913         executeInput [95]
+                0.00    0.00      75/913         executeTarget [101]
+                0.00    0.00      86/913         assembleInput [50]
+                0.00    0.00     203/913         assembleSource [39]
+                0.00    0.00     479/913         assembleTarget [35]
+[96]     0.0    0.00    0.00     913         isLabel [96]
+                0.00    0.00     913/35149       isTaggedList [60]
+-----------------------------------------------
+                0.00    0.00       1/6261        initRegsim [144]
+                0.00    0.00      18/6261        scparse [6]
+                0.00    0.00     334/6261        regHashSymbol [113]
+                0.00    0.00    5908/6261        assembleRegisterExp [68]
+[97]     0.0    0.00    0.00    6261         regMakeNumber [97]
+                0.00    0.00    6261/22288785     regWrite [10]
+                0.00    0.00    6261/6261        objMakeNumber [194]
+-----------------------------------------------
+                0.00    0.00    2173/8081        assembleOperation [77]
+                0.00    0.00    5908/8081        assembleRegisterExp [68]
+[98]     0.0    0.00    0.00    8081         regGetSymbol [98]
+                0.00    0.00    8081/34244097     regRead [18]
+                0.00    0.00    8081/2983083     objGetSymbol [51]
+-----------------------------------------------
+                0.00    0.00       7/79          executeBranch [117]
+                0.00    0.00      72/79          executeInstruction [15]
+[99]     0.0    0.00    0.00      79         executeGoto [99]
+                0.00    0.00      79/79          executeTarget [101]
+                0.00    0.00      79/20287929     regCdr [9]
+                0.00    0.00      79/199850      regFreeTemp [61]
+                0.00    0.00      79/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00    2173/2173        assembleOperation [77]
+[100]    0.0    0.00    0.00    2173         regMakePrimitive [100]
+                0.00    0.00    2270/22288785     regWrite [10]
+                0.00    0.00    2270/2270        objMakePrimitive [196]
+-----------------------------------------------
+                0.00    0.00      79/79          executeGoto [99]
+[101]    0.0    0.00    0.00      79         executeTarget [101]
+                0.00    0.00      79/7000        isReg [73]
+                0.00    0.00      75/145         executeLabel [107]
+                0.00    0.00      75/913         isLabel [96]
+                0.00    0.00      79/1548203     regCar [36]
+                0.00    0.00      79/199850      regFreeTemp [61]
+                0.00    0.00      79/199850      regGetTemp [63]
+                0.00    0.00       4/251         executeRegisterExp [102]
+-----------------------------------------------
+                0.00    0.00       2/251         executeSource [22]
+                0.00    0.00       4/251         executeTarget [101]
+                0.00    0.00     245/251         executeInput [95]
+[102]    0.0    0.00    0.00     251         executeRegisterExp [102]
+                0.00    0.00     502/20287929     regCdr [9]
+                0.00    0.00     251/1548203     regCar [36]
+                0.00    0.00     251/75466       regCopy [67]
+                0.00    0.00     251/199850      regFreeTemp [61]
+                0.00    0.00     251/199850      regGetTemp [63]
+                0.00    0.00     251/910         regGetNumber [116]
+-----------------------------------------------
+                0.00    0.00      70/5395        checkType [127]
+                0.00    0.00    5325/5395        extractLabels [69]
+[103]    0.0    0.00    0.00    5395         regIsSymbol [103]
+                0.00    0.00    5398/34244097     regRead [18]
+                0.00    0.00    5398/2988481     objIsSymbol [64]
+-----------------------------------------------
+                0.00    0.00       1/185         display_if [141]
+                0.00    0.00       2/185         read_if [17]
+                0.00    0.00       4/185         newline_if [130]
+                0.00    0.00     178/185         checkArgsEQ [105]
+[104]    0.0    0.00    0.00     185         checkArgs [104]
+                0.00    0.00     383/20287929     regCdr [9]
+                0.00    0.00     383/1548203     regCar [36]
+                0.00    0.00     185/185         regListLength [118]
+                0.00    0.00     383/383         checkType [127]
+-----------------------------------------------
+                0.00    0.00       1/10          isPrimitive_if [120]
+                0.00    0.00       1/10          closeInputPort_if [124]
+                0.00    0.00       1/10          openInputFile_if [123]
+                0.00    0.00       1/10          pushInputPort_if [121]
+                0.00    0.00       1/10          popInputPort_if [122]
+                0.00    0.00       1/10          exit_if [126]
+                0.00    0.00       1/10          initStack_if [125]
+                0.00    0.00       1/10          snoc_if [106]
+                0.00    0.00       2/10          isEOF_if [114]
+[105]    0.0    0.00    0.00      10         checkArgsEQ [105]
+                0.00    0.00     178/185         checkArgs [104]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[106]    0.0    0.00    0.00       1         snoc_if [106]
+                0.00    0.00       1/33303       snoc [7]
+                0.00    0.00       1/10          checkArgsEQ [105]
+-----------------------------------------------
+                0.00    0.00       3/145         executeSource [22]
+                0.00    0.00      67/145         executeInput [95]
+                0.00    0.00      75/145         executeTarget [101]
+[107]    0.0    0.00    0.00     145         executeLabel [107]
+                0.00    0.00     290/20287929     regCdr [9]
+                0.00    0.00     145/1548203     regCar [36]
+                0.00    0.00     145/75466       regCopy [67]
+                0.00    0.00     145/199850      regFreeTemp [61]
+                0.00    0.00     145/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00     186/186         executeOperationExp [16]
+[108]    0.0    0.00    0.00     186         getPrimitive [108]
+                0.00    0.00     372/20287929     regCdr [9]
+                0.00    0.00     186/1548203     regCar [36]
+-----------------------------------------------
+                0.00    0.00      63/136         executeSource [22]
+                0.00    0.00      73/136         executeInput [95]
+[109]    0.0    0.00    0.00     136         executeConstant [109]
+                0.00    0.00     136/20287929     regCdr [9]
+                0.00    0.00     136/1548203     regCar [36]
+                0.00    0.00     136/75466       regCopy [67]
+                0.00    0.00     136/199850      regFreeTemp [61]
+                0.00    0.00     136/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00       6/162         executeSave [129]
+                0.00    0.00       6/162         executeRestore [128]
+                0.00    0.00     150/162         executeAssign [21]
+[110]    0.0    0.00    0.00     162         regExpGetRegister [110]
+                0.00    0.00     162/20287929     regCdr [9]
+                0.00    0.00     162/1548203     regCar [36]
+                0.00    0.00     162/199850      regFreeTemp [61]
+                0.00    0.00     162/199850      regGetTemp [63]
+                0.00    0.00     162/910         regGetNumber [116]
+-----------------------------------------------
+                                                 <spontaneous>
+[111]    0.0    0.00    0.00                 regVectorRef [111]
+                0.00    0.00     334/22288785     regWrite [10]
+                0.00    0.00     334/910         regGetNumber [116]
+                0.00    0.00     334/34244097     regRead [18]
+                0.00    0.00     334/34244431     objVectorRef [20]
+-----------------------------------------------
+                0.00    0.00      19/369         executeBranch [117]
+                0.00    0.00     350/369         executeInstruction [15]
+[112]    0.0    0.00    0.00     369         advancePC [112]
+                0.00    0.00     369/20287929     regCdr [9]
+-----------------------------------------------
+                                                 <spontaneous>
+[113]    0.0    0.00    0.00                 regHashSymbol [113]
+                0.00    0.00     334/6261        regMakeNumber [97]
+                0.00    0.00     334/34244097     regRead [18]
+                0.00    0.00     334/334         objHashSymbol [132]
+-----------------------------------------------
+                0.00    0.00       2/2           executeOperationExp [16]
+[114]    0.0    0.00    0.00       2         isEOF_if [114]
+                0.00    0.00       2/10          checkArgsEQ [105]
+                0.00    0.00       2/3           regMakeBoolean [135]
+                0.00    0.00       2/2           regIsEOF [172]
+-----------------------------------------------
+                                                 <spontaneous>
+[115]    0.0    0.00    0.00                 regVectorSet [115]
+                0.00    0.00     163/22288950     objVectorSet [11]
+                0.00    0.00     326/34244097     regRead [18]
+                0.00    0.00     163/910         regGetNumber [116]
+-----------------------------------------------
+                0.00    0.00     162/910         regExpGetRegister [110]
+                0.00    0.00     163/910         regVectorSet [115]
+                0.00    0.00     251/910         executeRegisterExp [102]
+                0.00    0.00     334/910         regVectorRef [111]
+[116]    0.0    0.00    0.00     910         regGetNumber [116]
+                0.00    0.00     910/34244097     regRead [18]
+                0.00    0.00     910/910         objGetNumber [139]
+-----------------------------------------------
+                0.00    0.00      26/26          executeInstruction [15]
+[117]    0.0    0.00    0.00      26         executeBranch [117]
+                0.00    0.00       7/79          executeGoto [99]
+                0.00    0.00      19/369         advancePC [112]
+                0.00    0.00      26/26          regIsTrue [146]
+-----------------------------------------------
+                0.00    0.00     185/185         checkArgs [104]
+[118]    0.0    0.00    0.00     185         regListLength [118]
+                0.00    0.00     383/20288349     objCdr [27]
+                0.00    0.00     185/34244097     regRead [18]
+                0.00    0.00     568/10531623     objIsNull [47]
+-----------------------------------------------
+                                   3             objDeleteVector <cycle 1> [240]
+[119]    0.0    0.00    0.00       3         vecDelete <cycle 1> [119]
+                0.00    0.00    1224/34245655     vecRef [31]
+                0.00    0.00       3/6           vecGetSize [236]
+                                1224             objUnref <cycle 1> [38]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[120]    0.0    0.00    0.00       1         isPrimitive_if [120]
+                0.00    0.00       1/10          checkArgsEQ [105]
+                0.00    0.00       1/3           regMakeBoolean [135]
+                0.00    0.00       1/1           regIsPrimitive [174]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[121]    0.0    0.00    0.00       1         pushInputPort_if [121]
+                0.00    0.00       1/10          checkArgsEQ [105]
+                0.00    0.00       1/6           pushInputPort [133]
+                0.00    0.00       1/48099       regMakeSymbol [75]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[122]    0.0    0.00    0.00       1         popInputPort_if [122]
+                0.00    0.00       1/10          checkArgsEQ [105]
+                0.00    0.00       1/5           popInputPort [140]
+                0.00    0.00       1/48099       regMakeSymbol [75]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[123]    0.0    0.00    0.00       1         openInputFile_if [123]
+                0.00    0.00       1/10          checkArgsEQ [105]
+                0.00    0.00       1/5           openInputFile [148]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[124]    0.0    0.00    0.00       1         closeInputPort_if [124]
+                0.00    0.00       1/10          checkArgsEQ [105]
+                0.00    0.00       1/48099       regMakeSymbol [75]
+                0.00    0.00       1/5           regCloseInputPort [163]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[125]    0.0    0.00    0.00       1         initStack_if [125]
+                0.00    0.00       1/10          checkArgsEQ [105]
+                0.00    0.00       1/2           initStack [157]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[126]    0.0    0.00    0.00       1         exit_if [126]
+                0.00    0.00       1/10          checkArgsEQ [105]
+-----------------------------------------------
+                0.00    0.00     383/383         checkArgs [104]
+[127]    0.0    0.00    0.00     383         checkType [127]
+                0.00    0.00     210/35359       regIsPairPointer [94]
+                0.00    0.00      70/5395        regIsSymbol [103]
+                0.00    0.00       1/1           regIsString [166]
+                0.00    0.00       3/3           regIsInputPort [171]
+-----------------------------------------------
+                0.00    0.00       6/6           executeInstruction [15]
+[128]    0.0    0.00    0.00       6         executeRestore [128]
+                0.00    0.00       6/162         regExpGetRegister [110]
+                0.00    0.00       6/44015       restore [62]
+                0.00    0.00       6/20287929     regCdr [9]
+                0.00    0.00       6/199850      regFreeTemp [61]
+                0.00    0.00       6/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00       6/6           executeInstruction [15]
+[129]    0.0    0.00    0.00       6         executeSave [129]
+                0.00    0.00       6/162         regExpGetRegister [110]
+                0.00    0.00       6/44015       save [65]
+                0.00    0.00       6/20287929     regCdr [9]
+                0.00    0.00       6/199850      regFreeTemp [61]
+                0.00    0.00       6/199850      regGetTemp [63]
+-----------------------------------------------
+                0.00    0.00       4/4           executeOperationExp [16]
+[130]    0.0    0.00    0.00       4         newline_if [130]
+                0.00    0.00       4/185         checkArgs [104]
+                0.00    0.00       4/5           regDisplayObject [137]
+                0.00    0.00       4/15          currentOutputPort [136]
+                0.00    0.00       4/4           regMakeCharacter [150]
+-----------------------------------------------
+                0.00    0.00     186/186         executeOperationExp [16]
+[131]    0.0    0.00    0.00     186         regGetPrimitive [131]
+                0.00    0.00     186/34244097     regRead [18]
+                0.00    0.00     186/186         objGetPrimitive [152]
+-----------------------------------------------
+                0.00    0.00     334/334         regHashSymbol [113]
+[132]    0.0    0.00    0.00     334         objHashSymbol [132]
+                0.00    0.00     334/2983083     objGetSymbol [51]
+-----------------------------------------------
+                0.00    0.00       1/6           initPorts [142]
+                0.00    0.00       1/6           pushInputPort_if [121]
+                0.00    0.00       4/6           readPort [4]
+[133]    0.0    0.00    0.00       6         pushInputPort [133]
+                0.00    0.00       6/93860       cons [59]
+                0.00    0.00       6/18          currentInputPort [134]
+                0.00    0.00       6/11          regGetInputPortYYBuffer [154]
+                0.00    0.00       6/11          scSetCurrentYYBuffer [217]
+-----------------------------------------------
+                0.00    0.00       1/18          read_if [17]
+                0.00    0.00       5/18          popInputPort [140]
+                0.00    0.00       6/18          pushInputPort [133]
+                0.00    0.00       6/18          readPort [4]
+[134]    0.0    0.00    0.00      18         currentInputPort [134]
+                0.00    0.00      18/1548203     regCar [36]
+-----------------------------------------------
+                0.00    0.00       1/3           isPrimitive_if [120]
+                0.00    0.00       2/3           isEOF_if [114]
+[135]    0.0    0.00    0.00       3         regMakeBoolean [135]
+                0.00    0.00      28/22288785     regWrite [10]
+                0.00    0.00      28/28          objMakeBoolean [208]
+-----------------------------------------------
+                0.00    0.00       1/15          display_if [141]
+                0.00    0.00       4/15          newline_if [130]
+                0.00    0.00       5/15          objDisplayToCurrentPort [145]
+                0.00    0.00       5/15          regDisplayObject [137]
+[136]    0.0    0.00    0.00      15         currentOutputPort [136]
+                0.00    0.00      15/1548203     regCar [36]
+-----------------------------------------------
+                0.00    0.00       1/5           display_if [141]
+                0.00    0.00       4/5           newline_if [130]
+[137]    0.0    0.00    0.00       5         regDisplayObject [137]
+                0.00    0.00       5/5           regDisplayToCurrentPort [143]
+                0.00    0.00       5/15          currentOutputPort [136]
+                0.00    0.00       5/5           regIsEqOutputPort [156]
+-----------------------------------------------
+                0.00    0.00       3/913         regIsNumber [170]
+                0.00    0.00     910/913         objGetNumber [139]
+[138]    0.0    0.00    0.00     913         objIsNumber [138]
+                0.00    0.00     913/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.00     910/910         regGetNumber [116]
+[139]    0.0    0.00    0.00     910         objGetNumber [139]
+                0.00    0.00     910/913         objIsNumber [138]
+-----------------------------------------------
+                0.00    0.00       1/5           popInputPort_if [122]
+                0.00    0.00       4/5           readPort [4]
+[140]    0.0    0.00    0.00       5         popInputPort [140]
+                0.00    0.00       5/20287929     regCdr [9]
+                0.00    0.00       5/18          currentInputPort [134]
+                0.00    0.00       5/11          regGetInputPortYYBuffer [154]
+                0.00    0.00       5/11          scSetCurrentYYBuffer [217]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[141]    0.0    0.00    0.00       1         display_if [141]
+                0.00    0.00       1/185         checkArgs [104]
+                0.00    0.00       1/5           regDisplayObject [137]
+                0.00    0.00       1/15          currentOutputPort [136]
+                0.00    0.00       1/48099       regMakeSymbol [75]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[142]    0.0    0.00    0.00       1         initPorts [142]
+                0.00    0.00       1/6           pushInputPort [133]
+                0.00    0.00       1/1           pushOutputPort [155]
+                0.00    0.00       2/247020      regMakeNull [58]
+                0.00    0.00       1/6           regMakeInputPort [149]
+                0.00    0.00       1/1           regMakeOutputPort [169]
+                0.00    0.00       1/6           scCreateYYBuffer [232]
+-----------------------------------------------
+                0.00    0.00       5/5           regDisplayObject [137]
+[143]    0.0    0.00    0.00       5         regDisplayToCurrentPort [143]
+                0.00    0.00       5/5           objDisplayToCurrentPort [145]
+                0.00    0.00       5/34244097     regRead [18]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[144]    0.0    0.00    0.00       1         initRegsim [144]
+                0.00    0.00       4/75466       regCopy [67]
+                0.00    0.00       1/93860       cons [59]
+                0.00    0.00       1/247020      regMakeNull [58]
+                0.00    0.00       1/6261        regMakeNumber [97]
+                0.00    0.00       9/120         regAllocate [200]
+-----------------------------------------------
+                0.00    0.00       5/5           regDisplayToCurrentPort [143]
+[145]    0.0    0.00    0.00       5         objDisplayToCurrentPort [145]
+                0.00    0.00       5/15          currentOutputPort [136]
+                0.00    0.00       5/5           regGetOutputPortFile [161]
+                0.00    0.00       5/5           objDisplay [178]
+                0.00    0.00       5/5           maxDepthToPrint [237]
+-----------------------------------------------
+                0.00    0.00      26/26          executeBranch [117]
+[146]    0.0    0.00    0.00      26         regIsTrue [146]
+                0.00    0.00      26/34244097     regRead [18]
+                0.00    0.00      26/26          objIsTrue [167]
+-----------------------------------------------
+                0.00    0.00       3/7           scparse [6]
+                0.00    0.00       4/7           loadFile [2]
+[147]    0.0    0.00    0.00       7         regMakeString [147]
+                0.00    0.00       7/22288785     regWrite [10]
+                0.00    0.00       7/7           objMakeString [224]
+-----------------------------------------------
+                0.00    0.00       1/5           openInputFile_if [123]
+                0.00    0.00       4/5           loadFile [2]
+[148]    0.0    0.00    0.00       5         openInputFile [148]
+                0.00    0.00       5/6           regMakeInputPort [149]
+                0.00    0.00       5/5           regGetString [162]
+                0.00    0.00       5/6           scCreateYYBuffer [232]
+-----------------------------------------------
+                0.00    0.00       1/6           initPorts [142]
+                0.00    0.00       5/6           openInputFile [148]
+[149]    0.0    0.00    0.00       6         regMakeInputPort [149]
+                0.00    0.00       6/22288785     regWrite [10]
+                0.00    0.00       6/6           objMakeInputPort [231]
+-----------------------------------------------
+                0.00    0.00       4/4           newline_if [130]
+[150]    0.0    0.00    0.00       4         regMakeCharacter [150]
+                0.00    0.00       4/22288785     regWrite [10]
+                0.00    0.00       4/4           objMakeCharacter [238]
+-----------------------------------------------
+                0.00    0.00       1/187         regIsPrimitive [174]
+                0.00    0.00     186/187         objGetPrimitive [152]
+[151]    0.0    0.00    0.00     187         objIsPrimitive [151]
+                0.00    0.00     187/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.00     186/186         regGetPrimitive [131]
+[152]    0.0    0.00    0.00     186         objGetPrimitive [152]
+                0.00    0.00     186/187         objIsPrimitive [151]
+-----------------------------------------------
+                0.00    0.00       6/6           readPort [4]
+[153]    0.0    0.00    0.00       6         regIsEqInputPort [153]
+                0.00    0.00      12/34244097     regRead [18]
+                0.00    0.00       6/22          objIsEqInputPort [209]
+-----------------------------------------------
+                0.00    0.00       5/11          popInputPort [140]
+                0.00    0.00       6/11          pushInputPort [133]
+[154]    0.0    0.00    0.00      11         regGetInputPortYYBuffer [154]
+                0.00    0.00      11/34244097     regRead [18]
+                0.00    0.00      11/11          objGetInputPortYYBuffer [177]
+-----------------------------------------------
+                0.00    0.00       1/1           initPorts [142]
+[155]    0.0    0.00    0.00       1         pushOutputPort [155]
+                0.00    0.00       1/93860       cons [59]
+-----------------------------------------------
+                0.00    0.00       5/5           regDisplayObject [137]
+[156]    0.0    0.00    0.00       5         regIsEqOutputPort [156]
+                0.00    0.00      10/34244097     regRead [18]
+                0.00    0.00       5/14          objIsEqOutputPort [212]
+-----------------------------------------------
+                0.00    0.00       1/2           main [1]
+                0.00    0.00       1/2           initStack_if [125]
+[157]    0.0    0.00    0.00       2         initStack [157]
+                0.00    0.00       2/247020      regMakeNull [58]
+-----------------------------------------------
+                0.00    0.00       2/2           scparse [6]
+[158]    0.0    0.00    0.00       2         regMakeEOF [158]
+                0.00    0.00       2/22288785     regWrite [10]
+                0.00    0.00       2/2           objMakeEOF [243]
+-----------------------------------------------
+                0.00    0.00      26/74          objIsTrue [167]
+                0.00    0.00      48/74          objIsEqBoolean [168]
+[159]    0.0    0.00    0.00      74         objGetBoolean [159]
+                0.00    0.00      74/74          objIsBoolean [160]
+-----------------------------------------------
+                0.00    0.00      74/74          objGetBoolean [159]
+[160]    0.0    0.00    0.00      74         objIsBoolean [160]
+                0.00    0.00      74/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.00       5/5           objDisplayToCurrentPort [145]
+[161]    0.0    0.00    0.00       5         regGetOutputPortFile [161]
+                0.00    0.00       5/34244097     regRead [18]
+                0.00    0.00       5/5           objGetOutputPortFile [182]
+-----------------------------------------------
+                0.00    0.00       5/5           openInputFile [148]
+[162]    0.0    0.00    0.00       5         regGetString [162]
+                0.00    0.00       5/34244097     regRead [18]
+                0.00    0.00       5/8           objGetString [179]
+-----------------------------------------------
+                0.00    0.00       1/5           closeInputPort_if [124]
+                0.00    0.00       4/5           loadFile [2]
+[163]    0.0    0.00    0.00       5         regCloseInputPort [163]
+                0.00    0.00       5/34244097     regRead [18]
+                0.00    0.00       5/6           objCloseInputPort [229]
+-----------------------------------------------
+                0.00    0.00       1/1           list_if [165]
+[164]    0.0    0.00    0.00       1         list [164]
+                0.00    0.00       1/75466       regCopy [67]
+-----------------------------------------------
+                0.00    0.00       1/1           executeOperationExp [16]
+[165]    0.0    0.00    0.00       1         list_if [165]
+                0.00    0.00       1/1           list [164]
+-----------------------------------------------
+                0.00    0.00       1/1           checkType [127]
+[166]    0.0    0.00    0.00       1         regIsString [166]
+                0.00    0.00       4/34244097     regRead [18]
+                0.00    0.00       4/12          objIsString [176]
+-----------------------------------------------
+                0.00    0.00      26/26          regIsTrue [146]
+[167]    0.0    0.00    0.00      26         objIsTrue [167]
+                0.00    0.00      26/192863996     objGetType [33]
+                0.00    0.00      26/74          objGetBoolean [159]
+-----------------------------------------------
+                0.00    0.00      24/24          objIsEq [19]
+[168]    0.0    0.00    0.00      24         objIsEqBoolean [168]
+                0.00    0.00      48/74          objGetBoolean [159]
+-----------------------------------------------
+                0.00    0.00       1/1           initPorts [142]
+[169]    0.0    0.00    0.00       1         regMakeOutputPort [169]
+                0.00    0.00       1/22288785     regWrite [10]
+                0.00    0.00       1/1           objMakeOutputPort [257]
+-----------------------------------------------
+                                                 <spontaneous>
+[170]    0.0    0.00    0.00                 regIsNumber [170]
+                0.00    0.00       3/34244097     regRead [18]
+                0.00    0.00       3/913         objIsNumber [138]
+-----------------------------------------------
+                0.00    0.00       3/3           checkType [127]
+[171]    0.0    0.00    0.00       3         regIsInputPort [171]
+                0.00    0.00       3/34244097     regRead [18]
+                0.00    0.00       3/14          objIsInputPort [175]
+-----------------------------------------------
+                0.00    0.00       2/2           isEOF_if [114]
+[172]    0.0    0.00    0.00       2         regIsEOF [172]
+                0.00    0.00       2/34244097     regRead [18]
+                0.00    0.00       2/2           objIsEOF [187]
+-----------------------------------------------
+                                                 <spontaneous>
+[173]    0.0    0.00    0.00                 regIsCharacter [173]
+                0.00    0.00       2/34244097     regRead [18]
+                0.00    0.00       2/6           objIsCharacter [180]
+-----------------------------------------------
+                0.00    0.00       1/1           isPrimitive_if [120]
+[174]    0.0    0.00    0.00       1         regIsPrimitive [174]
+                0.00    0.00       1/34244097     regRead [18]
+                0.00    0.00       1/187         objIsPrimitive [151]
+-----------------------------------------------
+                0.00    0.00       3/14          regIsInputPort [171]
+                0.00    0.00      11/14          objGetInputPortYYBuffer [177]
+[175]    0.0    0.00    0.00      14         objIsInputPort [175]
+                0.00    0.00      14/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.00       4/12          regIsString [166]
+                0.00    0.00       8/12          objGetString [179]
+[176]    0.0    0.00    0.00      12         objIsString [176]
+                0.00    0.00      12/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.00      11/11          regGetInputPortYYBuffer [154]
+[177]    0.0    0.00    0.00      11         objGetInputPortYYBuffer [177]
+                0.00    0.00      11/14          objIsInputPort [175]
+                0.00    0.00      11/17          portGetYYBuffer [210]
+-----------------------------------------------
+                0.00    0.00       5/5           objDisplayToCurrentPort [145]
+[178]    0.0    0.00    0.00       5         objDisplay [178]
+                0.00    0.00       5/192863996     objGetType [33]
+                0.00    0.00       4/4           objDisplayCharacter [184]
+                0.00    0.00       1/1           objDisplayString [189]
+-----------------------------------------------
+                0.00    0.00       1/8           objDisplayString [189]
+                0.00    0.00       2/8           objIsEqString [186]
+                0.00    0.00       5/8           regGetString [162]
+[179]    0.0    0.00    0.00       8         objGetString [179]
+                0.00    0.00       8/12          objIsString [176]
+-----------------------------------------------
+                0.00    0.00       2/6           regIsCharacter [173]
+                0.00    0.00       4/6           objGetCharacter [185]
+[180]    0.0    0.00    0.00       6         objIsCharacter [180]
+                0.00    0.00       6/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[181]    0.0    0.00    0.00       1         regFree [181]
+                0.00    0.00       1/22503759     objDeleteVector <cycle 1> [240]
+-----------------------------------------------
+                0.00    0.00       5/5           regGetOutputPortFile [161]
+[182]    0.0    0.00    0.00       5         objGetOutputPortFile [182]
+                0.00    0.00       5/5           objIsOutputPort [183]
+                0.00    0.00       5/11          portGetFile [216]
+-----------------------------------------------
+                0.00    0.00       5/5           objGetOutputPortFile [182]
+[183]    0.0    0.00    0.00       5         objIsOutputPort [183]
+                0.00    0.00       5/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.00       4/4           objDisplay [178]
+[184]    0.0    0.00    0.00       4         objDisplayCharacter [184]
+                0.00    0.00       4/4           objGetCharacter [185]
+-----------------------------------------------
+                0.00    0.00       4/4           objDisplayCharacter [184]
+[185]    0.0    0.00    0.00       4         objGetCharacter [185]
+                0.00    0.00       4/6           objIsCharacter [180]
+-----------------------------------------------
+                0.00    0.00       1/1           objIsEq [19]
+[186]    0.0    0.00    0.00       1         objIsEqString [186]
+                0.00    0.00       2/8           objGetString [179]
+-----------------------------------------------
+                0.00    0.00       2/2           regIsEOF [172]
+[187]    0.0    0.00    0.00       2         objIsEOF [187]
+                0.00    0.00       2/192863996     objGetType [33]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[188]    0.0    0.00    0.00       1         regInit [188]
+                0.00    0.00       1/1047187     objMakeNull [78]
+                0.00    0.00       5/120         regAllocate [200]
+                0.00    0.00       1/1           objMakeVector [258]
+                0.00    0.00       1/1           regAllocateTemp [260]
+-----------------------------------------------
+                0.00    0.00       1/1           objDisplay [178]
+[189]    0.0    0.00    0.00       1         objDisplayString [189]
+                0.00    0.00       1/8           objGetString [179]
+-----------------------------------------------
+                0.00    0.00  393426/393426      objIsEq [19]
+[190]    0.0    0.00    0.00  393426         objIsEqNull [190]
+-----------------------------------------------
+                0.00    0.00   94322/94322       cons [59]
+[191]    0.0    0.00    0.00   94322         memAmountFree [191]
+-----------------------------------------------
+                0.00    0.00   94322/94322       cons [59]
+[192]    0.0    0.00    0.00   94322         objMakePairPointer [192]
+-----------------------------------------------
+                0.00    0.00   48283/48283       regMakeSymbol [75]
+[193]    0.0    0.00    0.00   48283         objMakeSymbol [193]
+-----------------------------------------------
+                0.00    0.00    6261/6261        regMakeNumber [97]
+[194]    0.0    0.00    0.00    6261         objMakeNumber [194]
+-----------------------------------------------
+                0.00    0.00    5908/5908        assembleRegisterExp [68]
+[195]    0.0    0.00    0.00    5908         regLookup [195]
+-----------------------------------------------
+                0.00    0.00    2270/2270        regMakePrimitive [100]
+[196]    0.0    0.00    0.00    2270         objMakePrimitive [196]
+-----------------------------------------------
+                0.00    0.00    2173/2173        assembleOperation [77]
+[197]    0.0    0.00    0.00    2173         rsLookupPrimitive [197]
+-----------------------------------------------
+                0.00    0.00     175/175         objRef [42]
+[198]    0.0    0.00    0.00     175         objRefVector [198]
+-----------------------------------------------
+                                 175             objUnref <cycle 1> [38]
+[199]    0.0    0.00    0.00     175         objUnrefVector <cycle 1> [199]
+                                   2             objDeleteVector <cycle 1> [240]
+-----------------------------------------------
+                0.00    0.00       1/120         memInit [91]
+                0.00    0.00       5/120         portInit [259]
+                0.00    0.00       5/120         regInit [188]
+                0.00    0.00       9/120         initRegsim [144]
+                0.00    0.00     100/120         regAllocateTemp [260]
+[200]    0.0    0.00    0.00     120         regAllocate [200]
+-----------------------------------------------
+                0.00    0.00      68/68          addPrimitives [246]
+[201]    0.0    0.00    0.00      68         rsAddPrimitive [201]
+-----------------------------------------------
+                0.00    0.00      33/33          objRef [42]
+[202]    0.0    0.00    0.00      33         objRefInputPort [202]
+-----------------------------------------------
+                0.00    0.00      33/33          objUnref <cycle 1> [38]
+[203]    0.0    0.00    0.00      33         objUnrefInputPort [203]
+                0.00    0.00       6/6           objDeleteInputPort [230]
+-----------------------------------------------
+                0.00    0.00      32/32          objRef [42]
+[204]    0.0    0.00    0.00      32         objRefString [204]
+-----------------------------------------------
+                0.00    0.00      32/32          objUnref <cycle 1> [38]
+[205]    0.0    0.00    0.00      32         objUnrefString [205]
+                0.00    0.00       7/7           objDeleteString [223]
+-----------------------------------------------
+                0.00    0.00      31/31          sclex [70]
+[206]    0.0    0.00    0.00      31         yy_get_next_buffer [206]
+                0.00    0.00       2/2           screstart [244]
+-----------------------------------------------
+                0.00    0.00      29/29          sclex [70]
+[207]    0.0    0.00    0.00      29         yy_get_previous_state [207]
+-----------------------------------------------
+                0.00    0.00      28/28          regMakeBoolean [135]
+[208]    0.0    0.00    0.00      28         objMakeBoolean [208]
+-----------------------------------------------
+                0.00    0.00       6/22          regIsEqInputPort [153]
+                0.00    0.00      16/22          objIsEq [19]
+[209]    0.0    0.00    0.00      22         objIsEqInputPort [209]
+-----------------------------------------------
+                0.00    0.00       6/17          objCloseInputPort [229]
+                0.00    0.00      11/17          objGetInputPortYYBuffer [177]
+[210]    0.0    0.00    0.00      17         portGetYYBuffer [210]
+-----------------------------------------------
+                0.00    0.00       1/17          sclex [70]
+                0.00    0.00       2/17          screstart [244]
+                0.00    0.00       3/17          sc_flush_buffer [213]
+                0.00    0.00      11/17          sc_switch_to_buffer [218]
+[211]    0.0    0.00    0.00      17         sc_load_buffer_state [211]
+-----------------------------------------------
+                0.00    0.00       5/14          regIsEqOutputPort [156]
+                0.00    0.00       9/14          objIsEq [19]
+[212]    0.0    0.00    0.00      14         objIsEqOutputPort [212]
+-----------------------------------------------
+                0.00    0.00       6/14          scDeleteYYBuffer [233]
+                0.00    0.00       8/14          sc_init_buffer [221]
+[213]    0.0    0.00    0.00      14         sc_flush_buffer [213]
+                0.00    0.00       3/17          sc_load_buffer_state [211]
+-----------------------------------------------
+                0.00    0.00      12/12          sc_create_buffer [234]
+[214]    0.0    0.00    0.00      12         yy_flex_alloc [214]
+-----------------------------------------------
+                0.00    0.00      12/12          sc_delete_buffer [235]
+[215]    0.0    0.00    0.00      12         yy_flex_free [215]
+-----------------------------------------------
+                0.00    0.00       5/11          objGetOutputPortFile [182]
+                0.00    0.00       6/11          objCloseInputPort [229]
+[216]    0.0    0.00    0.00      11         portGetFile [216]
+-----------------------------------------------
+                0.00    0.00       5/11          popInputPort [140]
+                0.00    0.00       6/11          pushInputPort [133]
+[217]    0.0    0.00    0.00      11         scSetCurrentYYBuffer [217]
+                0.00    0.00      11/11          sc_switch_to_buffer [218]
+-----------------------------------------------
+                0.00    0.00      11/11          scSetCurrentYYBuffer [217]
+[218]    0.0    0.00    0.00      11         sc_switch_to_buffer [218]
+                0.00    0.00      11/17          sc_load_buffer_state [211]
+-----------------------------------------------
+                0.00    0.00       8/8           objRef [42]
+[219]    0.0    0.00    0.00       8         objRefOutputPort [219]
+-----------------------------------------------
+                0.00    0.00       8/8           objUnref <cycle 1> [38]
+[220]    0.0    0.00    0.00       8         objUnrefOutputPort [220]
+                0.00    0.00       1/1           objDeleteOutputPort [256]
+-----------------------------------------------
+                0.00    0.00       2/8           screstart [244]
+                0.00    0.00       6/8           sc_create_buffer [234]
+[221]    0.0    0.00    0.00       8         sc_init_buffer [221]
+                0.00    0.00       8/14          sc_flush_buffer [213]
+-----------------------------------------------
+                0.00    0.00       1/7           objMakeOutputPort [257]
+                0.00    0.00       6/7           objMakeInputPort [231]
+[222]    0.0    0.00    0.00       7         makePort [222]
+-----------------------------------------------
+                0.00    0.00       7/7           objUnrefString [205]
+[223]    0.0    0.00    0.00       7         objDeleteString [223]
+-----------------------------------------------
+                0.00    0.00       7/7           regMakeString [147]
+[224]    0.0    0.00    0.00       7         objMakeString [224]
+-----------------------------------------------
+                0.00    0.00       1/7           objDeleteOutputPort [256]
+                0.00    0.00       6/7           objDeleteInputPort [230]
+[225]    0.0    0.00    0.00       7         portDelete [225]
+-----------------------------------------------
+                0.00    0.00       1/7           objCloseOutputPort [255]
+                0.00    0.00       6/7           objCloseInputPort [229]
+[226]    0.0    0.00    0.00       7         portGetFilename [226]
+-----------------------------------------------
+                0.00    0.00       1/7           objDeleteOutputPort [256]
+                0.00    0.00       6/7           objDeleteInputPort [230]
+[227]    0.0    0.00    0.00       7         portIsOpen [227]
+-----------------------------------------------
+                0.00    0.00       1/7           objCloseOutputPort [255]
+                0.00    0.00       6/7           objCloseInputPort [229]
+[228]    0.0    0.00    0.00       7         portSetState [228]
+-----------------------------------------------
+                0.00    0.00       1/6           objDeleteInputPort [230]
+                0.00    0.00       5/6           regCloseInputPort [163]
+[229]    0.0    0.00    0.00       6         objCloseInputPort [229]
+                0.00    0.00       6/11          portGetFile [216]
+                0.00    0.00       6/7           portGetFilename [226]
+                0.00    0.00       6/17          portGetYYBuffer [210]
+                0.00    0.00       6/6           scDeleteYYBuffer [233]
+                0.00    0.00       6/7           portSetState [228]
+-----------------------------------------------
+                0.00    0.00       6/6           objUnrefInputPort [203]
+[230]    0.0    0.00    0.00       6         objDeleteInputPort [230]
+                0.00    0.00       6/7           portIsOpen [227]
+                0.00    0.00       6/7           portDelete [225]
+                0.00    0.00       1/6           objCloseInputPort [229]
+-----------------------------------------------
+                0.00    0.00       6/6           regMakeInputPort [149]
+[231]    0.0    0.00    0.00       6         objMakeInputPort [231]
+                0.00    0.00       6/7           makePort [222]
+-----------------------------------------------
+                0.00    0.00       1/6           initPorts [142]
+                0.00    0.00       5/6           openInputFile [148]
+[232]    0.0    0.00    0.00       6         scCreateYYBuffer [232]
+                0.00    0.00       6/6           sc_create_buffer [234]
+-----------------------------------------------
+                0.00    0.00       6/6           objCloseInputPort [229]
+[233]    0.0    0.00    0.00       6         scDeleteYYBuffer [233]
+                0.00    0.00       6/14          sc_flush_buffer [213]
+                0.00    0.00       6/6           sc_delete_buffer [235]
+-----------------------------------------------
+                0.00    0.00       6/6           scCreateYYBuffer [232]
+[234]    0.0    0.00    0.00       6         sc_create_buffer [234]
+                0.00    0.00      12/12          yy_flex_alloc [214]
+                0.00    0.00       6/8           sc_init_buffer [221]
+-----------------------------------------------
+                0.00    0.00       6/6           scDeleteYYBuffer [233]
+[235]    0.0    0.00    0.00       6         sc_delete_buffer [235]
+                0.00    0.00      12/12          yy_flex_free [215]
+-----------------------------------------------
+                0.00    0.00       3/6           vecInit [241]
+                0.00    0.00       3/6           vecDelete <cycle 1> [119]
+[236]    0.0    0.00    0.00       6         vecGetSize [236]
+-----------------------------------------------
+                0.00    0.00       5/5           objDisplayToCurrentPort [145]
+[237]    0.0    0.00    0.00       5         maxDepthToPrint [237]
+-----------------------------------------------
+                0.00    0.00       4/4           regMakeCharacter [150]
+[238]    0.0    0.00    0.00       4         objMakeCharacter [238]
+-----------------------------------------------
+                0.00    0.00       3/3           objMakeVector [258]
+[239]    0.0    0.00    0.00       3         makeVector [239]
+                0.00    0.00       3/3           vecInit [241]
+-----------------------------------------------
+                                   2             objUnrefVector <cycle 1> [199]
+                0.00    0.00       1/22503759     regFree [181]
+[240]    0.0    0.00    0.00       3         objDeleteVector <cycle 1> [240]
+                                   3             vecDelete <cycle 1> [119]
+-----------------------------------------------
+                0.00    0.00       3/3           makeVector [239]
+[241]    0.0    0.00    0.00       3         vecInit [241]
+                0.00    0.00       3/6           vecGetSize [236]
+-----------------------------------------------
+                0.00    0.00       2/2           objIsEq [19]
+[242]    0.0    0.00    0.00       2         objIsEqEOF [242]
+-----------------------------------------------
+                0.00    0.00       2/2           regMakeEOF [158]
+[243]    0.0    0.00    0.00       2         objMakeEOF [243]
+-----------------------------------------------
+                0.00    0.00       2/2           yy_get_next_buffer [206]
+[244]    0.0    0.00    0.00       2         screstart [244]
+                0.00    0.00       2/8           sc_init_buffer [221]
+                0.00    0.00       2/17          sc_load_buffer_state [211]
+-----------------------------------------------
+                0.00    0.00       2/2           sclex [70]
+[245]    0.0    0.00    0.00       2         scwrap [245]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[246]    0.0    0.00    0.00       1         addPrimitives [246]
+                0.00    0.00      68/68          rsAddPrimitive [201]
+-----------------------------------------------
+                0.00    0.00       1/1           getOptions [252]
+[247]    0.0    0.00    0.00       1         dlAdd [247]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[248]    0.0    0.00    0.00       1         dlLoad [248]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[249]    0.0    0.00    0.00       1         dlUnload [249]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[250]    0.0    0.00    0.00       1         freePrimitives [250]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[251]    0.0    0.00    0.00       1         freeSymbols [251]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[252]    0.0    0.00    0.00       1         getOptions [252]
+                0.00    0.00       1/1           dlAdd [247]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[253]    0.0    0.00    0.00       1         initPrimitives [253]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[254]    0.0    0.00    0.00       1         initSymbols [254]
+-----------------------------------------------
+                0.00    0.00       1/1           objDeleteOutputPort [256]
+[255]    0.0    0.00    0.00       1         objCloseOutputPort [255]
+                0.00    0.00       1/7           portGetFilename [226]
+                0.00    0.00       1/7           portSetState [228]
+-----------------------------------------------
+                0.00    0.00       1/1           objUnrefOutputPort [220]
+[256]    0.0    0.00    0.00       1         objDeleteOutputPort [256]
+                0.00    0.00       1/7           portIsOpen [227]
+                0.00    0.00       1/1           objCloseOutputPort [255]
+                0.00    0.00       1/7           portDelete [225]
+-----------------------------------------------
+                0.00    0.00       1/1           regMakeOutputPort [169]
+[257]    0.0    0.00    0.00       1         objMakeOutputPort [257]
+                0.00    0.00       1/7           makePort [222]
+-----------------------------------------------
+                0.00    0.00       1/1           regInit [188]
+[258]    0.0    0.00    0.00       1         objMakeVector [258]
+                0.00    0.00       3/3           makeVector [239]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[259]    0.0    0.00    0.00       1         portInit [259]
+                0.00    0.00       5/120         regAllocate [200]
+-----------------------------------------------
+                0.00    0.00       1/1           regInit [188]
+[260]    0.0    0.00    0.00       1         regAllocateTemp [260]
+                0.00    0.00     100/120         regAllocate [200]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+
+Index by function name
+
+ [246] addPrimitives (main.c) [28] memRead               [133] pushInputPort
+ [112] advancePC (regsim.c)   [13] memWrite              [121] pushInputPort_if
+  [50] assembleInput (regsim.c) [130] newline_if         [155] pushOutputPort
+  [49] assembleInputs (regsim.c) [57] objCar               [5] readCurrentPort
+  [25] assembleInstructions (regsim.c) [27] objCdr         [4] readPort
+  [29] assembleLabel (regsim.c) [229] objCloseInputPort   [17] read_if
+  [77] assembleOperation (regsim.c) [255] objCloseOutputPort [200] regAllocate
+  [48] assembleOperationExp (regsim.c) [230] objDeleteInputPort [260] regAllocateTemp (register.c)
+  [68] assembleRegisterExp (regsim.c) [256] objDeleteOutputPort [36] regCar
+  [39] assembleSource (regsim.c) [223] objDeleteString     [9] regCdr
+  [35] assembleTarget (regsim.c) [240] objDeleteVector   [163] regCloseInputPort
+  [79] bindCompare (hash.c)  [178] objDisplay             [67] regCopy
+  [66] bindGetName           [184] objDisplayCharacter   [137] regDisplayObject
+ [104] checkArgs             [189] objDisplayString      [143] regDisplayToCurrentPort
+ [105] checkArgsEQ           [145] objDisplayToCurrentPort [110] regExpGetRegister (regsim.c)
+ [127] checkType (argcheck.c) [159] objGetBoolean        [181] regFree
+ [124] closeInputPort_if     [185] objGetCharacter        [61] regFreeTemp
+  [59] cons                  [177] objGetInputPortYYBuffer [154] regGetInputPortYYBuffer
+ [134] currentInputPort      [139] objGetNumber          [116] regGetNumber
+ [136] currentOutputPort     [182] objGetOutputPortFile  [161] regGetOutputPortFile
+ [141] display_if             [24] objGetPairPointer      [74] regGetPairPointer
+ [247] dlAdd                 [152] objGetPrimitive       [131] regGetPrimitive
+ [248] dlLoad                [179] objGetString          [162] regGetString
+ [249] dlUnload               [51] objGetSymbol           [98] regGetSymbol
+  [21] executeAssign (regsim.c) [33] objGetType           [63] regGetTemp
+ [117] executeBranch (regsim.c) [43] objGetVector (vector.c) [188] regInit
+ [109] executeConstant (regsim.c) [132] objHashSymbol    [172] regIsEOF
+  [99] executeGoto (regsim.c) [160] objIsBoolean          [71] regIsEq
+  [95] executeInput (regsim.c) [180] objIsCharacter      [153] regIsEqInputPort
+  [15] executeInstruction (regsim.c) [187] objIsEOF      [156] regIsEqOutputPort
+  [14] executeInstructions (regsim.c) [19] objIsEq        [45] regIsEqual
+ [107] executeLabel (regsim.c) [168] objIsEqBoolean      [171] regIsInputPort
+  [52] executeOperands (regsim.c) [242] objIsEqEOF        [32] regIsNull
+  [16] executeOperationExp (regsim.c) [209] objIsEqInputPort [94] regIsPairPointer
+  [23] executePerform (regsim.c) [190] objIsEqNull       [174] regIsPrimitive
+ [102] executeRegisterExp (regsim.c) [212] objIsEqOutputPort [166] regIsString
+ [128] executeRestore (regsim.c) [26] objIsEqPairPointer [103] regIsSymbol
+ [129] executeSave (regsim.c) [186] objIsEqString        [146] regIsTrue
+  [22] executeSource (regsim.c) [46] objIsEqSymbol       [118] regListLength
+ [101] executeTarget (regsim.c) [53] objIsEqual          [195] regLookup
+  [41] executeTest (regsim.c) [54] objIsEqualSymbol      [135] regMakeBoolean
+ [126] exit_if               [175] objIsInputPort        [150] regMakeCharacter
+  [69] extractLabels (regsim.c) [47] objIsNull           [158] regMakeEOF
+ [250] freePrimitives        [138] objIsNumber           [149] regMakeInputPort
+ [251] freeSymbols           [183] objIsOutputPort        [58] regMakeNull
+ [252] getOptions (main.c)    [34] objIsPairPointer       [97] regMakeNumber
+ [108] getPrimitive (regsim.c) [151] objIsPrimitive      [169] regMakeOutputPort
+  [40] glueGetValue          [176] objIsString           [100] regMakePrimitive
+  [80] hash                   [64] objIsSymbol           [147] regMakeString
+ [142] initPorts             [167] objIsTrue              [75] regMakeSymbol
+ [253] initPrimitives        [208] objMakeBoolean         [18] regRead
+ [144] initRegsim            [238] objMakeCharacter       [83] regSetCar
+ [157] initStack             [243] objMakeEOF             [72] regSetCdr
+ [125] initStack_if          [231] objMakeInputPort       [10] regWrite
+ [254] initSymbols            [78] objMakeNull            [62] restore
+  [76] isAssign (regsim.c)   [194] objMakeNumber         [201] rsAddPrimitive
+  [87] isBranch (regsim.c)   [257] objMakeOutputPort     [197] rsLookupPrimitive
+  [86] isConst (regsim.c)    [192] objMakePairPointer     [65] save
+ [114] isEOF_if              [196] objMakePrimitive      [232] scCreateYYBuffer
+  [88] isGoto (regsim.c)     [224] objMakeString         [233] scDeleteYYBuffer
+  [96] isLabel (regsim.c)    [193] objMakeSymbol         [217] scSetCurrentYYBuffer
+  [90] isOp (regsim.c)       [258] objMakeVector         [234] sc_create_buffer
+  [84] isPerform (regsim.c)   [42] objRef                [235] sc_delete_buffer
+ [120] isPrimitive_if        [202] objRefInputPort       [213] sc_flush_buffer
+  [73] isReg (regsim.c)      [219] objRefOutputPort      [221] sc_init_buffer
+  [93] isRestore (regsim.c)  [204] objRefString          [211] sc_load_buffer_state
+  [89] isSave (regsim.c)     [198] objRefVector          [218] sc_switch_to_buffer
+  [60] isTaggedList (regsim.c) [38] objUnref              [70] sclex
+  [85] isTest (regsim.c)     [203] objUnrefInputPort       [6] scparse
+ [164] list (pairpointer.c)  [220] objUnrefOutputPort    [244] screstart
+   [8] listSetCdr            [205] objUnrefString        [245] scwrap
+ [165] list_if               [199] objUnrefVector          [7] snoc
+  [81] lnGetNext (list.c)     [20] objVectorRef          [106] snoc_if
+  [82] lnIsNull (list.c)      [11] objVectorSet           [44] vecCheckIndex (vector.c)
+   [2] loadFile (regsim.c)   [148] openInputFile         [119] vecDelete (vector.c)
+   [3] loadFiles             [123] openInputFile_if      [236] vecGetSize (vector.c)
+  [30] lookupLabel (regsim.c) [140] popInputPort         [241] vecInit (vector.c)
+ [222] makePort (port.c)     [122] popInputPort_if        [31] vecRef (vector.c)
+ [239] makeVector (vector.c) [225] portDelete (port.c)    [12] vecSet (vector.c)
+ [237] maxDepthToPrint       [216] portGetFile (port.c)  [214] yy_flex_alloc (scscan.yy.c)
+ [191] memAmountFree (memory.c) [226] portGetFilename (port.c) [215] yy_flex_free (scscan.yy.c)
+  [55] memClear (memory.c)   [210] portGetYYBuffer (port.c) [206] yy_get_next_buffer (scscan.yy.c)
+  [56] memFree               [259] portInit              [207] yy_get_previous_state (scscan.yy.c)
+  [91] memInit               [227] portIsOpen (port.c)    [37] <cycle 1>
+  [92] memInitialize (memory.c) [228] portSetState (port.c)

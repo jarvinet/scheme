@@ -1,0 +1,14 @@
+Reducing via rule 21 (line 77),  -> datumzero
+Reducing via rule 15 (line 65), IDENTIFIER  -> symbol
+Reducing via rule 8 (line 48), symbol  -> simpledatum
+Reducing via rule 2 (line 40), simpledatum  -> datum
+Reducing via rule 20 (line 76), datumzero datum  -> datumzero
+Reducing via rule 21 (line 77),  -> datumzero
+Reducing via rule 12 (line 56), NUMBER  -> number
+Reducing via rule 5 (line 45), number  -> simpledatum
+Reducing via rule 2 (line 40), simpledatum  -> datum
+Reducing via rule 20 (line 76), datumzero datum  -> datumzero
+Reducing via rule 17 (line 71), OPENPAR datumzero CLOSEPAR  -> list
+Reducing via rule 16 (line 68), list  -> compounddatum
+Reducing via rule 3 (line 41), compounddatum  -> datum
+Reducing via rule 20 (line 76), datumzero datum  -> datumzero

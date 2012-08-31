@@ -1,0 +1,56 @@
+Starting parse
+Entering state 0
+Reading a token: Next token is 262 (OPENPAR)
+Shifting token 262 (OPENPAR), Entering state 5
+Reducing via rule 21 (line 77),  -> datumzero
+state stack now 0 5
+Entering state 23
+Reading a token: Next token is 258 (IDENTIFIER)
+Shifting token 258 (IDENTIFIER), Entering state 1
+Reducing via rule 15 (line 65), IDENTIFIER  -> symbol
+state stack now 0 5 23
+Entering state 18
+Reducing via rule 8 (line 48), symbol  -> simpledatum
+state stack now 0 5 23
+Entering state 13
+Reducing via rule 2 (line 40), simpledatum  -> datum
+state stack now 0 5 23
+Entering state 27
+Reading a token: Next token is 262 (OPENPAR)
+Reducing via rule 20 (line 76), datumzero datum  -> datumzero
+state stack now 0 5
+Entering state 23
+Next token is 262 (OPENPAR)
+Shifting token 262 (OPENPAR), Entering state 5
+Reducing via rule 21 (line 77),  -> datumzero
+state stack now 0 5 23 5
+Entering state 23
+Reading a token: Next token is 259 (NUMBER)
+Shifting token 259 (NUMBER), Entering state 2
+Reducing via rule 12 (line 56), NUMBER  -> number
+state stack now 0 5 23 5 23
+Entering state 15
+Reducing via rule 5 (line 45), number  -> simpledatum
+state stack now 0 5 23 5 23
+Entering state 13
+Reducing via rule 2 (line 40), simpledatum  -> datum
+state stack now 0 5 23 5 23
+Entering state 27
+Reading a token: Next token is 263 (CLOSEPAR)
+Reducing via rule 20 (line 76), datumzero datum  -> datumzero
+state stack now 0 5 23 5
+Entering state 23
+Next token is 263 (CLOSEPAR)
+Shifting token 263 (CLOSEPAR), Entering state 26
+Reducing via rule 17 (line 71), OPENPAR datumzero CLOSEPAR  -> list
+state stack now 0 5 23
+Entering state 20
+Reducing via rule 16 (line 68), list  -> compounddatum
+state stack now 0 5 23
+Entering state 19
+Reducing via rule 3 (line 41), compounddatum  -> datum
+state stack now 0 5 23
+Entering state 27
+Reading a token: Next token is 263 (CLOSEPAR)
+Reducing via rule 20 (line 76), datumzero datum  -> datumzero
+object is not a pair

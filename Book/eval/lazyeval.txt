@@ -1,0 +1,127 @@
+Exercise 4.31.
+
+The approach taken in this section is somewhat unpleasant, because it makes
+an incompatible change to Scheme. It might be nicer to implement lazy evaluation
+as an upward-compatible extension, that is, so that ordinary Scheme programs will
+work as before. We can do this by extending the syntax of procedure declarations
+to let the user control whether or not arguments are to be delayed. While we're
+at it, we may as well also give the user the choice between delaying with and
+without memoization. For example, the definition 
+
+           (define (f a (b lazy) c (d lazy-memo))
+             ...)
+
+would define f to be a procedure of four arguments, where the first and third
+arguments are evaluated when the procedure is called, the second argument is
+delayed, and the fourth argument is both delayed and memoized. Thus, ordinary
+procedure definitions will produce the same behavior as ordinary Scheme, while
+adding the lazy-memo declaration to each parameter of every compound procedure
+will produce the behavior of the lazy evaluator defined in this section. Design
+and implement the changes required to produce such an extension to Scheme. You
+will have to implement new syntax procedures to handle the new syntax for define.
+You must also arrange for eval or apply to determine when arguments are to be
+delayed, and to force or delay arguments accordingly, and you must arrange for
+forcing to memoize or not, as appropriate. 
+
+
+Solution:
+
+I have made one new type of thunk. Thunks and the corresponding parameters
+are as follows:
+
+	(define (a b (c lazy) d (e lazy-memo)))
+
+where 
+	b, d ordinary parameters
+	c    lazy parameter, represented by "thunk"
+	e    lazy memoized parameter, represented first by "memo-thunk" and after
+	     the first evaluation by "evaluated-thunk"
+
+The following thunk-handling procedures have been added:
+
+thunk-make, memo-thunk-make, thunk-exp, thunk-env, thunk-value,
+thunk?, memo-thunk?, evaluated-thunk?
+
+The call of myapply on eval has three changes:
+1) the operator expression is evaluated using actual-value insted of eval;
+2) the arguments are not evaluated (using list-of-values), but are passed as-is
+3) env is passed to myapply so it can construct thunks.
+
+myapply is changed in the following ways:
+1) is has the env as a parameter
+2) primitive application forciby evaluates the arguments
+3) compound-procedure application passes procedure parameters to list-of-args
+   which examines the type of the parameter, and decides whether to evaluate
+   the expression, or to create a thunk of it.
+
+The new procedures used here are "list-of-arg-values", and "list-of-args"
+New procedures also "force-it" that forces the evaluation of a thunk, and
+"actual-value" that forces possible thunk that eval returns.
+
+We also need two versions of "procedure-parameters". procedure-parameters
+returns the parameter list as before (with the lazy and lazy-memo designators).
+procedure-parameter-names returns just the parameter names. For example,
+for a procedure created by evaluating the definition 
+
+	(define (a b (c lazy) d (e lazy-memo)))
+
+procedure-parameters returns: (b (c lazy) d (e lazy-memo))
+procedure-parameter-names returns: (b c d e)
+
+
+Fibonacci is a procedure that should be much faster with memoized
+lazy evaluation:
+
+(define (fib (n lazy-memo))
+  (cond ((= n 0) 0)
+        ((= n 1) 1)
+        (else (+ (fib (- n 1))
+                 (fib (- n 2))))))
+
+--------------------------------------------------
+
+Exercise 4.28.
+
+Eval uses actual-value rather than eval to evaluate the operator before
+passing it to apply, in order to force the value of the operator. Give
+an example that demonstrates the need for this forcing. 
+
+
+--------------------------------------------------
+
+(define (cons (x lazy-memo) (y lazy-memo))
+  (lambda (m) (m x y)))
+(define (car (z lazy-memo))
+  (z (lambda (p q) p)))
+(define (cdr (z lazy-memo))
+  (z (lambda (p q) q)))
+
+In terms of these basic operations, the standard definitions of the list
+operations will work with infinite lists (streams) as well as finite ones,
+and the stream operations can be implemented as list operations. Here are
+some examples:
+
+(define (list-ref items n)
+  (if (= n 0)
+      (car items)
+      (list-ref (cdr items) (- n 1))))
+
+(define (map proc items)
+  (if (null? items)
+      '()
+      (cons (proc (car items))
+	    (map proc (cdr items)))))
+
+(define (scale-list items factor)
+  (map (lambda (x) (* x factor))
+       items))
+
+(define (add-lists list1 list2)
+  (cond ((null? list1) list2)
+	((null? list2) list1)
+	(else (cons (+ (car list1) (car list2))
+		    (add-lists (cdr list1) (cdr list2))))))
+
+(define ones (cons 1 ones))
+
+(define integers (cons 1 (add-lists ones integers)))

@@ -1,0 +1,17 @@
+[tmj@localhost src]$ time ./scc2.sh compiler/test/fib.scm
+
+Garbage collect ... Done (memory used: 14040/100000, 14%, gcId: 349)
+
+real    1m47.636s
+user    1m47.300s
+sys     0m0.060s
+
+
+
+[tmj@localhost src]$ time ./scc.sh compiler/test/fib.scm
+
+Garbage collect ... Done (memory used: 19953/150000, 13%, gcId: 267)
+
+real    2m4.508s
+user    2m4.010s
+sys     0m0.070s

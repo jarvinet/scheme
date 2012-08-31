@@ -1,0 +1,6 @@
+(define (a b)
+  (define (c d)
+    (if (> d 0)
+	(c (- d 1))
+	d))
+  (c b))

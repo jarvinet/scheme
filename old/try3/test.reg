@@ -1,0 +1,6 @@
+(
+  (assign a (const 0))
+  (assign b (const 1))
+  (assign t (op cons) (reg a) (reg b))
+  (perform (op set-car!) (reg t) (const 2))
+)

@@ -1,0 +1,161 @@
+(define a (list 1 2 3))
+(quasiquote (foo (unquote a) bar))
+=> (foo (1 2 3) bar)
+
+(quasiquote (foo (unquote-splicing a)))
+=> (foo 1 2 3)
+
+(quasiquote (quasiquote (foo (unquote (unquote a)))))
+=> (quasiquote (foo (unquote (1 2 3))))
+
+(let ((name1 'x)
+      (name2 'y))
+  `(a `(b ,,name1 ,',name2 d) e))
+
+
+(quasiquote (foo (unquote a)))
+
+(foo (unquote a))
+
+
+(define (ev-quasi exp level)
+  (if (or (null? exp) (symbol? exp))
+      exp
+      (let ((first (car exp))
+	    (rest (cdr exp)))
+	(cond ((eq? first 'quasiquote)
+	       (if (= level 0)
+		   (ev-quasi (car rest) (+ level 1))
+		   (cons first
+			 (ev-quasi rest (+ level 1)))))
+	      ((eq? first 'unquote)
+	       (if (= level 1)
+		   (cons 'eval rest)
+		   (cons first
+			 (ev-quasi rest (- level 1)))))
+	      (else
+	       (cons (ev-quasi first level)
+		     (ev-quasi rest level)))))))
+
+
+(define (eval-quasiquote exp)
+  (ev-quasi exp 0))
+
+(ev-quasi '(quasiquote (foo (unquote a))) 0)
+(ev-quasi '(quasiquote (quasiquote (foo (unquote (unquote a))))) 0)
+
+
+(define (fringe x)
+  (cond ((null? x) '())
+	((not (pair? x)) (cons x '()))
+	(else
+	 (append (fringe (car x))
+		 (fringe (cdr x))))))
+
+
+--------------------------------------------------
+
+ev-quasiquote ; (quasiquote foo)
+  (assign exp (op rest-expressions) (reg exp)) ; (foo)
+  (assign exp (op first-expression) (reg exp)) ;  foo
+ev-qq
+  (test (op null?) (reg exp))
+  (branch (label ev-qq-immediate))
+  (test (op symbol?) (reg exp))
+  (branch (label ev-qq-immediate))
+  (test (op unquote?) (reg exp))
+  (branch (label ev-qq-unquote))
+  (goto (label ev-qq-ordinary)) 
+
+ev-qq-unquote ; (unquote a)
+  (assign exp (op rest-expressions) (reg exp)) ; (a)
+  (assign exp (op first-expression) (reg exp)) ;  a
+  (save continue)
+  (assign continue (label ev-qq-unquote-eval-1))
+  (goto (label eval-dispatch))
+ev-qq-unquote-eval-1
+  (restore continue)
+  (goto (reg continue))
+
+ev-qq-ordinary ; (foo (unquote a) bar)
+  (assign unev (reg exp))
+  (assign argl (op empty-arglist))
+  (save continue)
+ev-qq-loop
+  (assign exp (op first-expression) (reg unev))
+  (save unev)
+  (save argl)
+  (assign continue (label ev-qq-accumulate))
+  (goto (label ev-qq))
+ev-qq-accumulate
+  (restore argl)
+  (assign argl (op adjoin-arg) (reg val) (reg argl))
+  (restore unev)
+  (assign unev (op rest-expressions) (reg unev))
+  (test (op no-expressions?) (reg unev))
+  (branch (label ev-qq-return))
+  (goto (label ev-qq-loop))
+ev-qq-return
+  (assign val (reg argl))
+  (restore continue)
+  (goto (reg continue))
+
+ev-qq-immediate ; foo
+  (assign val (reg exp))
+  (goto (reg continue))
+
+--------------------------------------------------
+
+expressions giving the "*** Too many arguments supplied" -error:
+(define (x) (if (< 1 2) 2))
+(define (x) (let ((a 1)) a))
+(define (x) (cond ((= 1 2) 1)))
+
+
+
+(
+((save env))
+(
+ (assign proc (op lookup-variable-value) (const <) (reg env))
+ (assign val (const 2))
+ (assign argl (op list) (reg val))
+ (assign val (const 1))
+ (assign argl (op cons) (reg val) (reg argl))
+ (test (op primitive-procedure?) (reg proc))
+ (branch (label primitive-branch6))
+ compiled-branch7
+ (assign continue (label after-call8))
+ (assign val (op compiled-procedure-entry) (reg proc))
+ (goto (reg val))
+ primitive-branch6
+ (assign val (op apply-primitive-procedure) (reg proc) (reg argl))
+ after-call8
+)
+((restore env))
+)
+
+--------------------------------------------------
+
+(
+ (env)
+ (val)
+ (
+  (assign val (const 1))
+  (perform (op define-variable!) (const a) (reg val) (reg env))
+  (assign val (const ok))
+ )
+)
+
+
+--------------------------------------------------
+
+		Session				Entity
+						Persistence managed by
+		Stateless	Stateful	Container	Bean
+
+PlayerHome
+Player
+
+LocalPlayerHome
+LocalPlayer
+

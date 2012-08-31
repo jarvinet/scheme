@@ -1,0 +1,31 @@
+
+Allocating register a
+Allocating register b
+Allocating register t
+assembleInstructions: unknown instruction: end-of-insts
+(perform (op (display . [primitive display])) (const "Give number a: "))
+(assign (a . 115) (op (read . [primitive read])))
+(perform (op (display . [primitive display])) (const "Give number b: "))
+(assign (b . 116) (op (read . [primitive read])))
+(test (op (= . [primitive =])) (reg (b . 116)) (const 0))
+(branch (label (gcd-done . gcd-done)))
+(assign (t . 117) (op (rem . [primitive rem])) (reg (a . 115)) (reg (b . 116)))
+(assign (a . 115) (reg (b . 116)))
+(assign (b . 116) (reg (t . 117)))
+(goto (label (test-b . test-b)))
+(perform (op (display . [primitive display])) (const "Greatest common divisor: "))
+(perform (op (display . [primitive display])) (reg (a . 115)))
+(perform (op (newline . [primitive newline])))
+(perform (op (display . [primitive display])) (const "Calculate another? (y/n): "))
+(assign (a . 115) (op (read . [primitive read])))
+(test (op (equal? . [primitive equal?])) (reg (a . 115)) (const y))
+(branch (label (loop . loop)))
+(perform (op (display . [primitive display])) (const "Bye"))
+(perform (op (newline . [primitive newline])))
+end-of-insts
+gcd-done
+((perform (op (display . [primitive display])) (const "Greatest common divisor: ")) (perform (op (display . [primitive display])) (reg (a . 115))) (perform (op (newline . [primitive newline]))) (perform (op (display . [primitive display])) (const "Calculate another? (y/n): ")) (assign (a . 115) (op (read . [primitive read]))) (test (op (equal? . [primitive equal?])) (reg (a . 115)) (const y)) (branch (label (loop . loop))) (perform (op (display . [primitive display])) (const "Bye")) (perform (op (newline . [primitive newline]))) end-of-insts)
+test-b
+((test (op (= . [primitive =])) (reg (b . 116)) (const 0)) (branch (label (gcd-done . gcd-done))) (assign (t . 117) (op (rem . [primitive rem])) (reg (a . 115)) (reg (b . 116))) (assign (a . 115) (reg (b . 116))) (assign (b . 116) (reg (t . 117))) (goto (label (test-b . test-b))) (perform (op (display . [primitive display])) (const "Greatest common divisor: ")) (perform (op (display . [primitive display])) (reg (a . 115))) (perform (op (newline . [primitive newline]))) (perform (op (display . [primitive display])) (const "Calculate another? (y/n): ")) (assign (a . 115) (op (read . [primitive read]))) (test (op (equal? . [primitive equal?])) (reg (a . 115)) (const y)) (branch (label (loop . loop))) (perform (op (display . [primitive display])) (const "Bye")) (perform (op (newline . [primitive newline]))) end-of-insts)
+loop
+((perform (op (display . [primitive display])) (const "Give number a: ")) (assign (a . 115) (op (read . [primitive read]))) (perform (op (display . [primitive display])) (const "Give number b: ")) (assign (b . 116) (op (read . [primitive read]))) (test (op (= . [primitive =])) (reg (b . 116)) (const 0)) (branch (label (gcd-done . gcd-done))) (assign (t . 117) (op (rem . [primitive rem])) (reg (a . 115)) (reg (b . 116))) (assign (a . 115) (reg (b . 116))) (assign (b . 116) (reg (t . 117))) (goto (label (test-b . test-b))) (perform (op (display . [primitive display])) (const "Greatest common divisor: ")) (perform (op (display . [primitive display])) (reg (a . 115))) (perform (op (newline . [primitive newline]))) (perform (op (display . [primitive display])) (const "Calculate another? (y/n): ")) (assign (a . 115) (op (read . [primitive read]))) (test (op (equal? . [primitive equal?])) (reg (a . 115)) (const y)) (branch (label (loop . loop))) (perform (op (display . [primitive display])) (const "Bye")) (perform (op (newline . [primitive newline]))) end-of-insts)

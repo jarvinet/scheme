@@ -1,0 +1,7 @@
+( () ()
+(
+; Load the init.scm file at startup
+  (assign exp (op list) (const load) (const "init.scm"))
+  (assign continue (label read-eval-print-loop))
+  (goto (label eval-dispatch))
+))
