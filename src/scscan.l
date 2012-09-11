@@ -66,8 +66,8 @@ number		   ({sign})?({digit})+
 "`"                     {return(QUASIQUOTE);}
 ","                     {return(UNQUOTE);}
 ",@"                    {return(UNQUOTESPLICING);}
-"#t"                    {return(TRUE);}
-"#f"                    {return(FALSE);}
+"#t"                    {return(TOKEN_TRUE);}
+"#f"                    {return(TOKEN_FALSE);}
 {identifier}		{sclval.str = yytext; return(IDENTIFIER);}
 {number}		{sclval.num = atoi(yytext); return(NUMBER);}
 #\\space                {sclval.chr = ' '; return(CHARACTER);}
