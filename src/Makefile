@@ -56,7 +56,7 @@ YACC = bison
 all : regsim
 
 regsim: $(REGSIMOBJS)
-	$(CC) -o$@ $^ $(LIBDIR) $(LIBRARY) 
+	$(CC) -o $@ $^ $(LIBDIR) $(LIBRARY) 
 	cp $@ ../bin
 
 #  -rdynamic -ldl
