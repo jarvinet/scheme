@@ -1,6 +1,6 @@
-SRCDIRS = core support src
+SRCDIRS = src
 
-SUBDIRS = core support src lib test
+SUBDIRS = src lib test
 
 regsim:
 	for d in $(SRCDIRS); do (cd $$d; make all); done

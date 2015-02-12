@@ -19,7 +19,7 @@ SCHEMESRCS = \
 	port.c primitive.c register.c sstring.c symbol.c vector.c
 
 SUPPORTSRCS = \
-	env.c init.c support.c syntax.c
+	env.c init.c support.c syntax.c glue.c hash.c list.c util.c
 
 # schemeparser and scanner should not be in REGSIMSRCS
 
@@ -39,11 +39,11 @@ CLEANFILES =\
 	regsim core *~
 
 
-INCDIR = -I../core
+# INCDIR = -I../core
 
 LIBDIR = -L../lib
 
-LIBRARY = -lcore
+# LIBRARY = -lcore
 
 CFLAGS = $(INCDIR) -g -Wall
 
