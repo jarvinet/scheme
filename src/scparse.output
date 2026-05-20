@@ -1,7 +1,7 @@
-Terminals which are not used
+Terminals unused in grammar
 
-   OTHER
-   NEWLINE
+    OTHER
+    NEWLINE
 
 
 Grammar
@@ -41,7 +41,7 @@ Grammar
    21 vector: BEGINVECTOR datumzero CLOSEPAR
 
    22 datumzero: datumzero datum
-   23          | /* empty */
+   23          | ε
 
    24 datumone: datumzero datum
 
@@ -55,66 +55,81 @@ Grammar
 
 Terminals, with rules where they appear
 
-$end (0) 0
-error (256)
-OTHER (258)
-IDENTIFIER (259) 15
-NUMBER (260) 12
-CHARACTER (261) 13
-STRING (262) 14
-BEGINVECTOR (263) 21
-OPENPAR (264) 18 19
-CLOSEPAR (265) 18 19 21
-DOT (266) 19
-QUOTE (267) 26
-QUASIQUOTE (268) 27
-UNQUOTE (269) 28
-UNQUOTESPLICING (270) 29
-TOKEN_TRUE (271) 10
-TOKEN_FALSE (272) 11
-NEWLINE (273)
-END_OF_FILE (274) 9
+    $end (0) 0
+    error (256)
+    OTHER <str> (258)
+    IDENTIFIER <str> (259) 15
+    NUMBER <num> (260) 12
+    CHARACTER <chr> (261) 13
+    STRING <str> (262) 14
+    BEGINVECTOR <str> (263) 21
+    OPENPAR <str> (264) 18 19
+    CLOSEPAR <str> (265) 18 19 21
+    DOT <str> (266) 19
+    QUOTE <str> (267) 26
+    QUASIQUOTE <str> (268) 27
+    UNQUOTE <str> (269) 28
+    UNQUOTESPLICING <str> (270) 29
+    TOKEN_TRUE <str> (271) 10
+    TOKEN_FALSE <str> (272) 11
+    NEWLINE <str> (273)
+    END_OF_FILE <str> (274) 9
 
 
 Nonterminals, with rules where they appear
 
-$accept (20)
-    on left: 0
-input (21)
-    on left: 1, on right: 0
-datum (22)
-    on left: 2 3, on right: 1 19 22 24 25
-simpledatum (23)
-    on left: 4 5 6 7 8 9, on right: 2
-boolean (24)
-    on left: 10 11, on right: 4
-number (25)
-    on left: 12, on right: 5
-character (26)
-    on left: 13, on right: 6
-string (27)
-    on left: 14, on right: 7
-symbol (28)
-    on left: 15, on right: 8
-compounddatum (29)
-    on left: 16 17, on right: 3
-list (30)
-    on left: 18 19 20, on right: 16
-vector (31)
-    on left: 21, on right: 17
-datumzero (32)
-    on left: 22 23, on right: 18 21 22 24
-datumone (33)
-    on left: 24, on right: 19
-abbreviation (34)
-    on left: 25, on right: 20
-abbrevprefix (35)
-    on left: 26 27 28 29, on right: 25
+    $accept (20)
+        on left: 0
+    input (21)
+        on left: 1
+        on right: 0
+    datum (22)
+        on left: 2 3
+        on right: 1 19 22 24 25
+    simpledatum (23)
+        on left: 4 5 6 7 8 9
+        on right: 2
+    boolean (24)
+        on left: 10 11
+        on right: 4
+    number (25)
+        on left: 12
+        on right: 5
+    character (26)
+        on left: 13
+        on right: 6
+    string (27)
+        on left: 14
+        on right: 7
+    symbol (28)
+        on left: 15
+        on right: 8
+    compounddatum (29)
+        on left: 16 17
+        on right: 3
+    list (30)
+        on left: 18 19 20
+        on right: 16
+    vector (31)
+        on left: 21
+        on right: 17
+    datumzero (32)
+        on left: 22 23
+        on right: 18 21 22 24
+    datumone (33)
+        on left: 24
+        on right: 19
+    abbreviation (34)
+        on left: 25
+        on right: 20
+    abbrevprefix (35)
+        on left: 26 27 28 29
+        on right: 25
 
 
-state 0
+State 0
 
-    0 $accept: . input $end
+    0 $accept: • input $end
 
     IDENTIFIER       shift, and go to state 1
     NUMBER           shift, and go to state 2
@@ -145,47 +160,47 @@ state 0
     abbrevprefix   go to state 26
 
 
-state 1
+State 1
 
-   15 symbol: IDENTIFIER .
+   15 symbol: IDENTIFIER •
 
     $default  reduce using rule 15 (symbol)
 
 
-state 2
+State 2
 
-   12 number: NUMBER .
+   12 number: NUMBER •
 
     $default  reduce using rule 12 (number)
 
 
-state 3
+State 3
 
-   13 character: CHARACTER .
+   13 character: CHARACTER •
 
     $default  reduce using rule 13 (character)
 
 
-state 4
+State 4
 
-   14 string: STRING .
+   14 string: STRING •
 
     $default  reduce using rule 14 (string)
 
 
-state 5
+State 5
 
-   21 vector: BEGINVECTOR . datumzero CLOSEPAR
+   21 vector: BEGINVECTOR • datumzero CLOSEPAR
 
     $default  reduce using rule 23 (datumzero)
 
     datumzero  go to state 27
 
 
-state 6
+State 6
 
-   18 list: OPENPAR . datumzero CLOSEPAR
-   19     | OPENPAR . datumone DOT datum CLOSEPAR
+   18 list: OPENPAR • datumzero CLOSEPAR
+   19     | OPENPAR • datumone DOT datum CLOSEPAR
 
     $default  reduce using rule 23 (datumzero)
 
@@ -193,142 +208,142 @@ state 6
     datumone   go to state 29
 
 
-state 7
+State 7
 
-   26 abbrevprefix: QUOTE .
+   26 abbrevprefix: QUOTE •
 
     $default  reduce using rule 26 (abbrevprefix)
 
 
-state 8
+State 8
 
-   27 abbrevprefix: QUASIQUOTE .
+   27 abbrevprefix: QUASIQUOTE •
 
     $default  reduce using rule 27 (abbrevprefix)
 
 
-state 9
+State 9
 
-   28 abbrevprefix: UNQUOTE .
+   28 abbrevprefix: UNQUOTE •
 
     $default  reduce using rule 28 (abbrevprefix)
 
 
-state 10
+State 10
 
-   29 abbrevprefix: UNQUOTESPLICING .
+   29 abbrevprefix: UNQUOTESPLICING •
 
     $default  reduce using rule 29 (abbrevprefix)
 
 
-state 11
+State 11
 
-   10 boolean: TOKEN_TRUE .
+   10 boolean: TOKEN_TRUE •
 
     $default  reduce using rule 10 (boolean)
 
 
-state 12
+State 12
 
-   11 boolean: TOKEN_FALSE .
+   11 boolean: TOKEN_FALSE •
 
     $default  reduce using rule 11 (boolean)
 
 
-state 13
+State 13
 
-    9 simpledatum: END_OF_FILE .
+    9 simpledatum: END_OF_FILE •
 
     $default  reduce using rule 9 (simpledatum)
 
 
-state 14
+State 14
 
-    0 $accept: input . $end
+    0 $accept: input • $end
 
     $end  shift, and go to state 30
 
 
-state 15
+State 15
 
-    1 input: datum .
+    1 input: datum •
 
     $default  reduce using rule 1 (input)
 
 
-state 16
+State 16
 
-    2 datum: simpledatum .
+    2 datum: simpledatum •
 
     $default  reduce using rule 2 (datum)
 
 
-state 17
+State 17
 
-    4 simpledatum: boolean .
+    4 simpledatum: boolean •
 
     $default  reduce using rule 4 (simpledatum)
 
 
-state 18
+State 18
 
-    5 simpledatum: number .
+    5 simpledatum: number •
 
     $default  reduce using rule 5 (simpledatum)
 
 
-state 19
+State 19
 
-    6 simpledatum: character .
+    6 simpledatum: character •
 
     $default  reduce using rule 6 (simpledatum)
 
 
-state 20
+State 20
 
-    7 simpledatum: string .
+    7 simpledatum: string •
 
     $default  reduce using rule 7 (simpledatum)
 
 
-state 21
+State 21
 
-    8 simpledatum: symbol .
+    8 simpledatum: symbol •
 
     $default  reduce using rule 8 (simpledatum)
 
 
-state 22
+State 22
 
-    3 datum: compounddatum .
+    3 datum: compounddatum •
 
     $default  reduce using rule 3 (datum)
 
 
-state 23
+State 23
 
-   16 compounddatum: list .
+   16 compounddatum: list •
 
     $default  reduce using rule 16 (compounddatum)
 
 
-state 24
+State 24
 
-   17 compounddatum: vector .
+   17 compounddatum: vector •
 
     $default  reduce using rule 17 (compounddatum)
 
 
-state 25
+State 25
 
-   20 list: abbreviation .
+   20 list: abbreviation •
 
     $default  reduce using rule 20 (list)
 
 
-state 26
+State 26
 
-   25 abbreviation: abbrevprefix . datum
+   25 abbreviation: abbrevprefix • datum
 
     IDENTIFIER       shift, and go to state 1
     NUMBER           shift, and go to state 2
@@ -358,10 +373,10 @@ state 26
     abbrevprefix   go to state 26
 
 
-state 27
+State 27
 
-   21 vector: BEGINVECTOR datumzero . CLOSEPAR
-   22 datumzero: datumzero . datum
+   21 vector: BEGINVECTOR datumzero • CLOSEPAR
+   22 datumzero: datumzero • datum
 
     IDENTIFIER       shift, and go to state 1
     NUMBER           shift, and go to state 2
@@ -392,11 +407,11 @@ state 27
     abbrevprefix   go to state 26
 
 
-state 28
+State 28
 
-   18 list: OPENPAR datumzero . CLOSEPAR
-   22 datumzero: datumzero . datum
-   24 datumone: datumzero . datum
+   18 list: OPENPAR datumzero • CLOSEPAR
+   22 datumzero: datumzero • datum
+   24 datumone: datumzero • datum
 
     IDENTIFIER       shift, and go to state 1
     NUMBER           shift, and go to state 2
@@ -427,60 +442,60 @@ state 28
     abbrevprefix   go to state 26
 
 
-state 29
+State 29
 
-   19 list: OPENPAR datumone . DOT datum CLOSEPAR
+   19 list: OPENPAR datumone • DOT datum CLOSEPAR
 
     DOT  shift, and go to state 36
 
 
-state 30
+State 30
 
-    0 $accept: input $end .
+    0 $accept: input $end •
 
     $default  accept
 
 
-state 31
+State 31
 
-   25 abbreviation: abbrevprefix datum .
+   25 abbreviation: abbrevprefix datum •
 
     $default  reduce using rule 25 (abbreviation)
 
 
-state 32
+State 32
 
-   21 vector: BEGINVECTOR datumzero CLOSEPAR .
+   21 vector: BEGINVECTOR datumzero CLOSEPAR •
 
     $default  reduce using rule 21 (vector)
 
 
-state 33
+State 33
 
-   22 datumzero: datumzero datum .
+   22 datumzero: datumzero datum •
 
     $default  reduce using rule 22 (datumzero)
 
 
-state 34
+State 34
 
-   18 list: OPENPAR datumzero CLOSEPAR .
+   18 list: OPENPAR datumzero CLOSEPAR •
 
     $default  reduce using rule 18 (list)
 
 
-state 35
+State 35
 
-   22 datumzero: datumzero datum .
-   24 datumone: datumzero datum .
+   22 datumzero: datumzero datum •
+   24 datumone: datumzero datum •
 
     DOT       reduce using rule 24 (datumone)
     $default  reduce using rule 22 (datumzero)
 
 
-state 36
+State 36
 
-   19 list: OPENPAR datumone DOT . datum CLOSEPAR
+   19 list: OPENPAR datumone DOT • datum CLOSEPAR
 
     IDENTIFIER       shift, and go to state 1
     NUMBER           shift, and go to state 2
@@ -510,15 +525,15 @@ state 36
     abbrevprefix   go to state 26
 
 
-state 37
+State 37
 
-   19 list: OPENPAR datumone DOT datum . CLOSEPAR
+   19 list: OPENPAR datumone DOT datum • CLOSEPAR
 
     CLOSEPAR  shift, and go to state 38
 
 
-state 38
+State 38
 
-   19 list: OPENPAR datumone DOT datum CLOSEPAR .
+   19 list: OPENPAR datumone DOT datum CLOSEPAR •
 
     $default  reduce using rule 19 (list)

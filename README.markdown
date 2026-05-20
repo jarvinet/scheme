@@ -31,9 +31,18 @@ the programs contained within.
 
 Testing
 -------
+./sci.sh testsuite.scm
 
 Tools used
 ----------
 * Implemented in C. 
 * Gnu tools: emacs, make, gcc, gdb
 * scanner and parser generators: Gnu versions of lex and yacc (flex, bison)
+* sudo apt-get install -y bison flex
+
+AI analysis:
+This codebase is a Scheme interpreter and compiler written in C, heavily inspired by the classic book "Structure and Interpretation of Computer Programs" (SICP). It includes:
+
+A register machine simulator (regsim) compiled from C.
+A Scheme interpreter implemented in the register machine language, which in turn runs Scheme programs.
+Support for a subset of R5RS Scheme, proper tail recursion, continuations, and stop-and-copy garbage collection.
