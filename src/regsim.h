@@ -13,6 +13,7 @@ void makeRegSim();
 void deleteRegSim(void);
 void rsReadInstSeq(char* fileName);
 void rsExpandInstSeq(void);
+void regsimInit(void);
 
 int  rsAddInst(Inst newInst);
 

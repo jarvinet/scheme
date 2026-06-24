@@ -9,6 +9,7 @@
 #include "list.h"
 #include "insts.h"
 #include "rsparse.tab.h"
+#include "util.h"
 
 #define MAX_STR_CONST 2048
 

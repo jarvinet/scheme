@@ -40,3 +40,9 @@ ehthumbs.db
 Thumbs.db
 bin/regsim
 src/regsim
+
+# bison/yacc generated temp outputs
+###################################
+*.output
+*.tab.c
+*.tab.h

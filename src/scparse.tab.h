@@ -1,14 +1,14 @@
-/* A Bison parser, made by GNU Bison 2.3.  */
+/* A Bison parser, made by GNU Bison 3.8.2.  */
 
-/* Skeleton interface for Bison's Yacc-like parsers in C
+/* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
-   Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
+   Inc.
 
-   This program is free software; you can redistribute it and/or modify
+   This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
-   any later version.
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
 
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -16,9 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -33,68 +31,71 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* Tokens.  */
+/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
+   especially those whose name start with YY_ or yy_.  They are
+   private implementation details that can be changed or removed.  */
+
+#ifndef YY_SC_SCPARSE_TAB_H_INCLUDED
+# define YY_SC_SCPARSE_TAB_H_INCLUDED
+/* Debug traces.  */
+#ifndef YYDEBUG
+# define YYDEBUG 1
+#endif
+#if YYDEBUG
+extern int scdebug;
+#endif
+
+/* Token kinds.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
-   /* Put the tokens into the symbol table, so that GDB and other debuggers
-      know about them.  */
-   enum yytokentype {
-     OTHER = 258,
-     IDENTIFIER = 259,
-     NUMBER = 260,
-     CHARACTER = 261,
-     STRING = 262,
-     BEGINVECTOR = 263,
-     OPENPAR = 264,
-     CLOSEPAR = 265,
-     DOT = 266,
-     QUOTE = 267,
-     QUASIQUOTE = 268,
-     UNQUOTE = 269,
-     UNQUOTESPLICING = 270,
-     TOKEN_TRUE = 271,
-     TOKEN_FALSE = 272,
-     NEWLINE = 273,
-     END_OF_FILE = 274
-   };
+  enum yytokentype
+  {
+    YYEMPTY = -2,
+    YYEOF = 0,                     /* "end of file"  */
+    YYerror = 256,                 /* error  */
+    YYUNDEF = 257,                 /* "invalid token"  */
+    OTHER = 258,                   /* OTHER  */
+    IDENTIFIER = 259,              /* IDENTIFIER  */
+    NUMBER = 260,                  /* NUMBER  */
+    CHARACTER = 261,               /* CHARACTER  */
+    STRING = 262,                  /* STRING  */
+    BEGINVECTOR = 263,             /* BEGINVECTOR  */
+    OPENPAR = 264,                 /* OPENPAR  */
+    CLOSEPAR = 265,                /* CLOSEPAR  */
+    DOT = 266,                     /* DOT  */
+    QUOTE = 267,                   /* QUOTE  */
+    QUASIQUOTE = 268,              /* QUASIQUOTE  */
+    UNQUOTE = 269,                 /* UNQUOTE  */
+    UNQUOTESPLICING = 270,         /* UNQUOTESPLICING  */
+    TOKEN_TRUE = 271,              /* TOKEN_TRUE  */
+    TOKEN_FALSE = 272,             /* TOKEN_FALSE  */
+    NEWLINE = 273,                 /* NEWLINE  */
+    END_OF_FILE = 274              /* END_OF_FILE  */
+  };
+  typedef enum yytokentype yytoken_kind_t;
 #endif
-/* Tokens.  */
-#define OTHER 258
-#define IDENTIFIER 259
-#define NUMBER 260
-#define CHARACTER 261
-#define STRING 262
-#define BEGINVECTOR 263
-#define OPENPAR 264
-#define CLOSEPAR 265
-#define DOT 266
-#define QUOTE 267
-#define QUASIQUOTE 268
-#define UNQUOTE 269
-#define UNQUOTESPLICING 270
-#define TOKEN_TRUE 271
-#define TOKEN_FALSE 272
-#define NEWLINE 273
-#define END_OF_FILE 274
 
-
-
-
+/* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE
-
+union YYSTYPE
 {
+
     int   num;
     char* str;
     char  chr;
-}
-/* Line 1529 of yacc.c.  */
 
-	YYSTYPE;
-# define yystype YYSTYPE /* obsolescent; will be withdrawn */
-# define YYSTYPE_IS_DECLARED 1
+
+};
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
+# define YYSTYPE_IS_DECLARED 1
 #endif
+
 
 extern YYSTYPE sclval;
 
+
+int scparse (void);
+
+
+#endif /* !YY_SC_SCPARSE_TAB_H_INCLUDED  */
